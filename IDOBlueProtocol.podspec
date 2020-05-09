@@ -1,5 +1,5 @@
 #
-# Be sure to run `pod lib lint IDOBlueUpdate.podspec' to ensure this is a
+# Be sure to run `pod lib lint IDOBlueProtocol.podspec' to ensure this is a
 # valid spec before submitting.
 #
 # Any lines starting with a # are optional, but their use is encouraged
@@ -41,5 +41,7 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
    s.frameworks = 'UIKit', 'Foundation', 'CoreBluetooth'
+   s.libraries  = 'libsqlite3.0'
   # s.dependency 'AFNetworking', '~> 2.3'
+  
 end
