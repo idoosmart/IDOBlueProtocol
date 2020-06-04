@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'IDOBlueProtocol'
   s.version          = '3.4.2'
-  s.summary          = 'ido bluetooth protocol lib'
+  s.summary          = 'It is suitable for iOS devices and supports IDO bracelet, realizing bluetooth connection control framework library. Based on the Bluetooth framework of iOS system, bluetooth scanning, connection, binding, control, setting, acquisition, monitoring, transmission and other functions are expanded.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = 'SDK upgrade function is only responsible for firmware upgrades. Firmware version determination and firmware download are not processed. Note the integrity of the firmware download, passing in the firmware local sandbox path during the upgrade, monitoring the upgrade progress and completion status, and error agent callbacks. The current version of the upgrade library adds the realtk and apollo platform.'
+  s.description      = 'IDOBluetooth, IDOBlueProtocol and IDOBlueUpdate are suitable for iOS devices and support IDO bracelet to realize bluetooth connection control framework library. Based on the Bluetooth framework of iOS system, bluetooth scanning, connection, binding, control, setting, acquisition, monitoring, transmission and other functions are expanded. The protocol library prepared by C is used to realize the logical processing of structural data conversion and health data synchronization, which reduces the errors of bluetooth communication data and improves the speed and accuracy of Bluetooth communication. This feature-rich API is easy to use.'
 
   s.homepage         = 'http://www.idoosmart.com'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
@@ -33,15 +33,15 @@ Pod::Spec.new do |s|
   s.vendored_frameworks   = 'IDOBlueProtocol.framework'
 
   # 上传源文件
-  # s.source_files = 'IDOBlueUpdate/Classes/**/*'
+  # s.source_files = 'IDOBlueProtocol/Classes/**/*'
   
   # s.resource_bundles = {
-  #   'IDOBlueUpdate' => ['IDOBlueUpdate/Assets/*.png']
+  #   'IDOBlueProtocol' => ['IDOBlueProtocol/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
    s.frameworks = 'UIKit', 'Foundation', 'CoreBluetooth'
-   s.libraries  = 'libsqlite3.0'
+   s.libraries  = 'sqlite3.0'
   # s.dependency 'AFNetworking', '~> 2.3'
   
 end
