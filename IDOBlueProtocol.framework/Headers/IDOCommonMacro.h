@@ -9,8 +9,7 @@
 #ifndef IDOCommonMacro_h
 #define IDOCommonMacro_h
 
-#if __has_include(<IDOBluetoothInternal/IDOBluetoothInternal.h>)
-#elif __has_include(<IDOBlueProtocol/IDOBlueProtocol.h>)
+#if __has_include(<IDOBlueProtocol/IDOBlueProtocol.h>)
 #else
 #import "IDOBluetoothEngine.h"
 #endif

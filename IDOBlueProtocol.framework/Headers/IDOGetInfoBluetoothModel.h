@@ -6,11 +6,79 @@
 //  Copyright © 2018年 hedongyang. All rights reserved.
 //
 
-#if __has_include(<IDOBluetoothInternal/IDOBluetoothInternal.h>)
-#elif __has_include(<IDOBlueProtocol/IDOBlueProtocol.h>)
+#if __has_include(<IDOBlueProtocol/IDOBlueProtocol.h>)
 #else
 #import "IDOBluetoothBaseModel.h"
 #endif
+
+#pragma mark ==== 获取过热日志 model ====
+@interface IDOGetOverHeatLogModel : IDOBluetoothBaseModel
+/**
+  该报文的版本号
+  version number
+ */
+@property (nonatomic,assign) NSInteger verionNum;
+/**
+ 设备运行总时间(单位秒)
+ device run time (unit:second)
+ */
+@property (nonatomic,assign) NSInteger devRunTime;
+/**
+ppg传感器工作时间(单位秒)
+ppg run time (unit:second)
+*/
+@property (nonatomic,assign) NSInteger ppgRunTime;
+/**
+充电次数
+charging times
+*/
+@property (nonatomic,assign) NSInteger chargingTimes;
+/**
+发生异常的原因位集合:多个错误可以叠加
+1 电压下降过快
+2 ppg 传感器通讯失败
+4 ppg 传感器返回数据异常
+error flag
+*/
+@property (nonatomic,strong) NSArray * errFlag;
+
+/**
+ 年份 | Year
+ */
+@property (nonatomic,assign) NSInteger year;
+/**
+ 月份 | Month
+ */
+@property (nonatomic,assign) NSInteger month;
+/**
+ 日期 | Date
+ */
+@property (nonatomic,assign) NSInteger day;
+/**
+ 时 | hour
+ */
+@property (nonatomic,assign) NSInteger hour;
+/**
+ 分 | minutes
+ */
+@property (nonatomic,assign) NSInteger minute;
+/**
+ 秒 | seconds
+ */
+@property (nonatomic,assign) NSInteger second;
+
+/**
+ 查询所有过热日志
+ */
++ (NSArray <IDOGetOverHeatLogModel *>*)queryAllOverHeatLog;
+
+/**
+ 删除所有过热日志
+ */
++ (BOOL)deleteAllOverHeatLog;
+
+@end
+
 
 #pragma mark ==== 获取菜单列表 model ====
 @interface IDOGetMenuListInfoBluetoothModel : IDOBluetoothBaseModel
@@ -41,99 +109,6 @@
  * @return IDOGetMenuListInfoBluetoothModel
  */
 + (__kindof IDOGetMenuListInfoBluetoothModel *)currentModel;
-
-@end
-
-#pragma mark ==== 获取电池信息 model ====
-@interface IDOGetDeviceBattInfoBluetoothModel : IDOBluetoothBaseModel
-/**
- 电压，毫伏
- voltage
- */
-@property (nonatomic,assign) NSInteger voltage;
-/**
-状态,0 未充电,1正在充电，2充满
-status 0 uncharged,1 being charged, 2 full
-*/
-@property (nonatomic,assign) NSInteger status;
-/**
- 电量等级0-100
- level 0-100
- */
-@property (nonatomic,assign) NSInteger level;
-/**
-上次充电时间 年
-Last charging time year
-*/
-@property (nonatomic,assign) NSInteger lastChargingYear;
-/**
-上次充电时间 月
-Last charging time month
-*/
-@property (nonatomic,assign) NSInteger lastChargingMonth;
-/**
-上次充电时间 天
-Last charging time day
-*/
-@property (nonatomic,assign) NSInteger lastChargingDay;
-/**
-上次充电时间 时
-Last charging time  hour
-*/
-@property (nonatomic,assign) NSInteger lastChargingHour;
-/**
-上次充电时间 分
-Last charging time minute
-*/
-@property (nonatomic,assign) NSInteger lastChargingMinute;
-/**
-上次充电时间 秒
-Last charging time second
-*/
-@property (nonatomic,assign) NSInteger lastChargingSecond;
-@end
-
-#pragma mark ==== 获取字库版本信息 model ====
-@interface IDOGetFlashBinInfoBluetoothModel : IDOBluetoothBaseModel
-/**
- 状态 0x00正常,0x01 字库无效 校验错误,0x02 版本不匹配
- Status 0x00 is normal,0x01 byte library invalid check error,0x02 version does not match
- */
-@property (nonatomic,assign) NSInteger status;
-/**
-  字库版本
-  flash version
- */
-@property (nonatomic,assign) NSInteger flashVersion;
-/**
- 匹配版本号,固件需要的字库版本号
- Match the version number, the version number of the font required by the firmware
- */
-@property (nonatomic,assign) NSInteger matchVersion;
-/**
- 字库校验码
- check code
- */
-@property (nonatomic,assign) NSInteger checkCode;
-@end
-
-#pragma mark ==== 获取错误日志记录 model ====
-@interface IDOGetErrorLogBluetoothModel : IDOBluetoothBaseModel
-/**
- 操作类型 ：0x00 查询 , 0x01 清除记录
- Operation type: 0x00 query , 0x01 to clear the record
- */
-@property (nonatomic,assign) NSInteger type;
-/**
- 0x0 正常, 0x01 硬错误(Hard Faul), 0x02 看门狗服务, 0x03 断言复位, 0x04 掉电服务, 0x05 其他异常
- 0x0 normal, 0x01 Hard error (Hard Faul), 0x02 watchdog service, 0x03 assertion reset, 0x04 power down service, 0x05 other exceptions
- */
-@property (nonatomic,assign) NSInteger resetFlag;
-/**
- 硬件错误码 0x00正常, 0x01 加速度错误, 0x02 心率错误, 0x03 TP错误, 0x04 flash错误
- Hardware error code 0x00 normal, 0x01 acceleration error, 0x02 heart rate error, 0x03 TP error, 0x04 flash error
- */
-@property (nonatomic,assign) NSInteger hwError;
 
 @end
 
@@ -204,51 +179,6 @@ Last charging time second
 
 @end
 
-#pragma mark ====  手环检查版本号 model ====
-@interface IDOCheckUpdateBluetoothModel:IDOBluetoothBaseModel
-/**
- * app 响应状态 | flag code
- * 0x00 : 已经是最新版本；0x01 ：有新版本；0x02 ：网络错误；0x03 ：其他错误
- * 0x00 : it is the latest version; 0x01: there are new versions; 0x02: network error; 0x03: other errors
- */
-@property (nonatomic,assign) NSInteger flagCode;
-
-/**
- 固件最新版本号 | new version
- */
-@property (nonatomic,assign) NSInteger newVersion;
-
-@end
-
-#pragma mark ==== 获取5个心率区间交换数据 ====
-@interface IDOGetFiveHrReplyInfoBluetoothModel:IDOBluetoothBaseModel
-/**
- 燃烧脂肪 | Threshold for burning fat
- */
-@property (nonatomic,assign) NSInteger burnFat;
-
-/**
- 有氧运动 | Aerobic threshold
- */
-@property (nonatomic,assign) NSInteger aerobic;
-
-/**
- 极限运动 | Limit threshold
- */
-@property (nonatomic,assign) NSInteger limitValue;
-
-/**
- 热身运动 | Warm-up
- */
-@property (nonatomic,assign) NSInteger warmUp;
-
-/**
- 无氧运动 | Anaerobic exercise
- */
-@property (nonatomic,assign) NSInteger anaerobic;
-
-@end
-
 #pragma mark ==== 获取版本信息model ====
 @interface IDOGetVersionInfoBluetoothModel:IDOBluetoothBaseModel
 
@@ -296,23 +226,6 @@ Last charging time second
 + (__kindof IDOGetVersionInfoBluetoothModel *)currentModel;
 
 @end
-
-#pragma mark ==== 获取GPS状态model ====
-@interface IDOGetGpsStatusBluetoothModel:IDOBluetoothBaseModel
-/**
- * GPS 运行状态 0 没有运行,1 正在搜星,2 为正在跟踪
- * GPS running status 0 No running, 1 is searching for stars, 2 is tracking
- */
-@property (nonatomic,assign) NSInteger gpsRunStatus;
-
-/**
- * AGPS 是否有效,有效期剩余小时,非0为有效,
- * AGPS is valid, the remaining period is valid, non-zero is valid,
- */
-@property (nonatomic,assign) NSInteger isAgpsVaild;
-
-@end
-
 
 #pragma mark ==== 获取热启动参数model ====
 @interface IDOGetHotStartParamBluetoothModel:IDOBluetoothBaseModel
@@ -579,6 +492,17 @@ Last charging time second
 @property (nonatomic,assign) BOOL ubloxModel;
 
 /**
+ *v3多运动同步数据,洪堡APP定制
+ *v3 sync activity custom made
+*/
+@property (nonatomic,assign) BOOL v3SyncActivity;
+
+/**
+ *获取过热日志
+ *get heat log
+*/
+@property (nonatomic,assign) BOOL getHeatLog;
+/**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
  * @return IDOGetFuncTable29BluetoothModel
@@ -669,6 +593,12 @@ Last charging time second
  *traditional chinese
  */
 @property (nonatomic,assign) BOOL traditionalChinese;
+
+/**
+ *希腊语
+ *greek
+ */
+@property (nonatomic,assign) BOOL greek;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
@@ -1398,9 +1328,9 @@ Last charging time second
 @property (nonatomic,assign) BOOL weather;
 
 /**
-  * @brief 查询数据库,如果查询不到初始化新的model对象
+ * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
-  * @return IDOGetFuncTable11BluetoothModel
+ * @return IDOGetFuncTable11BluetoothModel
  */
 + (__kindof IDOGetFuncTable11BluetoothModel *)currentModel;
 

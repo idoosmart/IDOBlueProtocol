@@ -9,8 +9,7 @@
 
 
 #import <Foundation/Foundation.h>
-#if __has_include(<IDOBluetoothInternal/IDOBluetoothInternal.h>)
-#elif __has_include(<IDOBlueProtocol/IDOBlueProtocol.h>)
+#if __has_include(<IDOBlueProtocol/IDOBlueProtocol.h>)
 #else
 #import "IDOBindEnum.h"
 #import "IDOBluetoothBaseModel.h"
@@ -42,6 +41,13 @@
  * 连接失败通知 | connection failed
  */
 + (void)connectionFailed;
+
+/**
+ * 删除手环日志 ｜ clear device log
+ * type: 0x01 = > 删除过热日志
+ */
++ (void)clearLogCommandWithType:(int)type
+                       callback:(void(^_Nullable)(int errorCode,int state))callback;
 
 /**
  * 发送提示消息 （只用于DH项目中） | Send prompt message （used only for DH）
@@ -134,13 +140,6 @@
  * Post-execution callback (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  */
 + (void)mandatoryUnbindingCommand:(void(^_Nullable)(int errorCode))callback;
-
-/**
- * @brief 手环主动解绑 | Active unbinding of the bracelet
- * @param callback 执行后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str,state:0x00:无效，0x01:手环已经解绑)
- * Post-execution callback (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr,state:0x00:invalid，0x01:bracelet has been untied)
- */
-+ (void)braceletUnbundlingCommand:(void(^_Nullable)(int errorCode,int state))callback;
 
 /**
  * @brief 设备配置复位 | Device Configuration Reset
@@ -318,7 +317,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setAuthCodeCommand:(IDOSetBindingInfoBluetoothModel * _Nullable)bindModel callback:(void(^_Nullable)(int errorCode))callback;
++ (void)setAuthCodeCommand:(IDOSetBindingInfoBluetoothModel * _Nullable)bindModel
+                  callback:(void(^_Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置当前时间 | Set current time
@@ -326,7 +326,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setCurrentTimeCommand:(IDOSetTimeInfoBluetoothModel * _Nullable)timeModel callback:(void(^_Nullable)(int errorCode))callback;
++ (void)setCurrentTimeCommand:(IDOSetTimeInfoBluetoothModel * _Nullable)timeModel
+                     callback:(void(^_Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置闹钟 | Set an alarm
@@ -334,7 +335,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setAlarmCommand:(IDOSetAlarmInfoBluetoothModel * _Nullable)alarmModel callback:(void(^_Nullable)(int errorCode))callback;
++ (void)setAlarmCommand:(IDOSetAlarmInfoBluetoothModel * _Nullable)alarmModel
+               callback:(void(^_Nullable)(int errorCode))callback DEPRECATED_MSG_ATTRIBUTE("method is deprecated");
 
 /**
  * @brief 批量设置闹钟 | Set alarms in batches
@@ -342,7 +344,17 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setAllAlarmsCommand:(NSArray <IDOSetAlarmInfoBluetoothModel *> * _Nullable)alarmModels callback:(void(^_Nullable)(int errorCode))callback;
++ (void)setAllAlarmsCommand:(NSArray <IDOSetAlarmInfoBluetoothModel *> * _Nullable)alarmModels
+                   callback:(void(^_Nullable)(int errorCode))callback;
+
+/**
+ * @brief 设置v3闹钟 | Set v3 alarm
+ * @param alarmModel v3闹钟 model (IDOSetExtensionAlarmInfoBluetoothModel) | v3 Alarm clock model (IDOSetExtensionAlarmInfoBluetoothModel)
+ * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
+*/
++ (void)setV3AllAlarmsCommand:(IDOSetExtensionAlarmInfoBluetoothModel * _Nullable)alarmModel
+                     callback:(void(^_Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置用户信息 | Setting user information
@@ -350,7 +362,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setUserInfoCommand:(IDOSetUserInfoBuletoothModel * _Nullable)userModel callback:(void(^_Nullable)(int errorCode))callback;
++ (void)setUserInfoCommand:(IDOSetUserInfoBuletoothModel * _Nullable)userModel
+                  callback:(void(^_Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置卡路里和距离目标 | Set calories and distance targets
@@ -358,7 +371,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setCalorieAndDistanceGoalCommand:(IDOSetUserInfoBuletoothModel * _Nullable)userModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setCalorieAndDistanceGoalCommand:(IDOSetUserInfoBuletoothModel * _Nullable)userModel
+                                callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置目标 | Setting goals
@@ -367,7 +381,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setTargetInfoCommand:(IDOSetUserInfoBuletoothModel * _Nullable)targetModel callback:(void(^_Nullable)(int errorCode))callback;
++ (void)setTargetInfoCommand:(IDOSetUserInfoBuletoothModel * _Nullable)targetModel
+                    callback:(void(^_Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置通知中心、来电提醒开关 ⚠️在配对过程中不要执行其他命令。如果设备没有配对，会发起配对，等配对成功后再执行设置子开关状态，需要配对耗时比较长请监听回调。
@@ -393,7 +408,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setChildSwitchNoticeStateCommand:(IDOSetNoticeInfoBuletoothModel * _Nullable)noticModel callback:(void (^_Nullable)(int errorCode))callback;
++ (void)setChildSwitchNoticeStateCommand:(IDOSetNoticeInfoBuletoothModel * _Nullable)noticModel
+                                callback:(void (^_Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置蓝牙配对 (不可重复设置,会引起无法再连接设备.只要配对成功,就不需要再设置,只有获取到系统配对设备被忽略,才可设置配对。⚠️在配对过程中不要执行其他命令。)
@@ -414,7 +430,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setFindPhoneCommand:(IDOSetFindPhoneInfoBuletoothModel * _Nullable)findModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setFindPhoneCommand:(IDOSetFindPhoneInfoBuletoothModel * _Nullable)findModel
+                   callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置抬腕 | Set the wrist
@@ -423,7 +440,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setHandUpCommand:(IDOSetHandUpInfoBuletoothModel * _Nullable)handUpmodel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setHandUpCommand:(IDOSetHandUpInfoBuletoothModel * _Nullable)handUpmodel
+                callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置左右手佩戴 | Set the left and right hand to wear
@@ -432,7 +450,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setLeftRightHandCommand:(IDOSetLeftOrRightInfoBuletoothModel *_Nullable)handModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setLeftRightHandCommand:(IDOSetLeftOrRightInfoBuletoothModel *_Nullable)handModel
+                       callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置音乐开关 | Set music switch
@@ -441,7 +460,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setOpenMusicCommand:(IDOSetMusicOpenInfoBuletoothModel * _Nullable)openMusicModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setOpenMusicCommand:(IDOSetMusicOpenInfoBuletoothModel * _Nullable)openMusicModel
+                   callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置预防丢失 | Set to prevent loss
@@ -451,7 +471,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setPreventLostCommand:(IDOSetPreventLostInfoBuletoothModel * _Nullable)lostModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setPreventLostCommand:(IDOSetPreventLostInfoBuletoothModel * _Nullable)lostModel
+                     callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置显示模式 | Setting the display mode
@@ -460,7 +481,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setDisplayModeCommand:(IDOSetDisplayModeInfoBluetoothModel * _Nullable)displaModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setDisplayModeCommand:(IDOSetDisplayModeInfoBluetoothModel * _Nullable)displaModel
+                     callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置久坐 | Set sedentary
@@ -498,7 +520,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setNoDisturbModeCommand:(IDOSetNoDisturbModeInfoBluetoothModel * _Nullable)noDisturbModeModel callback:(void(^_Nullable)(int errorCode))callback;
++ (void)setNoDisturbModeCommand:(IDOSetNoDisturbModeInfoBluetoothModel * _Nullable)noDisturbModeModel
+                       callback:(void(^_Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置心率间隔 | Set heart rate interval
@@ -507,7 +530,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setHrIntervalCommand:(IDOSetHrIntervalInfoBluetoothModel * _Nullable)hrIntervalModel callback:(void(^_Nullable)(int errorCode))callback;
++ (void)setHrIntervalCommand:(IDOSetHrIntervalInfoBluetoothModel * _Nullable)hrIntervalModel
+                    callback:(void(^_Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置单位 | Setting unit
@@ -525,7 +549,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setOneKeySosCommand:(IDOSetOneKeySosInfoBuletoothModel * _Nullable)oneKeySOSModel callback:(void(^_Nullable)(int errorCode))callback;
++ (void)setOneKeySosCommand:(IDOSetOneKeySosInfoBuletoothModel * _Nullable)oneKeySOSModel
+                   callback:(void(^_Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置快捷方式 | Setting shortcuts
@@ -554,7 +579,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setSportModeSelectCommand:(IDOSetSportShortcutInfoBluetoothModel * _Nullable)sportSelectModel callback:(void(^_Nullable)(int errorCode))callback;
++ (void)setSportModeSelectCommand:(IDOSetSportShortcutInfoBluetoothModel * _Nullable)sportSelectModel
+                         callback:(void(^_Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置运动模式排序 | Set motion shortcuts
@@ -563,7 +589,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setSportModeSortCommand:(IDOSetSportSortingInfoBluetoothModel * _Nullable)sportSortModel callback:(void(^_Nullable)(int errorCode))callback;
++ (void)setSportModeSortCommand:(IDOSetSportSortingInfoBluetoothModel * _Nullable)sportSortModel
+                       callback:(void(^_Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置天气预报数据 | Set weather forecast data
@@ -602,7 +629,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setScreenBrightnessCommand:(IDOSetScreenBrightnessInfoBluetoothModel * _Nullable)screenBrightnessModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setScreenBrightnessCommand:(IDOSetScreenBrightnessInfoBluetoothModel * _Nullable)screenBrightnessModel
+                          callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief  设置GPS信息 | Set GPS information
@@ -611,7 +639,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setGpsInfoCommand:(IDOSetGpsConfigInfoBluetoothModel * _Nullable)gpsInfoModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setGpsInfoCommand:(IDOSetGpsConfigInfoBluetoothModel * _Nullable)gpsInfoModel
+                 callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置GPS控制信息 | Set GPS Control Information
@@ -629,7 +658,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setConnParamCommand:(IDOSetConnParamInfoBluetoothModel * _Nullable)connParamModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setConnParamCommand:(IDOSetConnParamInfoBluetoothModel * _Nullable)connParamModel
+                   callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief  设置热启动参数 | Setting hot start parameters
@@ -638,7 +668,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setHotStartParamCommand:(IDOGetHotStartParamBluetoothModel * _Nullable)hotStartParamModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setHotStartParamCommand:(IDOGetHotStartParamBluetoothModel * _Nullable)hotStartParamModel
+                       callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief   设置传感器实时数据 | Set sensor real-time data
@@ -647,7 +678,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setRealTimeSensorDataCommand:(IDOSetRealTimeSensorDataInfoBluetoothModel * _Nullable)realTimeModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setRealTimeSensorDataCommand:(IDOSetRealTimeSensorDataInfoBluetoothModel * _Nullable)realTimeModel
+                            callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置马达参数 | Setting the motor parameters
@@ -656,7 +688,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setStartMotorCommand:(IDOSetStartMotorInfoBluetoothModel * _Nullable)startMotorModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setStartMotorCommand:(IDOSetStartMotorInfoBluetoothModel * _Nullable)startMotorModel
+                    callback:(void (^ _Nullable)(int errorCode))callback;
 
 
 /**
@@ -666,7 +699,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setWatchDiaCommand:(IDOSetWatchDiaInfoBluetoothModel * _Nullable)watchDiaModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setWatchDiaCommand:(IDOSetWatchDiaInfoBluetoothModel * _Nullable)watchDiaModel
+                  callback:(void (^ _Nullable)(int errorCode))callback;
 
 
 /**
@@ -678,7 +712,7 @@
  * model real-time blood pressure data and status)
  */
 + (void)setBpMeasureCommand:(IDOSetBpMeasureInfoBluetoothModel * _Nullable)bpMeasureModel
-                   callback:(void (^ _Nullable)(int errorCode,IDOSetBpMeasureInfoBluetoothModel * _Nullable model))callback;;
+                   callback:(void (^ _Nullable)(int errorCode,IDOSetBpMeasureInfoBluetoothModel * _Nullable model))callback;
 
 
 /**
@@ -688,7 +722,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setSleepPeriodCommand:(IDOSetSleepPeriodInfoBluetoothModel * _Nullable)sleepPeriodModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setSleepPeriodCommand:(IDOSetSleepPeriodInfoBluetoothModel * _Nullable)sleepPeriodModel
+                     callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置女性生理周期 (id205) | Setting the female physiological cycle (id205)
@@ -697,7 +732,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setMenstrualCommand:(IDOSetMenstruationInfoBluetoothModel * _Nullable)menstrualModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setMenstrualCommand:(IDOSetMenstruationInfoBluetoothModel * _Nullable)menstrualModel
+                   callback:(void (^ _Nullable)(int errorCode))callback;
 
 
 /**
@@ -707,7 +743,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setMenstrualRemindCommand:(IDOSetMenstruationRemindBluetoothModel * _Nullable)remindModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setMenstrualRemindCommand:(IDOSetMenstruationRemindBluetoothModel * _Nullable)remindModel
+                         callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置每分钟呼吸次数 (139)  | Breaths per minute
@@ -716,7 +753,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setBreatheTrainCommand:(IDOSetBreatheTrainBluetoothModel * _Nullable)breatheModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setBreatheTrainCommand:(IDOSetBreatheTrainBluetoothModel * _Nullable)breatheModel
+                      callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置走动提醒开关 (139) | Walking reminder switch
@@ -725,7 +763,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setWalkReminderCommand:(IDOSetWalkReminderBluetoothModel * _Nullable)walkModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setWalkReminderCommand:(IDOSetWalkReminderBluetoothModel * _Nullable)walkModel
+                      callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置血氧开关 (139) | blood oxygen switch
@@ -734,7 +773,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setSpo2SwitchCommand:(IDOSetSpo2SwitchBluetoothModel * _Nullable)spo2Model callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setSpo2SwitchCommand:(IDOSetSpo2SwitchBluetoothModel * _Nullable)spo2Model
+                    callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置运动开关 (139) | activity switch
@@ -743,16 +783,18 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
-+ (void)setActivitySwitchCommand:(IDOSetActivitySwitchBluetoothModel * _Nullable)switchModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setActivitySwitchCommand:(IDOSetActivitySwitchBluetoothModel * _Nullable)switchModel
+                        callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
-* @brief 设置心率开关同步 (139) | v3 heart rate
-* @param v3HrModel 心率开关 model (IDOSetV3HeartRateModeBluetoothModel)
-* v3 heart rate switch model (IDOSetV3HeartRateModeBluetoothModel)
-* @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
-* Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
+ * @brief 设置心率开关同步 (139) | v3 heart rate
+ * @param v3HrModel 心率开关 model (IDOSetV3HeartRateModeBluetoothModel)
+ * v3 heart rate switch model (IDOSetV3HeartRateModeBluetoothModel)
+ * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
 */
-+ (void)setV3HrModelCommand:(IDOSetV3HeartRateModeBluetoothModel * _Nullable)v3HrModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setV3HrModelCommand:(IDOSetV3HeartRateModeBluetoothModel * _Nullable)v3HrModel
+                   callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置喝水提醒  | drink water reminder
@@ -761,7 +803,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
 */
-+ (void)setDrinkReminderCommand:(IDOSetDrinkReminderModeBluetoothModel * _Nullable)drinkModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setDrinkReminderCommand:(IDOSetDrinkReminderModeBluetoothModel * _Nullable)drinkModel
+                       callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置菜单列表  | drink water reminder
@@ -770,7 +813,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
 */
-+ (void)setMenuListCommand:(IDOGetMenuListInfoBluetoothModel * _Nullable)menuModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setMenuListCommand:(IDOGetMenuListInfoBluetoothModel * _Nullable)menuModel
+                  callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置压力开关  | pressure switch
@@ -779,7 +823,8 @@
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
 */
-+ (void)setPressureSwitchCommand:(IDOSetPressureSwitchBluetoothModel * _Nullable)switchModel callback:(void (^ _Nullable)(int errorCode))callback;
++ (void)setPressureSwitchCommand:(IDOSetPressureSwitchBluetoothModel * _Nullable)switchModel
+                        callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
  * @brief 设置星星数量 数据不作存储 (锐捷) | Set the number of stars (ruijie)
@@ -818,105 +863,105 @@
 /**
  * @brief 获取mac地址 | Get mac address
  * @param callback 执行后回调 data (IDOGetMacAddrInfoBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback data (IDOGetMacAddrInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * callback data (IDOGetMacAddrInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  */
 + (void)getMacAddrCommand:(void(^_Nullable)(int errorCode,IDOGetMacAddrInfoBluetoothModel * _Nullable data))callback;
 
 /**
  * @brief  获取设备信息 | Get device information
  * @param callback 执行后回调 data (IDOGetDeviceInfoBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback data (IDOGetDeviceInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * callback data (IDOGetDeviceInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  */
 + (void)getDeviceInfoCommand:(void(^_Nullable)(int errorCode,IDOGetDeviceInfoBluetoothModel * _Nullable data))callback;
 
 /**
  * @brief  获取功能列表 | Get the list of features
  * @param callback 执行后回调 data (IDOGetDeviceFuncBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback data (IDOGetDeviceFuncBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * callback data (IDOGetDeviceFuncBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  */
 + (void)getFuncTableCommand:(void(^_Nullable)(int errorCode,IDOGetDeviceFuncBluetoothModel * _Nullable data))callback;
 
 /**
  * @brief  获得实时数据 | Get real-time data
  * @param callback 执行后回调 data (IDOGetLiveDataBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback data (IDOGetLiveDataBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * callback data (IDOGetLiveDataBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  */
 + (void)getLiveDataCommand:(void(^_Nullable)(int errorCode,IDOGetLiveDataBluetoothModel * _Nullable data))callback;
 
 /**
  * @brief 获取设备当前时间 | Get the current time of the device
  * @param callback 执行后回调 data (IDOGetDeviceTimeBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback data (IDOGetDeviceTimeBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * callback data (IDOGetDeviceTimeBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  */
 + (void)getDeviceTimeCommand:(void(^_Nullable)(int errorCode,IDOGetDeviceTimeBluetoothModel * _Nullable data))callback;
 
 /**
  * @brief 获取通知中心的状态 | Get the status of the notification center
  * @param callback 执行后回调 data (IDOSetNoticeInfoBuletoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback data (IDOSetNoticeInfoBuletoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * callback data (IDOSetNoticeInfoBuletoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  */
 + (void)getNoticeStatusCommand:(void(^_Nullable)(int errorCode,IDOSetNoticeInfoBuletoothModel * _Nullable data))callback;
 
 /**
  * @brief 获取心率传感器参数 | Get Heart Rate Sensor Parameters
  * @param callback 执行后回调 data (IDOGetHrSensorParamBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback data (IDOGetHrSensorParamBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * callback data (IDOGetHrSensorParamBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  */
 + (void)getHrSensorParamCommand:(void(^_Nullable)(int errorCode,IDOGetHrSensorParamBluetoothModel * _Nullable data))callback;
 
 /**
  * @brief 获取加速度传感器参数 | Acquire acceleration sensor parameters
  * @param callback 执行后回调 data (IDOGetGsensorParamBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback data (IDOGetGsensorParamBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * callback data (IDOGetGsensorParamBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  */
 + (void)getGsensorParamCommand:(void(^_Nullable)(int errorCode,IDOGetGsensorParamBluetoothModel * _Nullable data))callback;
 
 /**
  * @brief 获取活动数量 | Get the number of events
  * @param callback 执行后回调 data (IDOGetActivityCountBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback data (IDOGetActivityCountBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * callback data (IDOGetActivityCountBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  */
 + (void)getActivityCountCommand:(void(^_Nullable)(int errorCode,IDOGetActivityCountBluetoothModel * _Nullable data))callback;
 
 /**
  * @brief  获取hid信息 | Get hid information
  * @param callback 执行后回调 data (IDOGetHidInfoBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback data (IDOGetHidInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * callback data (IDOGetHidInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  */
 + (void)getHidInfoCommand:(void(^_Nullable)(int errorCode,IDOGetHidInfoBluetoothModel * _Nullable data))callback;
 
 /**
  * @brief  获取gps信息 | Get gps information
  * @param callback 执行后回调 data (IDOGetGpsInfoBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback data (IDOGetGpsInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * callback data (IDOGetGpsInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  */
 + (void)getGpsInfoCommand:(void(^_Nullable)(int errorCode,IDOGetGpsInfoBluetoothModel * _Nullable data))callback;
 
 /**
  * @brief  获取热启动参数 | Get hot start parameters
  * @param callback 执行后回调 data (IDOGetHotStartParamBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback data (IDOGetHotStartParamBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * callback data (IDOGetHotStartParamBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  */
 + (void)getHotStartParamCommand:(void(^_Nullable)(int errorCode,IDOGetHotStartParamBluetoothModel * _Nullable data))callback;
 
 /**
  * @brief  获取GPS状态 | Get GPS status
  * @param callback 执行后回调 data (IDOGetGpsStatusBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback data (IDOGetGpsStatusBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * callback data (IDOGetGpsStatusBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  */
 + (void)getGpsStatusCommand:(void(^_Nullable)(int errorCode,IDOGetGpsStatusBluetoothModel * _Nullable data))callback;
 
 /**
  * @brief  获取版本信息 | Get version information
  * @param callback 执行后回调 data (IDOGetVersionInfoBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback data (IDOGetVersionInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * callback data (IDOGetVersionInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  */
 + (void)getVersionInfoCommand:(void(^_Nullable)(int errorCode,IDOGetVersionInfoBluetoothModel * _Nullable data))callback;
 
 /**
  * @brief  获取realtek平台 ota授权 | Obtain ota authorization of realtek platform
  * @param callback 执行后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * callback (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  * stateCode 0x00:校验成功,0x01:ID号校验失败,0x02:版本号校验失败,0x03:电量不足,0x04:其他错误
  * stateCode 0x00: verification success,0x01:ID number verification failure,0x02: version number verification failure,0x03: insufficient power,0x04: other errors
  */
@@ -927,7 +972,7 @@
  * @param exchangeModel 运动过程中交互数据模型 | Interactive data model during motion
  * @param callback 执行后回调 data (IDOGetFiveHrReplyInfoBluetoothModel)
  * (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback data (IDOGetFiveHrReplyInfoBluetoothModel)
+ * callback data (IDOGetFiveHrReplyInfoBluetoothModel)
  * (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  */
 + (void)getSwithHrInterval:(IDODataExchangeModel * _Nullable)exchangeModel
@@ -937,14 +982,14 @@
 /**
  * @brief  默认的运动类型 | get default sport type
  * @param callback 执行后回调 data (IDOGetDefaultSportTypeBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback data (IDOGetDefaultSportTypeBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * callback data (IDOGetDefaultSportTypeBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
 */
 + (void)getDefaultSportTypeCommand:(void(^_Nullable)(int errorCode,IDOGetDefaultSportTypeBluetoothModel * _Nullable data))callback;
 
 /**
  * @brief  获取默认语言 | get default language
  * @param callback 执行后回调 data (IDOGetDownLanguageBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback data (IDOGetDownLanguageBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * callback data (IDOGetDownLanguageBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
 */
 + (void)getDefaultLanguageCommand:(void(^_Nullable)(int errorCode,IDOGetDownLanguageBluetoothModel * _Nullable data))callback;
 
@@ -962,23 +1007,51 @@
 /**
  * @brief  获取字库版本信息  | get flash bin info
  * @param callback 执行后回调 data (IDOGetFlashBinInfoBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback data (IDOGetFlashBinInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * callback data (IDOGetFlashBinInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  */
 + (void)getFlashBinInfoCommand:(void(^_Nullable)(int errorCode,IDOGetFlashBinInfoBluetoothModel * _Nullable data))callback;
 
 /**
  * @brief  获取电池信息  | get battery  info
  * @param callback 执行后回调 data (IDOGetDeviceBattInfoBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback data (IDOGetDeviceBattInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * callback data (IDOGetDeviceBattInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
 */
 + (void)getBatteryInfoCommand:(void(^_Nullable)(int errorCode,IDOGetDeviceBattInfoBluetoothModel * _Nullable data))callback;
 
 /**
  * @brief  获取菜单列表  | get menu list info
  * @param callback 执行后回调 data (IDOGetMenuListInfoBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
- * Post-execution callback data (IDOGetMenuListInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * callback data (IDOGetMenuListInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
 */
 + (void)getMenuListInfoCommand:(void(^_Nullable)(int errorCode,IDOGetMenuListInfoBluetoothModel * _Nullable data))callback;
+
+/**
+ * @brief  获取v3闹钟  | get v3 alarms info
+ * @param callback 执行后回调 data (IDOSetExtensionAlarmInfoBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * callback data (IDOSetExtensionAlarmInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+*/
++ (void)getV3AlarmsInfoCommand:(void(^_Nullable)(int errorCode,IDOSetExtensionAlarmInfoBluetoothModel * _Nullable data))callback;
+
+/**
+ * @brief  获取v3心率模式  | get v3 heart rate mode info
+ * @param callback 执行后回调 data (IDOSetV3HeartRateModeBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * callback data (IDOSetV3HeartRateModeBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+*/
++ (void)getV3HrModeInfoCommand:(void(^_Nullable)(int errorCode,IDOSetV3HeartRateModeBluetoothModel * _Nullable data))callback;
+
+/**
+ * @brief  获取mtu  | get mtu
+ * @param callback 执行后回调 data (IDOGetMtuBlueInfoModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * callback data (IDOGetMtuBlueInfoModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+*/
++ (void)getMtuInfoCommand:(void(^_Nullable)(int errorCode,IDOGetMtuBlueInfoModel * _Nullable data))callback;
+
+/**
+ * @brief  获取过热日志  | get over heat log
+ * @param callback 执行后回调 data (IDOGetOverHeatLogModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * callback data (IDOGetOverHeatLogModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+*/
++ (void)getOverHeatLogInfoCommand:(void(^_Nullable)(int errorCode,IDOGetOverHeatLogModel * _Nullable data))callback;
 
 /**
  * @brief  获取星星的数量,数据不作存储（锐捷） | Get number of stars （ruijie）
@@ -1174,6 +1247,13 @@
 */
 + (void)listenVoiceFileDataCommand:(void(^_Nullable)(int state,int errorCode))stateCallback
                           complete:(void(^_Nullable)(NSString * _Nullable filePath))completeCallback;
+
+/**
+ * @brief 手环状态改变 | Bracelet state change
+ * @param callback 监听回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * Listening callback (errorCode : 0 is successful, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
+*/
++ (void)listenStateChangeCommand:(void(^_Nullable)(int errorCode,IDOControlDataUpdateModel *_Nullable model))callback;
 
 #pragma mark ======= progress Command =======
 

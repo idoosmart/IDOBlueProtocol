@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#if __has_include(<IDOBluetoothInternal/IDOBluetoothInternal.h>)
-#elif __has_include(<IDOBlueProtocol/IDOBlueProtocol.h>)
+#if __has_include(<IDOBlueProtocol/IDOBlueProtocol.h>)
 #else
 #import "IDOSyncSpo2DataModel.h"
 #import "IDOSyncBpDataModel.h"
@@ -46,15 +45,15 @@ struct ido_blood_pressure_data
 /**
  计算一天血氧平均值 | Calculate the average blood oxygen per day
  */
-+ (__kindof IDOCalculateBloodOxygenBluetoothModel *)calculateOneDayBoDataWithHrModel:(__kindof IDOSyncBloodOxygenDataInfoBluetoothModel *)model;
++ (__kindof IDOCalculateBloodOxygenBluetoothModel *)calculateOneDayBoDataWithBoModel:(__kindof IDOSyncBloodOxygenDataInfoBluetoothModel *)model;
 /**
  计算一周、一月血氧平均值 | Calculate the blood oxygen average for one week and one month
  */
-+ (__kindof IDOCalculateBloodOxygenBluetoothModel *)calculateOneMonthOrWeekBoDataWithHrModels:(NSArray <__kindof IDOSyncBloodOxygenDataInfoBluetoothModel *>*)models;
++ (__kindof IDOCalculateBloodOxygenBluetoothModel *)calculateOneMonthOrWeekBoDataWithBoModels:(NSArray <__kindof IDOSyncBloodOxygenDataInfoBluetoothModel *>*)models;
 /**
  计算一年血氧平均值 | Calculate the annual blood oxygen average
  */
-+ (__kindof IDOCalculateBloodOxygenBluetoothModel *)calculateOneYearBoDataWithHrModels:(NSArray <NSArray<__kindof IDOSyncBloodOxygenDataInfoBluetoothModel *>*> *)models;
++ (__kindof IDOCalculateBloodOxygenBluetoothModel *)calculateOneYearBoDataWithBoModels:(NSArray <NSArray<__kindof IDOSyncBloodOxygenDataInfoBluetoothModel *>*> *)models;
 
 @end
 
@@ -200,7 +199,7 @@ struct ido_blood_pressure_data
 + (__kindof IDOCalculateSleepBluetoothModel *)calculateOneDaySleepDataWithSleepModel:(__kindof IDOSyncSleepDataInfoBluetoothModel *)model;
 
 /**
- 计算-周、一月睡眠平均值 | Calculation - Week, January sleep average
+ 计算一周、一月睡眠平均值 | Calculation - Week, January sleep average
  */
 + (__kindof IDOCalculateSleepBluetoothModel *)calculateOneMonthOrWeekSleepDataWithSleepModels:(NSArray <__kindof IDOSyncSleepDataInfoBluetoothModel *>*)models;
 
@@ -249,7 +248,7 @@ struct ido_blood_pressure_data
 + (__kindof IDOCalculateSportBluetoothModel *)calculateOneDaySportDataWithSportModel:(__kindof IDOSyncSportDataInfoBluetoothModel *)model;
 
 /**
- 计算-周、一月步数平均值 | Calculation - Week, January Step Average
+ 计算一周、一月步数平均值 | Calculation - Week, January Step Average
  */
 + (__kindof IDOCalculateSportBluetoothModel *)calculateOneMonthOrWeekSportDataWithSportModels:(NSArray <__kindof IDOSyncSportDataInfoBluetoothModel *>*)models;
 

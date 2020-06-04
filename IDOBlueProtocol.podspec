@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IDOBlueProtocol'
-  s.version          = '3.4.0'
-  s.summary          = 'support for nordic realtk apollo update SDK.'
+  s.version          = '3.4.2'
+  s.summary          = 'ido bluetooth protocol lib'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?

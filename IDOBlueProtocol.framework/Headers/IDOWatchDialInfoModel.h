@@ -6,8 +6,7 @@
 //  Copyright © 2019 何东阳. All rights reserved.
 //
 
-#if __has_include(<IDOBluetoothInternal/IDOBluetoothInternal.h>)
-#elif __has_include(<IDOBlueProtocol/IDOBlueProtocol.h>)
+#if __has_include(<IDOBlueProtocol/IDOBlueProtocol.h>)
 #else
 #import "IDOBluetoothBaseModel.h"
 #endif

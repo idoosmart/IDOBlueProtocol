@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#if __has_include(<IDOBluetoothInternal/IDOBluetoothInternal.h>)
-#elif __has_include(<IDOBlueProtocol/IDOBlueProtocol.h>)
+#if __has_include(<IDOBlueProtocol/IDOBlueProtocol.h>)
 #else
 #import "IDOSyncEnum.h"
 #endif
@@ -35,7 +34,7 @@
 @property (nonatomic,assign,readonly) BOOL isNeedSyncConfig;
 
 /**
- * 设置需要同步的选项(同步配置、同步健康、同步活动、同步GPS)
+ * 设置需要同步的选项(同步配置、同步健康、同步V2活动、同步GPS)
  * Set the options that need to be synchronized (sync config、sync health、sync activity、sync GPS)
  */
 @property (nonatomic,assign) IDO_WANT_TO_SYNC_ITEM_TYPE wantToSyncType;

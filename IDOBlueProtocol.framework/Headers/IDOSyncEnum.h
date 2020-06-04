@@ -180,6 +180,11 @@ typedef NS_ENUM(NSInteger, IDO_SYNC_CONFIG_DATA_TYPE) {
      */
     IDO_SYNC_SET_HEART_RATE_MODE_TYPE,
     /*
+     * 设置v3心率模式
+     * set v3 heart rate mode
+     */
+    IDO_SYNC_SET_V3_SET_HR_MODE_TYPE,
+    /*
      * 设置抬手
      * set up hand gesture
      */
@@ -288,7 +293,7 @@ typedef NS_ENUM(NSInteger, IDO_SYNC_CONFIG_DATA_TYPE) {
      * 获取下载语言信息
      * get down language
      */
-    IDO_SYNC_GET_DOWN_LANGUAGE,
+    IDO_SYNC_GET_DOWN_LANGUAGE
 };
 
 /**

@@ -6,8 +6,7 @@
 //  Copyright © 2018年 hedongyang. All rights reserved.
 //
 
-#if __has_include(<IDOBluetoothInternal/IDOBluetoothInternal.h>)
-#elif __has_include(<IDOBlueProtocol/IDOBlueProtocol.h>)
+#if __has_include(<IDOBlueProtocol/IDOBlueProtocol.h>)
 #else
 #import "IDOBluetoothBaseModel.h"
 #endif
@@ -318,7 +317,7 @@
  */
 @property (nonatomic,assign) NSInteger ovulationIntervalDay;
 /**
- 经期前一天 | | The day before the menstrual period
+ 经期前一天 | The day before the menstrual period
  */
 @property (nonatomic,assign) NSInteger ovulationBeforeDay;
 /**
@@ -738,13 +737,13 @@
  * 9:健身，10:动感单车，11:椭圆机，12:跑步机，13:仰卧起坐，14:俯卧撑，15:哑铃，16:举重，
  * 17:健身操，18:瑜伽，19:跳绳，20:乒乓球，21:篮球，22:足球 ，23:排球，24:网球，
  * 25:高尔夫球，26:棒球，27:滑雪，28:轮滑，29:跳舞，48:户外跑步，49:室内跑步，50:户外骑行，51:室内骑行，
- * 52:户外走路，53:室内走路，54:泳池游泳，55:开放水域游泳，56:椭圆机，57:划船机，58:高强度间歇训练法，59:板球运动
+ * 52:户外走路，53:室内走路，54:泳池游泳，55:开放水域游泳，56:椭圆机，57:划船机，58:高强度间歇训练法，75:板球运动
  * 0: none, 1: walk, 2: run, 3: ride, 4: hike, 5: swim, 6: climb, 7: badminton, 8: others,
  * 9: fitness, 10: spinning, 11: elliptical, 12: treadmill, 13: sit-ups, 14: push-ups, 15: dumbbells, 16: weightlifting,
  * 17: aerobics, 18: yoga, 19: jump rope, 20: table tennis, 21: basketball, 22: football, 23: volleyball, 24: tennis,
  * 25: golf, 26: baseball, 27: skiing, 28: roller skating, 29: dancing，48: outdoor running, 49: indoor running, 50: outdoor cycling, 51: indoor cycling,
  * 52: outdoor walking, 53: indoor walking, 54: pool swimming, 55: open water swimming, 56: elliptical machine, 57: rowing machine, 58: high-intensity interval training
- * 59:cricket
+ * 75:cricket
  */
 @property (nonatomic,assign) NSInteger type;
 
@@ -1023,6 +1022,11 @@
 @property (nonatomic,assign) NSInteger alarmId;
 
 /**
+ 闹钟修改的时间戳 (可以不赋值)｜ set up time stamp (can be unassigned)
+ */
+@property (nonatomic,copy) NSString * setTimeStamp;
+
+/**
  * @brief 初始化闹钟集合 | Initialize the alarm collection
  * @return 闹钟集合 | Alarm clock collection
  */
@@ -1035,6 +1039,34 @@
 + (NSArray <IDOSetAlarmInfoBluetoothModel *>*)queryAllNoOpenAlarms;
 
 @end
+
+#pragma mark ==== 设置扩展v3闹钟model ====
+@interface IDOSetExtensionAlarmInfoBluetoothModel:IDOBluetoothBaseModel
+
+/**
+ 闹钟版本号 ｜ alarm version
+ */
+@property (nonatomic,assign) NSInteger alarmVersion;
+
+/**
+ 闹钟个数 ｜ alarm count
+ */
+@property (nonatomic,assign) NSInteger alarmCount;
+
+/**
+闹钟集合 ｜ alarm items
+*/
+@property (nonatomic,strong) NSArray <IDOSetAlarmInfoBluetoothModel *>* items;
+
+/**
+ * @brief 查询数据库,如果查询不到初始化新的model对象
+ * Query the database, if the query does not initialize a new model object
+ * @return IDOSetExtensionAlarmInfoBluetoothModel
+ */
++ (__kindof IDOSetExtensionAlarmInfoBluetoothModel *)currentModel;
+
+@end
+
 
 #pragma mark ==== 设置时间model ====
 @interface IDOSetTimeInfoBluetoothModel:IDOBluetoothBaseModel
@@ -1075,7 +1107,7 @@
 @property (nonatomic,assign) NSInteger weekDay;
 
 /**
- 时区(0-24)｜time zone (0-24)
+ 时区(1-24)｜time zone (1-24)
  */
 @property (nonatomic,assign) NSInteger timeZone;
 
@@ -1121,11 +1153,12 @@
  * 语言单位 无效:0,中文:1,英文:2,法语:3,德语:4,意大利语:5,西班牙语:6,日语:7,
  * 波兰语:8,捷克语:9,罗马尼亚:10,立陶宛语:11,荷兰语:12,斯洛文尼亚:13,
  * 匈牙利语:14,俄罗斯语:15,乌克兰语:16,斯洛伐克语:17,丹麦语:18,克罗地亚:19,印尼语:20,
- * 韩语:21,印地语:22,葡萄牙语:23,土耳其:24,泰国语:25,越南语:26,缅甸语:27,菲律宾语:28,繁体中文:29
+ * 韩语:21,印地语:22,葡萄牙语:23,土耳其:24,泰国语:25,越南语:26,缅甸语:27,
+ * 菲律宾语:28,繁体中文:29,希腊语:30
  * Language unit Invalid: 0, Chinese: 1, English: 2, French: 3, German: 4, Italian: 5, Spanish: 6, Japanese: 7,
  * Polish: 8, Czech: 9, Romania: 10, Lithuanian: 11, Dutch: 12, Slovenia: 13,
  * Hungarian: 14, Russian: 15, Ukrainian: 16, Slovak: 17, Danish: 18, Croatia: 19,Indonesian: 20,korean:21,hindi:22
- * portuguese:23,turkish:24,thai:25,vietnamese:26,burmese:27,filipino:28,traditional Chinese:29
+ * portuguese:23,turkish:24,thai:25,vietnamese:26,burmese:27,filipino:28,traditional Chinese:29,greek:30
  */
 @property (nonatomic,assign) NSInteger languageUnit;
 

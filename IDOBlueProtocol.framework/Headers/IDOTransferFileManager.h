@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#if __has_include(<IDOBluetoothInternal/IDOBluetoothInternal.h>)
-#elif __has_include(<IDOBlueProtocol/IDOBlueProtocol.h>)
+#if __has_include(<IDOBlueProtocol/IDOBlueProtocol.h>)
 #else
 #import "IDOTranEnum.h"
 #endif
@@ -70,8 +69,8 @@
 @property (nonatomic,copy,nullable) IDOTransferFileManager *_Nonnull(^addDetection)(void(^ _Nullable detectionCallback)(int errorCode));
 
 /**
- * 文件传输进度回调 (1-100)
- * file transfer progress (1-100)
+ * 文件传输进度回调 (0-100)
+ * file transfer progress (0-100)
  */
 @property (nonatomic,copy,nullable) IDOTransferFileManager *_Nonnull(^addProgress)(void(^ _Nullable progressCallback)(int progress));
 

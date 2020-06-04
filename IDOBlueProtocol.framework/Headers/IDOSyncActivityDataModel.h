@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#if __has_include(<IDOBluetoothInternal/IDOBluetoothInternal.h>)
-#elif __has_include(<IDOBlueProtocol/IDOBlueProtocol.h>)
+#if __has_include(<IDOBlueProtocol/IDOBlueProtocol.h>)
 #else
 #import "IDOBluetoothBaseModel.h"
 #endif
@@ -178,8 +177,28 @@
                                                                                              year:(NSInteger)year
                                                                                             month:(NSInteger)month
                                                                                               day:(NSInteger)day;
+/**
+ * @brief 当前设备根据日期查询某月的活动集合
+ * The current device queries the collection of events for a certain month based on the date
+ * @param macAddr  mac地址 | Mac address
+ * @param year  年份 | year
+ * @param month 月份 | month
+ * @return 活动集合 | Activity collection
+ */
++ (NSArray <__kindof IDOSyncActivityDataInfoBluetoothModel *>*)queryOneMonthActivityDataWithMacAddr:(NSString *)macAddr
+                                                                                               year:(NSInteger)year
+                                                                                              month:(NSInteger)month;
 
 
+/**
+ * @brief 当前设备根据日期查询某年的活动集合
+ * The current device queries the collection of events for a certain year based on the date
+ * @param macAddr  mac地址 | Mac address
+ * @param year  年份 | year
+ * @return 活动集合 | Activity collection
+ */
++ (NSArray <__kindof IDOSyncActivityDataInfoBluetoothModel *>*)queryOneYearActivityDataWithMacAddr:(NSString *)macAddr
+                                                                                              year:(NSInteger)year;
 /**
  * @brief 当前设备活动分页查询活动集合 | Current Device Activity Paging Query Activity Collection
  * @param pageIndex 页码 第几页 (如 : 0,1,2,3,4,...) | Page Number of pages (eg : 0,1,2,3,4,...)
@@ -190,14 +209,12 @@
 + (NSArray <__kindof IDOSyncActivityDataInfoBluetoothModel *>*)queryOnePageActivityDataWithPageIndex:(NSInteger)pageIndex
                                                                                            numOfPage:(NSInteger)numOfPage
                                                                                              macAddr:(NSString *)macAddr;
-
 /**
  * @brief 当前设备所有轨迹运动 | Current track motion of all devices
  * @param macAddr mac 地址 | mac address
  * @return 活动集合 | Activity collection
  */
 + (NSArray <__kindof IDOSyncActivityDataInfoBluetoothModel *>*)queryAllTrajectorySportActivitysWithMac:(NSString *)macAddr;
-
 /**
  * @brief 当前设备所有轻运动 | Current equipment all light sports
  * @param macAddr mac 地址 | mac address

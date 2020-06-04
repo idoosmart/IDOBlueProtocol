@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface IDOMakePhotoManager : NSObject
+
+/**
+ * 图片文件名称
+ * file name
+ */
+@property (nonatomic,copy,nullable) NSString * fileName;
 /**
  * 图片文件传输路径 
  * Transfer file path
