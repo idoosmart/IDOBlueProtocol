@@ -479,7 +479,6 @@ error flag
 #pragma mark ==== 获取第29个功能表model ====
 
 @interface IDOGetFuncTable29BluetoothModel : IDOBluetoothBaseModel
-
 /**
  * v3的闹钟的同步
  * v3 sync alarm
@@ -490,18 +489,21 @@ error flag
  *ublox model
  */
 @property (nonatomic,assign) BOOL ubloxModel;
-
 /**
  *v3多运动同步数据,洪堡APP定制
  *v3 sync activity custom made
 */
 @property (nonatomic,assign) BOOL v3SyncActivity;
-
 /**
  *获取过热日志
  *get heat log
 */
 @property (nonatomic,assign) BOOL getHeatLog;
+/**
+ *V3血氧数据 偏移按照分钟偏移功能表位
+ *v3 spo2 offset change
+*/
+@property (nonatomic,assign) BOOL v3Spo2OffsetChange;
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
@@ -587,18 +589,21 @@ error flag
  * filipino
  */
 @property (nonatomic,assign) BOOL filipino;
-
 /**
  *繁体中文
  *traditional chinese
  */
 @property (nonatomic,assign) BOOL traditionalChinese;
-
 /**
  *希腊语
  *greek
  */
 @property (nonatomic,assign) BOOL greek;
+/**
+ *阿拉伯语
+ *arabic
+ */
+@property (nonatomic,assign) BOOL arabic;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
