@@ -505,6 +505,11 @@ error flag
 */
 @property (nonatomic,assign) BOOL v3Spo2OffsetChange;
 /**
+ *3级亮度调节 默认是5级别，手表app显示，手表不显示
+ *screen brightness 3 level
+*/
+@property (nonatomic,assign) BOOL screenBrightness3Level;
+/**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
  * @return IDOGetFuncTable29BluetoothModel
