@@ -25,6 +25,16 @@ typedef NS_ENUM(NSInteger, IDO_RECORD_LOG_TYPE)  {
      */
     IDO_AUTO_CONNECT_LOG,
     /**
+     *蓝牙连接过程
+     *Connect process
+     */
+    IDO_DEVICE_CONNECT_PROCESS_LOG,
+    /**
+     *蓝牙连接错误
+     *Connect error
+     */
+    IDO_DEVICE_CONNECT_ERROR_LOG,
+    /**
      * 手环绑定
      * Bracelet binding
      */
