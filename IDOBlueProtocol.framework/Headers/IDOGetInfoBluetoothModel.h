@@ -476,6 +476,43 @@ error flag
 
 @end
 
+#pragma mark ==== 获取第30个功能表model ====
+
+@interface IDOGetFuncTable30BluetoothModel : IDOBluetoothBaseModel
+/**
+ * 恢复出厂设置
+ * restore factory
+*/
+@property (nonatomic,assign) BOOL restoreFactory;
+/**
+ * 屏幕亮度获取
+ * get screen brightness
+*/
+@property (nonatomic,assign) BOOL getScreenBrightness;
+/**
+ * 抬腕亮屏数据获取
+ * get up hand gesture
+*/
+@property (nonatomic,assign) BOOL getUpHandGesture;
+/**
+ * 勿擾模式获取
+ * get not disturb
+*/
+@property (nonatomic,assign) BOOL getNotDisturb;
+/**
+ * 快速短信获取
+ * fast msg data
+*/
+@property (nonatomic,assign) BOOL fastMsgData;
+
+/**
+ * @brief 查询数据库,如果查询不到初始化新的model对象
+ * Query the database, if the query does not initialize a new model object
+ * @return IDOGetFuncTable30BluetoothModel
+ */
++ (__kindof IDOGetFuncTable30BluetoothModel *)currentModel;
+@end
+
 #pragma mark ==== 获取第29个功能表model ====
 
 @interface IDOGetFuncTable29BluetoothModel : IDOBluetoothBaseModel
@@ -509,6 +546,17 @@ error flag
  *screen brightness 3 level
 */
 @property (nonatomic,assign) BOOL screenBrightness3Level;
+/**
+ *绑定授权码，授权绑定
+ *encrypted auth
+*/
+@property (nonatomic,assign) BOOL encryptedAuth;
+/**
+ *v3睡眠眼动数据同步
+ *v3 sleep
+*/
+@property (nonatomic,assign) BOOL v3_sleep;
+
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
@@ -1974,6 +2022,11 @@ error flag
  29功能列表 同步v3闹钟 | 29 func table
  */
 @property (nonatomic,strong) IDOGetFuncTable29BluetoothModel      * funcTable29Model;
+
+/**
+ 30功能列表 恢复出厂设置 | 30 func table
+ */
+@property (nonatomic,strong) IDOGetFuncTable30BluetoothModel      * funcTable30Model;
 
 /**
  是否支持版本信息 | version information is supported

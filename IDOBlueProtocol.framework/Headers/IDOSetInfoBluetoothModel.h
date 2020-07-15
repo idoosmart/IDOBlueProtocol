@@ -1024,7 +1024,13 @@
 /**
  闹钟修改的时间戳 (可以不赋值)｜ set up time stamp (can be unassigned)
  */
-@property (nonatomic,copy) NSString * setTimeStamp;
+@property (nonatomic,copy) NSString * setTimeStamp DEPRECATED_MSG_ATTRIBUTE("this attribute is discarded");
+
+/**
+ 延时分钟
+ delay minute
+ */
+@property (nonatomic,assign) NSInteger delayMinute;
 
 /**
  * @brief 初始化闹钟集合 | Initialize the alarm collection

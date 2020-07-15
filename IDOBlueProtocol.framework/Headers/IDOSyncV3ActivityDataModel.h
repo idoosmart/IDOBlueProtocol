@@ -155,6 +155,67 @@
  */
 @property (nonatomic,assign) NSInteger startFrom;
 
+/*
+ 平均配速
+ avg speed
+ */
+@property (nonatomic,assign) NSInteger avgSpeed;
+
+/*
+最大配速
+max speed
+*/
+@property (nonatomic,assign) NSInteger maxSpeed;
+
+/*
+平均步频
+avg step frequency
+*/
+@property (nonatomic,assign) NSInteger avgStepFrequency;
+
+/*
+最大步频
+max step frequency
+*/
+@property (nonatomic,assign) NSInteger maxStepFrequency;
+
+/*
+平均步幅
+avg step stride
+*/
+@property (nonatomic,assign) NSInteger avgStepStride;
+
+/*
+最大步幅
+max step stride
+*/
+@property (nonatomic,assign) NSInteger maxStepStride;
+
+/**
+ 热身锻炼心率区间对应的累计时长 (分钟) | Warm up workout heart rate time (minutes)
+ */
+@property (nonatomic,assign) NSInteger warmUpHrTime;
+
+/**
+ 脂肪锻炼心率区间对应的累计时长 (分钟) | Fat burning workout heart rate time
+ */
+@property (nonatomic,assign) NSInteger burnFatHrTime;
+
+/**
+ 心肺锻炼心率区间对应的累计时长 (分钟)  | Cardio workout heart rate time (minutes)
+ */
+@property (nonatomic,assign) NSInteger aerobicHrTime;
+
+/**
+ 无氧锻炼心率区间对应的累计时长 (分钟) | Anaerobic workout heart rate time (minutes)
+ */
+@property (nonatomic,assign) NSInteger anaerobicHrTime;
+
+/**
+ 极限锻炼心率区间对应的累计时长 (分钟) | Extreme workout heart rate time (minutes)
+ */
+@property (nonatomic,assign) NSInteger limitHrTime;
+
 @end
 
 

@@ -156,6 +156,13 @@
 + (void)setAppRebootCommand:(void(^_Nullable)(int errorCode))callback;
 
 /**
+ * @brief 控制设备恢复出厂设置  | Control device restore factory
+ * @param callback 执行后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * Post-execution callback (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+*/
++ (void)setRestoreFactoryCommand:(void(^_Nullable)(int errorCode))callback;
+
+/**
  * @brief 获取扩展功能列表 | Get the list of extended features
  * @param callback 执行回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Execute callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
