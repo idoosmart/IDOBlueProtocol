@@ -34,9 +34,8 @@
 /**
  * @brief 开始记录手环flash日志
  * Start record bracelet flash log
- * @param type 日志类型 | Flash log type
  */
-+ (void)startFlashLogRecordWithType:(IDO_FLASH_LOG_TYPE)type;
++ (void)startFlashLogRecord;
 
 /**
  * @brief 停止记录手环flash日志

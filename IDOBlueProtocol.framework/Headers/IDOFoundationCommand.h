@@ -1061,6 +1061,27 @@
 + (void)getOverHeatLogInfoCommand:(void(^_Nullable)(int errorCode,IDOGetOverHeatLogModel * _Nullable data))callback;
 
 /**
+ * @brief  获取屏幕亮度  | get screen brightness
+ * @param callback 执行后回调 data (IDOSetScreenBrightnessInfoBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * callback data (IDOSetScreenBrightnessInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+*/
++ (void)getScreenBrightnessCommand:(void(^_Nullable)(int errorCode,IDOSetScreenBrightnessInfoBluetoothModel * _Nullable data))callback;
+
+/**
+ * @brief  获取抬腕手势  | get hand up gesture
+ * @param callback 执行后回调 data (IDOSetHandUpInfoBuletoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * callback data (IDOSetHandUpInfoBuletoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+*/
++ (void)getHandUpGestureCommand:(void(^_Nullable)(int errorCode,IDOSetHandUpInfoBuletoothModel * _Nullable data))callback;
+
+/**
+ * @brief  获取勿扰模式  | get not disturb mode
+ * @param callback 执行后回调 data (IDOSetNoDisturbModeInfoBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * callback data (IDOSetNoDisturbModeInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+*/
++ (void)getNotDisturbCommand:(void(^_Nullable)(int errorCode,IDOSetNoDisturbModeInfoBluetoothModel * _Nullable data))callback;
+
+/**
  * @brief  获取星星的数量,数据不作存储（锐捷） | Get number of stars （ruijie）
  * @param callback 执行后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)

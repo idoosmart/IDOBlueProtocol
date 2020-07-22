@@ -555,7 +555,7 @@ error flag
  *v3睡眠眼动数据同步
  *v3 sleep
 */
-@property (nonatomic,assign) BOOL v3_sleep;
+@property (nonatomic,assign) BOOL v3Sleep;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
