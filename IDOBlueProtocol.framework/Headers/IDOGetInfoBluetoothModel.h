@@ -498,12 +498,24 @@ error flag
  * 勿擾模式获取
  * get not disturb
 */
-@property (nonatomic,assign) BOOL getNotDisturb;
+@property (nonatomic,assign) BOOL getNotDisturb DEPRECATED_MSG_ATTRIBUTE("this attribute is discarded");
 /**
  * 快速短信获取
  * fast msg data
 */
 @property (nonatomic,assign) BOOL fastMsgData;
+
+/**
+ * 获取手环的升级状态
+ * get device update state
+*/
+@property (nonatomic,assign) BOOL getDeviceUpdateState;
+
+/**
+ * v3多运动同步
+ * v3 sports
+*/
+@property (nonatomic,assign) BOOL v3Sports;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象

@@ -141,6 +141,7 @@
 
 /**
  每分钟保存数据集合 json字符串 最大保存6小时 | Save the data  of minute for a maximum of 6 hours
+ @{@"steps":@(steps),@"calories":@(calories),@"distance":@(distance)}
  */
 @property (nonatomic,copy) NSString  * dataValuesStr;
 
@@ -216,10 +217,16 @@ max step stride
  */
 @property (nonatomic,assign) NSInteger limitHrTime;
 
+/**
+  每公里的配速集合json，最大公里数100公里 s钟数据传输 一公里用了多少s
+  Seconds per kilometer
+ */
+@property (nonatomic,strong)  NSString * kmSpeedItems;
+
 @end
 
 
-@interface IDOSyncV3ActivityDataModel : IDOBluetoothBaseModel
+@interface IDOSyncV3ActivityDataModel : NSObject
 
 /**
  * @brief 当前设备根据活动开始时间查询某个活动详情

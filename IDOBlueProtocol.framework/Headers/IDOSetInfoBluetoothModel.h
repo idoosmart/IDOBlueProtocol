@@ -1033,6 +1033,25 @@
 @property (nonatomic,assign) NSInteger delayMinute;
 
 /**
+ 重复闹铃次数 重复闹几次
+ repeat times
+ e.g : @[1,2,3,4,5]
+ */
+@property (nonatomic,strong) NSArray * repeatTimes;
+
+/**
+ 震动开关
+ shock on off
+ */
+@property (nonatomic,assign) BOOL shockOnOff;
+
+/**
+ 闹钟名字
+ name
+ */
+@property (nonatomic,copy) NSString * alarmName;
+
+/**
  * @brief 初始化闹钟集合 | Initialize the alarm collection
  * @return 闹钟集合 | Alarm clock collection
  */
@@ -1321,6 +1340,32 @@
  * Repeat collection [monday,tuesday,wednesday,thursday,friday,saturday,sunday]
  */
 @property (nonatomic,strong)NSArray<NSNumber *> * repeat;
+
+/*
+午休开关 | noon time on off
+*/
+@property (nonatomic,assign) BOOL noonTimeOnOff;
+
+/*
+午休开始时 | noon time rest start hour
+*/
+@property (nonatomic,assign) NSInteger noonTimeStartHour;
+
+/*
+午休开始分 | noon time rest start minute
+*/
+@property (nonatomic,assign) NSInteger noonTimeStartMinute;
+
+/*
+午休结束时 | noon time rest end hour
+*/
+@property (nonatomic,assign) NSInteger noonTimeEndHour;
+
+/*
+午休结束分 | noon time rest end minute
+*/
+@property (nonatomic,assign) NSInteger noonTimeEndMinute;
+
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
