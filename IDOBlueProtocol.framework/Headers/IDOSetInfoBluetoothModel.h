@@ -347,6 +347,16 @@
 @property (nonatomic,copy) NSString * authCode;
 
 /**
+ 加密方式版本 | encrypted version
+ */
+@property (nonatomic,assign) NSInteger encryptedVersion;
+
+/**
+ 加密数据 固件生成 | encrypted data
+ */
+@property (nonatomic,copy) NSArray * encryptedData;
+
+/**
  * @brief 查询数据库,如果查询不到初始化新的model对象 (只有在授权绑定才会存储数据)
  * Query the database, if the query does not initialize the new model object (only the authorization binding will store the data)
  * @return IDOSetBindingInfoBluetoothModel
@@ -723,7 +733,7 @@
 
 #pragma mark ==== 设置运动快捷模式排序model ====
 
-@interface IDOSetSportSortingItemModel:NSObject
+@interface IDOSetSportSortingItemModel:IDOBluetoothBaseModel
 
 /**
  * 排序索引 index //排序,从1、2、3、4....,0:无效
@@ -1027,26 +1037,13 @@
 @property (nonatomic,copy) NSString * setTimeStamp DEPRECATED_MSG_ATTRIBUTE("this attribute is discarded");
 
 /**
- 延时分钟
- delay minute
- */
-@property (nonatomic,assign) NSInteger delayMinute;
-
-/**
- 重复闹铃次数 重复闹几次
- repeat times
- e.g : @[1,2,3,4,5]
- */
-@property (nonatomic,strong) NSArray * repeatTimes;
-
-/**
  震动开关
  shock on off
  */
 @property (nonatomic,assign) BOOL shockOnOff;
 
 /**
- 闹钟名字
+ 闹钟名字 长度限制 23个字节
  name
  */
 @property (nonatomic,copy) NSString * alarmName;
@@ -1077,6 +1074,17 @@
  闹钟个数 ｜ alarm count
  */
 @property (nonatomic,assign) NSInteger alarmCount;
+
+/**
+ 重复闹铃次数 重复闹几次
+ */
+@property (nonatomic,assign) NSInteger repeatTime;
+
+/**
+ 延时分钟
+ delay minute
+ */
+@property (nonatomic,assign) NSInteger delayMinute;
 
 /**
 闹钟集合 ｜ alarm items
@@ -1365,7 +1373,6 @@
 午休结束分 | noon time rest end minute
 */
 @property (nonatomic,assign) NSInteger noonTimeEndMinute;
-
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
@@ -1828,6 +1835,90 @@
  */
 @property (nonatomic,assign) BOOL isOnYahooPinterest;
 
+/**
+ Keep 提醒 | keep
+ */
+@property (nonatomic,assign) BOOL isOnKeep;
+
+/**
+ TikTok 提醒 | tiktok
+ */
+@property (nonatomic,assign) BOOL isOnTikTok;
+
+/**
+ Redbus 提醒 | redbus
+ */
+@property (nonatomic,assign) BOOL isOnRedbus;
+
+/**
+ Dailyhunt 提醒 | dailyhunt
+ */
+@property (nonatomic,assign) BOOL isOnDailyhunt;
+
+/**
+ Hotstar 提醒 | hotstar
+ */
+@property (nonatomic,assign) BOOL isOnHotstar;
+
+/**
+ Inshorts 提醒 | inshorts
+ */
+@property (nonatomic,assign) BOOL isOnInshorts;
+
+/**
+ Paytm 提醒 | paytm
+ */
+@property (nonatomic,assign) BOOL isOnPaytm;
+
+/**
+ Amazon 提醒 | amazon
+ */
+@property (nonatomic,assign) BOOL isOnAmazon;
+
+/**
+ Flipkart 提醒 | flipkart
+ */
+@property (nonatomic,assign) BOOL isOnFlipkart;
+
+/**
+ Prime 提醒 | prime
+ */
+@property (nonatomic,assign) BOOL isOnPrime;
+
+/**
+ Netflix 提醒 | netflix
+ */
+@property (nonatomic,assign) BOOL isOnNetflix;
+
+/**
+ Gpay 提醒 | gpay
+ */
+@property (nonatomic,assign) BOOL isOnGpay;
+
+/**
+ Phonpe 提醒 | phonpe
+ */
+@property (nonatomic,assign) BOOL isOnPhonpe;
+
+/**
+ Swiggy 提醒 | swiggy
+ */
+@property (nonatomic,assign) BOOL isOnSwiggy;
+
+/**
+ Zomato 提醒 | zomato
+ */
+@property (nonatomic,assign) BOOL isOnZomato;
+
+/**
+ MakeMyTrip 提醒 | make my trip
+ */
+@property (nonatomic,assign) BOOL isOnMakeMyTrip;
+
+/**
+ JioTv 提醒 | jio tv
+ */
+@property (nonatomic,assign) BOOL isOnJioTv;
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object

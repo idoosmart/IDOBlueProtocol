@@ -189,6 +189,12 @@
 */
 @property (nonatomic,assign) NSInteger avgFrequency;
 
+/**
+ 游泳数据版本号
+ swim data version
+ */
+@property (nonatomic,assign) NSInteger swimVersion;
+
 @end
 
 

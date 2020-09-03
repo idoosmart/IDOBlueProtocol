@@ -121,7 +121,7 @@
               callback:(void (^_Nullable)(IDO_BIND_STATUS status, int errorCode))callback;
 
 /**
- * @brief 连线设备解绑 | Unbundling equipment
+ * @brief 连接设备解绑 | Unbundling equipment
  * @param callback 执行后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Post-execution callback (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  */
@@ -1082,6 +1082,27 @@
 + (void)getNotDisturbCommand:(void(^_Nullable)(int errorCode,IDOSetNoDisturbModeInfoBluetoothModel * _Nullable data))callback;
 
 /**
+ * @brief  获取设备升级状态  | get update state
+ * @param callback 执行后回调 data (IDOGetDeviceUpdateStateModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * callback data (IDOGetDeviceUpdateStateModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+*/
++ (void)getDeviceUpdateStateCommand:(void(^_Nullable)(int errorCode,IDOGetDeviceUpdateStateModel * _Nullable data))callback;
+
+/**
+ * @brief  获取设备授权加密码  | get device encrypted code
+ * @param callback 执行后回调 data (IDOSetBindingInfoBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * callback data (IDOSetBindingInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+*/
++ (void)getEncryptedCodeCommand:(void(^_Nullable)(int errorCode,IDOSetBindingInfoBluetoothModel * _Nullable data))callback;
+
+/**
+ * @brief  获取v3字库列表  | get v3 lang lib list
+ * @param callback 执行后回调 data (IDOGetV3LangLibListModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * callback data (IDOGetV3LangLibListModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+*/
++ (void)getV3LangLibListCommand:(void(^_Nullable)(int errorCode,IDOGetV3LangLibListModel * _Nullable data))callback;
+
+/**
  * @brief  获取星星的数量,数据不作存储（锐捷） | Get number of stars （ruijie）
  * @param callback 执行后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
@@ -1472,9 +1493,26 @@
 /**
  * @brief 手环发起运动发送数据 | The bracelet initiates a motion to send data
  * @param model IDODataExchangeModel 只需要给 distance 这个属性需要赋值
- * @param bleIngCallback 手环发起运动发送数据 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * @param bleIngCallback 手环发起运动发送数据回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  */
 + (void)bleIngSportCommand:(IDODataExchangeModel *_Nullable)model
             bleIngCallback:(void (^_Nullable)(IDODataExchangeModel * _Nullable model,int errorCode))bleIngCallback;
+
+/**
+ * @brief 获取一分钟的心率  | Get  heart rate for one minute
+ * @param model IDODataExchangeModel 只需要给 distance 这个属性需要赋值
+ * @param callback 手环发起运动发送数据回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ */
++ (void)getOneMinuteHeartRateCommand:(IDODataExchangeModel *_Nullable)model
+                            callback:(void (^_Nullable)(IDODataExchangeModel * _Nullable model,int errorCode))callback;
+
+
+/**
+ * @brief 活动结束后获取详情数据  | Obtain detailed data after the event
+ * @param model IDODataExchangeModel 只需要给 distance 这个属性需要赋值
+ * @param callback 手环发起运动发送数据回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ */
++ (void)getEndV3ActivityDataCommand:(IDODataExchangeModel *_Nullable)model
+                           callback:(void (^_Nullable)(IDODataExchangeModel * _Nullable model,int errorCode))callback;
 
 @end

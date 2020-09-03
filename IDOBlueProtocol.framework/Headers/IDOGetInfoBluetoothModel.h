@@ -11,6 +11,65 @@
 #import "IDOBluetoothBaseModel.h"
 #endif
 
+#pragma mark ==== 获取v3设备字库列表 ====
+@interface IDOGetV3LangLibListModel : IDOBluetoothBaseModel
+/**
+   语言版本
+   lang version
+ */
+@property (nonatomic,assign) NSInteger langVersion;
+/**
+   当前使用的语言
+   use lang
+ */
+@property (nonatomic,assign) NSInteger useLang;
+/**
+   默认的语言
+   default lang
+ */
+@property (nonatomic,assign) NSInteger defaultLang;
+/**
+   固定存储语言个数
+   fixed lang count
+ */
+@property (nonatomic,assign) NSInteger fixedLang;
+/**
+   最大存储语言数
+   max storage lang count
+ */
+@property (nonatomic,assign) NSInteger maxStorageLang;
+/**
+   固件目前支持的个数,可能没有对应的字库文件
+   items support count
+ */
+@property (nonatomic,assign) NSInteger itemsSupportCount;
+
+/**
+   目前已经有语言的个数
+   items storage count
+ */
+@property (nonatomic,assign) NSInteger itemsStorageCount;
+
+/**
+   已经支持语言 @[@{@"type":@(type),@"version":@(version)}...]
+   lang support items
+ */
+@property (nonatomic,strong) NSArray * langSupportItems;
+/**
+   已经存储语言 @[@{@"type":@(type),@"version":@(version)}...]
+   lang storage items
+ */
+@property (nonatomic,strong) NSArray * langStorageItems;
+
+/**
+ * @brief 查询数据库,如果查询不到初始化新的model对象
+ * Query the database, if the query does not initialize a new model object
+ * @return IDOGetV3LangLibListModel
+ */
++ (__kindof IDOGetV3LangLibListModel *)currentModel;
+
+@end
+
 #pragma mark ==== 获取过热日志 model ====
 @interface IDOGetOverHeatLogModel : IDOBluetoothBaseModel
 /**
@@ -476,6 +535,138 @@ error flag
 
 @end
 
+#pragma mark ==== 获取第33个功能表model ====
+
+@interface IDOGetFuncTable33BluetoothModel : IDOBluetoothBaseModel
+/**
+ * prime
+ * prime
+*/
+@property (nonatomic,assign) BOOL prime;
+/**
+ * netflix
+ * netflix
+*/
+@property (nonatomic,assign) BOOL netflix;
+/**
+ * gpay
+ * gpay
+*/
+@property (nonatomic,assign) BOOL gpay;
+/**
+ * phonpe
+ * phonpe
+*/
+@property (nonatomic,assign) BOOL phonpe;
+/**
+ * swiggy
+ * swiggy
+*/
+@property (nonatomic,assign) BOOL swiggy;
+/**
+ * zomato
+ * zomato
+*/
+@property (nonatomic,assign) BOOL zomato;
+/**
+ * make my trip
+ * make my trip
+*/
+@property (nonatomic,assign) BOOL makeMyTrip;
+/**
+ * jio tv
+ * jio tv
+*/
+@property (nonatomic,assign) BOOL jioTv;
+
+/**
+ * @brief 查询数据库,如果查询不到初始化新的model对象
+ * Query the database, if the query does not initialize a new model object
+ * @return IDOGetFuncTable31BluetoothModel
+ */
++ (__kindof IDOGetFuncTable33BluetoothModel *)currentModel;
+
+@end
+
+
+#pragma mark ==== 获取第32个功能表model ====
+
+@interface IDOGetFuncTable32BluetoothModel : IDOBluetoothBaseModel
+/**
+ * tiktok
+ * tikTok
+*/
+@property (nonatomic,assign) BOOL tiktok;
+/**
+ * redbus
+ * redbus
+*/
+@property (nonatomic,assign) BOOL redbus;
+/**
+ * dailyhunt
+ * dailyhunt
+*/
+@property (nonatomic,assign) BOOL dailyhunt;
+/**
+ * hotstar
+ * hotstar
+*/
+@property (nonatomic,assign) BOOL hotstar;
+/**
+ * inshorts
+ * inshorts
+*/
+@property (nonatomic,assign) BOOL inshorts;
+/**
+ * paytm
+ * paytm
+*/
+@property (nonatomic,assign) BOOL paytm;
+/**
+ * amazon
+ * amazon
+*/
+@property (nonatomic,assign) BOOL amazon;
+/**
+ * flipkart
+ * flipkart
+*/
+@property (nonatomic,assign) BOOL flipkart;
+
+/**
+ * @brief 查询数据库,如果查询不到初始化新的model对象
+ * Query the database, if the query does not initialize a new model object
+ * @return IDOGetFuncTable31BluetoothModel
+ */
++ (__kindof IDOGetFuncTable32BluetoothModel *)currentModel;
+
+@end
+
+#pragma mark ==== 获取第31个功能表model ====
+
+@interface IDOGetFuncTable31BluetoothModel : IDOBluetoothBaseModel
+
+/**
+ * v3 语言字库列表
+ * v3 get lang lib list
+*/
+@property (nonatomic,assign) BOOL v3GetLangLib;
+
+/**
+ * 设置手机音量
+ * set phone voice
+*/
+@property (nonatomic,assign) BOOL setPhoneVoice;
+
+/**
+ * @brief 查询数据库,如果查询不到初始化新的model对象
+ * Query the database, if the query does not initialize a new model object
+ * @return IDOGetFuncTable31BluetoothModel
+ */
++ (__kindof IDOGetFuncTable31BluetoothModel *)currentModel;
+
+@end
+
 #pragma mark ==== 获取第30个功能表model ====
 
 @interface IDOGetFuncTable30BluetoothModel : IDOBluetoothBaseModel
@@ -516,6 +707,12 @@ error flag
  * v3 sports
 */
 @property (nonatomic,assign) BOOL v3Sports;
+
+/**
+ * v3多运动同步数据交换
+ * v3 activity exchange data
+ */
+@property (nonatomic,assign) BOOL v3ActivityExchangeData;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
@@ -918,6 +1115,11 @@ error flag
  yahoo mail
  */
 @property (nonatomic,assign) BOOL yahooMail;
+
+/**
+ keep
+ */
+@property (nonatomic,assign) BOOL keep;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
@@ -2039,6 +2241,21 @@ error flag
  30功能列表 恢复出厂设置 | 30 func table
  */
 @property (nonatomic,strong) IDOGetFuncTable30BluetoothModel      * funcTable30Model;
+
+/**
+ 31功能列表 v3 语言字库列表 | 31 func table
+ */
+@property (nonatomic,strong) IDOGetFuncTable31BluetoothModel      * funcTable31Model;
+
+/**
+ 32功能列表 TikTok notify | 32 func table
+ */
+@property (nonatomic,strong) IDOGetFuncTable32BluetoothModel      * funcTable32Model;
+
+/**
+ 33功能列表 Prime notify | 33 func table
+ */
+@property (nonatomic,strong) IDOGetFuncTable33BluetoothModel      * funcTable33Model;
 
 /**
  是否支持版本信息 | version information is supported

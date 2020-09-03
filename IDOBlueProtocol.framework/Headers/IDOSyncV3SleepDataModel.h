@@ -14,13 +14,13 @@
 @interface IDOSyncV3SleepDataItemInfoBluetoothModel : IDOBluetoothBaseModel
 
 /**
- * 阶段
+ * 阶段 0x01: 醒着, 0x02 : 浅睡, 0x03 : 深睡 ；0x04 : 眼动
  * stage
  */
 @property (nonatomic,assign) NSInteger  stage;
 
 /**
- 持续时间 | Duration
+ 持续时间 单位秒 | Duration unit:second
  */
 @property (nonatomic,assign) NSInteger  duration;
 
@@ -117,7 +117,7 @@
 @property (nonatomic,assign) NSInteger deepSleepMinute;
 
 /**
- 眼动眠时长 | Deep sleep duration
+ 眼动眠时长 | Rem sleep duration
  */
 @property (nonatomic,assign) NSInteger remSleepMinute;
 
@@ -152,6 +152,12 @@
  * awrr status
  */
 @property (nonatomic,assign) NSInteger awrrStatus;
+
+/**
+ 呼吸率=> 改名呼吸质量 0-100 无单位
+ breath rate
+ */
+@property (nonatomic,assign) NSInteger breathRate;
 
 /**
  睡眠评分 | sleep score (1-100)

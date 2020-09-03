@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IDOBlueProtocol'
-  s.version          = '3.5.0'
+  s.version          = '3.7.4'
   s.summary          = 'It is suitable for iOS devices and supports IDO bracelet, realizing bluetooth connection control framework library. Based on the Bluetooth framework of iOS system, bluetooth scanning, connection, binding, control, setting, acquisition, monitoring, transmission and other functions are expanded.'
 
 # This description is used to generate tags and improve search results.
@@ -40,7 +40,7 @@ Pod::Spec.new do |s|
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-   s.frameworks = 'UIKit', 'Foundation', 'CoreBluetooth'
+   s.frameworks = 'UIKit', 'Foundation', 'CoreBluetooth', 'Security'
    s.libraries  = 'sqlite3.0'
   # s.dependency 'AFNetworking', '~> 2.3'
   

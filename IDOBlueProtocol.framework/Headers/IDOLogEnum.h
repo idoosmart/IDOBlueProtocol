@@ -165,6 +165,16 @@ typedef NS_ENUM(NSInteger, IDO_RECORD_LOG_TYPE)  {
      */
     IDO_PAIRING_RECONNECT_SET_SUB_SWITCH_SUCCESS_LOG,
     /**
+     * 运动数据交换 app 数据日志
+     * data exchange app data log
+     */
+    IDO_DATA_EXCHANGE_APP_LOG,
+    /**
+     * 运动数据交换 蓝牙数据日志
+     * data exchange blue data log
+     */
+    IDO_DATA_EXCHANGE_BLUE_LOG,
+    /**
      * 协议库日志记录
      * protocol c log
      */
