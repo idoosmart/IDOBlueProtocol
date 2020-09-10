@@ -198,6 +198,14 @@
  */
 @property (nonatomic,copy) NSArray<NSNumber *> * kmSpeeds;
 /**
+ 英里配速 个数
+ */
+@property (nonatomic,assign) NSInteger mileCount;
+/**
+ 英里配速集合
+ */
+@property (nonatomic,copy) NSArray<NSNumber *> * mileSpeeds;
+/**
  步频个数
  */
 @property (nonatomic,assign) NSInteger stepsFrequencyCount;

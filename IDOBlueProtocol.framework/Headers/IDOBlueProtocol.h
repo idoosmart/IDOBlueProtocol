@@ -43,7 +43,6 @@ FOUNDATION_EXPORT const unsigned char IDOBlueProtocolVersionString[];
 #import <IDOBlueProtocol/IDOWeightBluetoothModel.h>
 #import <IDOBlueProtocol/IDOWatchDialInfoModel.h>
 
-
 #import <IDOBlueProtocol/IDOSyncManager.h>
 #import <IDOBlueProtocol/IDOBluetoothEngine.h>
 #import <IDOBlueProtocol/IDOBluetoothServices.h>
