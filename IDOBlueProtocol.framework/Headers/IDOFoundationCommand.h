@@ -218,6 +218,8 @@
 + (void)checkUpdateReplyCommand:(IDOCheckUpdateBluetoothModel *_Nullable)model
                        callback:(void(^_Nullable)(int state , int errorCode))callback;
 
+#pragma mark ======= voice control Command =======
+
 /**
  * @brief 语音控制开启指定活动 | Voice control turns on the specified activity
  * @param callback 执行回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
@@ -345,6 +347,13 @@
  * Execute callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
 */
 + (void)voiceControlToNotifyCommand:(void(^_Nullable)(int errorCode))callback;
+
+/**
+ * @brief 语音控制跳转闹钟界面 | Voice control jump alarm interface
+ * @param callback 执行回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * Execute callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
+*/
++ (void)voiceControlToAlarmCommand:(void(^_Nullable)(int errorCode))callback;
 
 #pragma mark ======= set Command =======
 
