@@ -53,10 +53,30 @@
  */
 @property (nonatomic,assign) NSInteger unbindState;
 /**
- 心率模式状态  0=> 无效 2 => 心率模式改变
- Heart rate mode status 0=> invalid 2 => heart rate mode change
+ 心率模式状态  0=> 无效 1 => 心率模式改变
+ Heart rate mode status 0=> invalid 1 => heart rate mode change
  */
 @property (nonatomic,assign) NSInteger hrModeState;
+/**
+ 血氧状态  0=> 无效 1 => 血氧产生数据改变
+ spo2 status 0=> invalid 1 => spo2 data  change
+ */
+@property (nonatomic,assign) NSInteger spo2State;
+/**
+ 压力状态  0=> 无效 1 => 压力产生数据改变
+ pressure status 0=> invalid 1 => pressure data  change
+ */
+@property (nonatomic,assign) NSInteger pressureState;
+/**
+ Alexa识别状态 0=> 无效 1 => Alexa识别过程中退出
+ Alexa status 0=> invalid 1 => Exit during Alexa recognition process
+ */
+@property (nonatomic,assign) NSInteger alexaState;
+/**
+ 恢复出厂设置状态 0=> 无效 1 => 固件恢复出厂设置
+ reset status 0=> invalid 1 => reset change
+ */
+@property (nonatomic,assign) NSInteger resetState;
 /**
  闹钟状态  0=>  无效 1=>  闹钟已修改
  Alarm state  0=>  invalid 1 => alarm has been modified

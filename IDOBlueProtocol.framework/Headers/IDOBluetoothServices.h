@@ -56,6 +56,11 @@ extern NSString * _Nonnull IDOBluetoothDeviceBindNotifyName;
  */
 @property (nonatomic,copy,nullable) IDOBluetoothServices *_Nonnull(^rawDataLog)(BOOL isRecord);
 
+/*
+ 是否使用功能表判断 | Whether to use function table judge
+ */
+@property (nonatomic,copy,nullable) IDOBluetoothServices *_Nonnull(^useFunctionTable)(BOOL isUse);
+
 /**
  * 注册SDK服务后,初始化设备信息并返回,需开始启动蓝牙,根据各自业务需求,可以选择自己的APP创建蓝牙管理,也可以使用我们提供的库创建蓝牙管理.
  * After the SDK service is registered, the device information is initialized and returned, and bluetooth needs to be started.

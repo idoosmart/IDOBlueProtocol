@@ -545,6 +545,12 @@ error flag
 @property (nonatomic,assign) BOOL takingMedicine;
 
 /**
+ app支持本地表盘改 云端表盘图片下载
+ local dial
+ */
+@property (nonatomic,assign) BOOL localDial;
+
+/**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
  * @return IDOGetFuncTable34BluetoothModel

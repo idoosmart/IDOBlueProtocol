@@ -355,6 +355,26 @@
 */
 + (void)voiceControlToAlarmCommand:(void(^_Nullable)(int errorCode))callback;
 
+/**
+ * @brief 回复语音识别失败状态 | Reply to speech recognition failure status
+ * @param state  0：正常状态;  1：无法识别;  2：语音识别超时
+ * 0: Normal state; 1: Unable to identify; 2: Speech recognition timeout
+ * @param callback 执行回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * Execute callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
+ */
++ (void)voiceRecognitionFailedCommand:(NSInteger)state
+                             callback:(void(^_Nullable)(int errorCode))callback;
+/**
+ * @brief 回复语音识别成功文字 | Reply speech recognition successful text
+ * @param message | 内容 暂时只支持英文
+ * @param titleText | 内容标题 (暂时不需要)
+ * @param callback 执行回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * Execute callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
+ */
++ (void)voiceRecognitionSuccessCommand:(NSString *_Nullable)message
+                             titleText:(NSString *_Nullable)titleText
+                              callback:(void(^_Nullable)(int errorCode))callback;
+
 #pragma mark ======= set Command =======
 
 /**
@@ -1357,6 +1377,15 @@
 */
 + (void)listenVoiceFileDataCommand:(void(^_Nullable)(int state,int errorCode))stateCallback
                           complete:(void(^_Nullable)(NSString * _Nullable filePath))completeCallback;
+
+/**
+ * @brief 手环语音等待APP回复状态 | The bracelet's voice waits for the APP to reply
+ * @param callback 监听回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str,index 对应按钮索引)
+ * callback 返回APP的登录状态 0：正常状态；1：未登录；2:网络断连; 3：未获取状态
+ * Listening callback (errorCode : 0 is successful, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
+ * callback  return the login status of APP 0: normal; 1: Not logged in; 2: Network outage; 3: Not getting status
+ */
++ (void)listenVoiceGetStateReplyCommand:(NSInteger(^_Nullable)(int errorCode))callback;
 
 /**
  * @brief 手环状态改变 | Bracelet state change
