@@ -1263,6 +1263,61 @@
 
 @end
 
+@interface IDOSetVoiceV3AlarmItemInfoModel : IDOBluetoothBaseModel
+/**
+ 开关 | Switch
+ */
+@property (nonatomic,assign) BOOL isOpen;
+
+/**
+ 时 | hour
+ */
+@property (nonatomic,assign) NSInteger hour;
+
+/**
+ 分 | minute
+ */
+@property (nonatomic,assign) NSInteger minute;
+
+/**
+ * 闹钟ID  无效闹钟默认为0   设置范围0-10
+ * Alarm ID Invalid alarm is 0 by default  Set the range to 0-10
+ */
+@property (nonatomic,assign) NSInteger alarmId;
+
+@end
+
+@interface IDOSetVoiceV3AlarmInfoModel : IDOBluetoothBaseModel
+
+/**
+ 闹钟版本号 ｜ alarm version
+ */
+@property (nonatomic,assign) NSInteger alarmVersion;
+
+/**
+ 闹钟个数 最多 10个 ｜ alarm count  max 10
+ */
+@property (nonatomic,assign) NSInteger alarmCount;
+
+/**
+闹钟集合 ｜ alarm items
+*/
+@property (nonatomic,strong) NSArray <IDOSetVoiceV3AlarmItemInfoModel *>* items;
+
+/**
+ * @brief 查询数据库,如果查询不到初始化新的model对象
+ * Query the database, if the query does not initialize a new model object
+ * @return IDOSetVoiceV3AlarmInfoModel
+ */
++ (IDOSetVoiceV3AlarmInfoModel *)currentModel;
+
+/**
+ *解绑后清除所有语音闹钟
+ *unbind clear all voice alarms
+ */
++ (BOOL)unbindClearAllVoiceAlarms;
+
+@end
 
 #pragma mark ==== 设置时间model ====
 @interface IDOSetTimeInfoBluetoothModel:IDOBluetoothBaseModel
