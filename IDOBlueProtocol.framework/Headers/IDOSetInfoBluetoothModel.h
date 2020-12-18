@@ -657,7 +657,7 @@
 @interface IDOSetConnParamInfoBluetoothModel:IDOBluetoothBaseModel
 
 /**
- 连接模式 | Connection mode
+ 连接模式 0x00 查模式,0x01 快速模式 ,0x02 慢速模式 | Connection mode 0x00 check mode,0x01 fast mode,0x02 slow mode
  */
 @property (nonatomic,assign) NSInteger mode;
 

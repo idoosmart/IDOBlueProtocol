@@ -57,8 +57,8 @@
 @property (nonatomic,copy,nullable) NSData * fileData;
 
 /**
- * 是否设置连接参数
- * Set connection parameters
+ * 是否设置连接参数 默认设置YES
+ * Set connection parameters default YES
  */
 @property (nonatomic,assign) BOOL isSetConnectParam;
 
