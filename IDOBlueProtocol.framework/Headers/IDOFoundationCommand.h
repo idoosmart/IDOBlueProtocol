@@ -394,11 +394,13 @@
  * @brief 回复语音识别成功文字 | Reply speech recognition successful text
  * @param message | 内容 暂时只支持英文
  * @param titleText | 内容标题 (暂时不需要)
+ * @param flagContinue |  是否继续语音
  * @param callback 执行回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Execute callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
 + (void)voiceRecognitionSuccessCommand:(NSString *_Nullable)message
                              titleText:(NSString *_Nullable)titleText
+                          flagContinue:(BOOL)flagContinue
                               callback:(void(^_Nullable)(int errorCode))callback;
 
 #pragma mark ======= set Command =======

@@ -191,6 +191,11 @@
  提醒间隔,单位分钟 默认60分钟 | interval (unit minutes)
  */
 @property (nonatomic,assign) NSInteger interval;
+
+/**
+ 压力过高阈值 | High pressure threshold
+ */
+@property (nonatomic,assign) NSInteger highThreshold;
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
@@ -242,10 +247,13 @@
 #pragma mark ====  设置心率开关同步 model ====
 @interface IDOSetV3HeartRateModeBluetoothModel:IDOBluetoothBaseModel
 /**
- * 心率模式 0:关闭心率监测功能 1:手动模式 2:自动模式 3:持续监测（默认：自动模式）
- * Heart Rate Mode 0: Turn off heart rate monitoring function 1: Manual mode 2: Auto mode 3:Continuously monitor(Default: Auto mode)
+ * 心率模式 0:关闭心率监测功能(无效) 1:手动模式 2:自动模式(5分钟) 3:持续监测(5秒钟)（默认：自动模式）
+ * 4:默认类型(第一次绑定同步配置使用) 5:设置对应测量间隔,选择4和5模式则2和3模式无效
+ * Heart Rate Mode 0: turn off heart rate monitoring function 1: manual mode 2: auto mode 3:continuously monitor(Default: Auto mode)
+ * 4: default type (used for the first binding synchronization configuration) 5: set the corresponding measurement interval
  */
 @property (nonatomic,assign) NSInteger modeType;
+
 /**
  * 更新时间unix 时间戳,秒级  (eg 14442361933)
  * Update time Unix timestamp, in seconds
@@ -272,9 +280,15 @@
  */
 @property (nonatomic,assign) NSInteger  endMinute;
 /**
- 测量间隔,单位分钟 | measurement Interval,unit:minutes
+ 测量间隔,单位秒钟 | measurement Interval,unit:second
  */
 @property (nonatomic,assign) NSInteger  measurementInterval;
+/**
+ 获取手表支持的心率类型集合 | get support  heart rate item type array
+ 分别:5s,1分钟,3分钟,5分钟,10分钟,30分钟
+ */
+@property (nonatomic,strong) NSArray * hrModeTypes;
+
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
@@ -1268,6 +1282,21 @@
  开关 | Switch
  */
 @property (nonatomic,assign) BOOL isOpen;
+
+/**
+ 年 | year
+ */
+@property (nonatomic,assign) NSInteger year;
+
+/**
+ 月 | month
+ */
+@property (nonatomic,assign) NSInteger month;
+
+/**
+ 日 | day
+ */
+@property (nonatomic,assign) NSInteger day;
 
 /**
  时 | hour

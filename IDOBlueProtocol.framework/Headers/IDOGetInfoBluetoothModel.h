@@ -551,6 +551,11 @@ error flag
 @property (nonatomic,assign) BOOL localDial;
 
 /**
+ 压力过高提醒
+ pressure too high reminder
+ */
+@property (nonatomic,assign) BOOL pressureHighReminder;
+/**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
  * @return IDOGetFuncTable34BluetoothModel
@@ -1602,6 +1607,26 @@ error flag
 @property (nonatomic,assign) BOOL tipInfoContent;
 
 /**
+ 设置v3心率的间隔 | set v3 heart rate interval
+ */
+@property (nonatomic,assign) BOOL setV3HeartInterval;
+
+/**
+ 默认是支持agps online升级 | default support agps online
+ */
+@property (nonatomic,assign) BOOL agpsOnLine;
+
+/**
+ 默认是支持agps off升级 | default support agps off online
+ */
+@property (nonatomic,assign) BOOL agpsOffLine;
+
+/**
+ 天气城市 | weather city
+ */
+@property (nonatomic,assign) BOOL weatherCity;
+
+/**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
  * @return IDOGetFuncTable12BluetoothModel
@@ -2420,6 +2445,18 @@ error flag
  *
  */
 @property (nonatomic,assign) BOOL authCodeError;
+
+/**
+ * 设备形状类型 0：无效；1：圆形；2：方形的； 3：椭圆
+ * device shape type 0: Invalid; 1: Round; 2: Square; 3: the elliptical
+ */
+@property (nonatomic,assign) NSInteger deviceShapeType;
+
+/**
+ * 设备类型 0：无效；1：手环；2：手表；
+ * device shape type 0: Invalid; 1: Bracelet; 2: Watch
+ */
+@property (nonatomic,assign) NSInteger deviceType;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
