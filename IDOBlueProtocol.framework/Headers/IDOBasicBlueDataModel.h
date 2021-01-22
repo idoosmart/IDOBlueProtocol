@@ -15,6 +15,52 @@
 
 @end
 
+#pragma mark ==== 设置语音提醒 model ====
+@interface IDOSetVoiceReminderItemModel : IDOBluetoothBaseModel
+/**
+ 开关 | Switch
+ */
+@property (nonatomic,assign) BOOL isOpen;
+
+/**
+ 年 | year
+ */
+@property (nonatomic,assign) NSInteger year;
+
+/**
+ 月 | month
+ */
+@property (nonatomic,assign) NSInteger month;
+
+/**
+ 日 | day
+ */
+@property (nonatomic,assign) NSInteger day;
+
+/**
+ 时 | hour
+ */
+@property (nonatomic,assign) NSInteger hour;
+
+/**
+ 分 | minute
+ */
+@property (nonatomic,assign) NSInteger minute;
+
+/**
+ * 提醒ID  设置范围1-10
+ * remind ID   Set the range to 1-10
+ */
+@property (nonatomic,assign) NSInteger remindId;
+
+/**
+ * 提醒消息 支持128字节
+ * reminder message support 128 byte
+ */
+@property (nonatomic,strong) NSString * reminderStr;
+
+@end
+
 #pragma mark ==== 获取设备升级 model ====
 @interface IDOGetDeviceUpdateStateModel : IDOBluetoothBaseModel
 /**

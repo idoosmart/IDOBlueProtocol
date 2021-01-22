@@ -382,6 +382,15 @@
                    callback:(void(^_Nullable)(int errorCode))callback;
 
 /**
+ * @brief 语音控制设置提醒 | Voice control set reminder
+ * @param reminderModels reminder model (IDOSetVoiceReminderItemModel) | reminder model (IDOSetVoiceReminderItemModel)
+ * @param callback 执行回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * Execute callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
+*/
++ (void)voiceControlToReminder:(NSArray <IDOSetVoiceReminderItemModel *>*_Nullable)reminderModels
+                      callback:(void(^_Nullable)(int errorCode))callback;
+
+/**
  * @brief 回复语音识别失败状态 | Reply to speech recognition failure status
  * @param state  0：正常状态;  1：无法识别;  2：语音识别超时
  * 0: Normal state; 1: Unable to identify; 2: Speech recognition timeout
@@ -943,6 +952,16 @@
                           callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
+ * @brief 设置alexa 通知状态  | set alexa notify state
+ * @param state 设置alexa 通知状态  0:无效 1:通知清除 2:有通知
+ * set alexa notify state 0: Invalid 1: Notification cleared 2: Notification available
+ * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * Set post complete (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
+ */
++ (void)setAlexaNotifyState:(NSInteger)state
+                   callback:(void (^ _Nullable)(int errorCode))callback;
+
+/**
  * @brief 设置星星数量 数据不作存储 (锐捷) | Set the number of stars (ruijie)
  * @param startCount 星星数量 (1~5)| number of stars (1~5)
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
@@ -1399,12 +1418,29 @@
  * @brief 手环发送语音数据 | Bracelet send voice data
  * @param stateCallback 监听回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str,state:语音状态)
  * Listening stateCallback (errorCode : 0 is successful, other values are wrong, you can get error code str according to IDOErrorCodeToStr,data:voice state)
- * state : 0 =>空闲 1=> 开始 2=> 停止 3=>超时 4=>断线  0 => idle 1=> start 2=> stop 3=> timeout 4=>disconnect
+ * state : 0 =>空闲 1=> 开始 2=> 停止 3=>超时 4=>断线 5=>登录状态 6=>开始 7=>app发起开始失败 8=>停止状态 9=>app发起结束失败
+ * 10 =>按钮退出到主界面
+ * 0 => idle 1=> start 2=> stop 3=> timeout 4=> disconnect 5=> login status 6=> start status  7=>start failure 8=> stop status 9=>app stop
+ * 10 => button to exit the main interface
  * @param completeCallback 监听回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str,data:语音文件数据)
  * Listening completeCallback (errorCode : 0 is successful, other values are wrong, you can get error code str according to IDOErrorCodeToStr,data:voice data)
 */
 + (void)listenVoiceFileDataCommand:(void(^_Nullable)(int state,int errorCode))stateCallback
                           complete:(void(^_Nullable)(NSString * _Nullable filePath))completeCallback;
+
+/**
+ * @brief 手环分段发送返回语音数据 | Bracelet send voice data in segments
+ * @param stateCallback 监听回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str,state:语音状态)
+ * Listening stateCallback (errorCode : 0 is successful, other values are wrong, you can get error code str according to IDOErrorCodeToStr,data:voice state)
+ * state : 0 =>空闲 1=> 开始 2=> 停止 3=>超时 4=>断线 5=>登录状态 6=>开始 7=>app发起开始失败 8=>停止状态 9=>app发起结束失败
+ * 10 =>按钮退出到主界面
+ * 0 => idle 1=> start 2=> stop 3=> timeout 4=> disconnect 5=> login status 6=> start status  7=>start failure 8=> stop status 9=>app stop
+ * 10 => button to exit the main interface
+ * @param completeCallback 监听回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str,data:语音文件数据)
+ * Listening completeCallback (errorCode : 0 is successful, other values are wrong, you can get error code str according to IDOErrorCodeToStr,data:voice data)
+ */
++ (void)listenVoiceOneItemDataCommand:(void(^_Nullable)(int state,int errorCode))stateCallback
+                             complete:(void(^_Nullable)(NSData * _Nullable data))completeCallback;
 
 /**
  * @brief 手环语音等待APP回复状态 | The bracelet's voice waits for the APP to reply

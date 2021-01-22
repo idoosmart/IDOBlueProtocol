@@ -1220,6 +1220,12 @@
 @property (nonatomic,assign) BOOL shockOnOff;
 
 /**
+ 延时分钟
+ delay minute
+ */
+@property (nonatomic,assign) NSInteger delayMinute;
+
+/**
  闹钟名字 长度限制 23个字节
  name
  */
@@ -1261,7 +1267,7 @@
  延时分钟
  delay minute
  */
-@property (nonatomic,assign) NSInteger delayMinute;
+@property (nonatomic,assign) NSInteger delayMinute DEPRECATED_MSG_ATTRIBUTE("this attribute is discarded");
 
 /**
 闹钟集合 ｜ alarm items
@@ -1277,6 +1283,7 @@
 
 @end
 
+#pragma mark ==== 设置语音闹钟model ====
 @interface IDOSetVoiceV3AlarmItemInfoModel : IDOBluetoothBaseModel
 /**
  开关 | Switch

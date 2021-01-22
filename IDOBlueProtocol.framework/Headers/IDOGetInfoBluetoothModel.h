@@ -555,6 +555,12 @@ error flag
  pressure too high reminder
  */
 @property (nonatomic,assign) BOOL pressureHighReminder;
+
+/**
+ V3的心率过高不支持
+ 配置了这个，app的UI心率过高告警不显示，固件对应设置心率过高告警的不起作用
+ */
+@property (nonatomic,assign) BOOL notSupportHrHighAlarm;
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
@@ -2453,8 +2459,8 @@ error flag
 @property (nonatomic,assign) NSInteger deviceShapeType;
 
 /**
- * 设备类型 0：无效；1：手环；2：手表；
- * device shape type 0: Invalid; 1: Bracelet; 2: Watch
+ * 设备类型 0：无效；1：手表；2：手环；
+ * device shape type 0: Invalid; 1:Watch ; 2: Bracelet
  */
 @property (nonatomic,assign) NSInteger deviceType;
 

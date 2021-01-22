@@ -39,6 +39,15 @@ extern NSString * _Nonnull IDOBluetoothDataMigrationNotifyName;
 // 设备绑定状态通知名字 | device bind status notification name
 extern NSString * _Nonnull IDOBluetoothDeviceBindNotifyName;
 
+// 获取设备信息通知名字 | get device info notification name
+extern NSString * _Nonnull IDOBluetoothGetDeviceInfoNotifyName;
+
+// 同步配置完成通知名字 | sync config complete notification name
+extern NSString * _Nonnull IDOBluetoothSyncConfigNotifyName;
+
+// 同步健康数据完成通知名字 | sync health data complete notification name
+extern NSString * _Nonnull IDOBluetoothSyncHealthNotifyName;
+
 @interface IDOBluetoothServices : NSObject
 
 /*
