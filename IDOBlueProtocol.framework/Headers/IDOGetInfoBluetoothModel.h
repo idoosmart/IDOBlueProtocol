@@ -1858,6 +1858,11 @@ error flag
 @property (nonatomic,assign) BOOL callingNum;
 
 /**
+ 设置单位支持华氏度 | support fahrenheit
+ */
+@property (nonatomic,assign) BOOL supportFahrenheit;
+
+/**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
  * @return IDOGetFuncTable7BluetoothModel
@@ -2463,6 +2468,18 @@ error flag
  * device shape type 0: Invalid; 1:Watch ; 2: Bracelet
  */
 @property (nonatomic,assign) NSInteger deviceType;
+
+/**
+ * 自定义表盘主版本 从1开始 0:不支持对应的自定义表盘功能
+ * dial main version
+ */
+@property (nonatomic,assign) NSInteger dialMainVersion;
+
+/**
+ * 自定义表盘子版本 从0开始 主版本号如果是0，子版本无效
+ * dial sub version
+ */
+@property (nonatomic,assign) NSInteger dialSubVersion;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象

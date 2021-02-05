@@ -117,5 +117,4 @@ IDOTransferFileManager * _Nonnull initTransferManager(void);
 + (void)stopTransfer;
 
 
-
 @end
