@@ -835,6 +835,10 @@
  夜间亮度 (realme项目) | night level
  */
 @property (nonatomic,assign) NSInteger nightLevel;
+/**
+ 显示间隔时长 单位秒 
+ */
+@property (nonatomic,assign) NSInteger showInterval;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
@@ -1291,6 +1295,11 @@
 @property (nonatomic,assign) BOOL isOpen;
 
 /**
+ 显示闹钟 | Switch
+ */
+@property (nonatomic,assign) BOOL isShow;
+
+/**
  年 | year
  */
 @property (nonatomic,assign) NSInteger year;
@@ -1320,6 +1329,12 @@
  * Alarm ID Invalid alarm is 0 by default  Set the range to 0-10
  */
 @property (nonatomic,assign) NSInteger alarmId;
+
+/**
+ * 重复集合 [星期一、星期二、星期三、星期四、星期五、星期六、星期日]
+ * Repeat collection [monday,tuesday,wednesday,thursday,friday,saturday,sunday]
+ */
+@property (nonatomic,strong)NSArray<NSNumber *> * repeat;
 
 @end
 
@@ -2173,6 +2188,17 @@
  JioTv 提醒 | jio tv
  */
 @property (nonatomic,assign) BOOL isOnJioTv;
+
+/**
+ Microsoft 提醒 | Microsoft
+ */
+@property (nonatomic,assign) BOOL isOnMicrosoft;
+
+/**
+ WhatsApp Business 提醒 | WhatsApp Business
+ */
+@property (nonatomic,assign) BOOL isOnWhatsAppBusiness;
+
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object

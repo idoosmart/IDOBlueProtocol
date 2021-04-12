@@ -136,6 +136,7 @@ error flag
  */
 + (BOOL)deleteAllOverHeatLog;
 
+
 @end
 
 
@@ -161,6 +162,11 @@ error flag
  9=> exercise mode 10=> weather 11=> breathing exercise 12=> find mobile phone 13=> pressure 14=> data tricycle 15=> time interface
 */
 @property (nonatomic,strong) NSArray<NSNumber *> * itemList;
+
+/**
+ 设备当前显示列表个数
+ */
+@property (nonatomic,assign) NSInteger currentShowNum;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
@@ -535,6 +541,102 @@ error flag
 
 @end
 
+#pragma mark ==== 获取第36个功能表model ====
+
+@interface IDOGetFuncTable36BluetoothModel : IDOBluetoothBaseModel
+/**
+ Alexa 设置天气
+ scientific sleep
+ */
+@property (nonatomic,assign) BOOL alexaSetWeather;
+
+/**
+ alexa 跳转运动界面
+ Alexa jump sport UI
+ */
+@property (nonatomic,assign) BOOL alexaJumpSportUi;
+
+/**
+ alexa 跳转界面
+ Alexa jump UI
+ */
+@property (nonatomic,assign) BOOL alexaJumpUi;
+
+/**
+ alexa 简单操作
+ scientific sleep
+ */
+@property (nonatomic,assign) BOOL alexaEasyOperate;
+
+/**
+ alexa 获取闹钟
+ alexa get alarm
+ */
+@property (nonatomic,assign) BOOL alexaGetAlarm;
+
+/**
+ * @brief 查询数据库,如果查询不到初始化新的model对象
+ * Query the database, if the query does not initialize a new model object
+ * @return IDOGetFuncTable36BluetoothModel
+ */
++ (IDOGetFuncTable36BluetoothModel *)currentModel;
+
+@end
+
+#pragma mark ==== 获取第35个功能表model ====
+
+@interface IDOGetFuncTable35BluetoothModel : IDOBluetoothBaseModel
+/**
+ 支持科学睡眠
+ scientific sleep
+ */
+@property (nonatomic,assign) BOOL scientificSleep;
+
+/**
+ 支持获取电池日志
+ get battery log
+ */
+@property (nonatomic,assign) BOOL getBatteryLog;
+
+/**
+ 支持获取表盘列表的接口
+ get new watch list
+ */
+@property (nonatomic,assign) BOOL getNewWatchList;
+
+/**
+ 支持多个定时器
+ Multiple timers
+ */
+@property (nonatomic,assign) BOOL multipleTimers;
+
+/**
+ 获取设备列表
+ get menu list
+ */
+@property (nonatomic,assign) BOOL getMenuList;
+
+/**
+ v3健康数据同步，半个小时自动同步
+ auto sync v3 health data
+ */
+@property (nonatomic,assign) BOOL autoSyncV3HealthData;
+
+/**
+ app获取重启日志错误码和标志位
+ get device log state
+ */
+@property (nonatomic,assign) BOOL getDeviceLogState;
+
+/**
+ * @brief 查询数据库,如果查询不到初始化新的model对象
+ * Query the database, if the query does not initialize a new model object
+ * @return IDOGetFuncTable35BluetoothModel
+ */
++ (IDOGetFuncTable35BluetoothModel *)currentModel;
+
+@end
+
 #pragma mark ==== 获取第34个功能表model ====
 
 @interface IDOGetFuncTable34BluetoothModel : IDOBluetoothBaseModel
@@ -613,6 +715,15 @@ error flag
  * jio tv
 */
 @property (nonatomic,assign) BOOL jioTv;
+/**
+ Microsoft
+ */
+@property (nonatomic,assign) BOOL microsoft;
+/**
+ whatsapp Business
+ */
+@property (nonatomic,assign) BOOL whatsappBusiness;
+
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
@@ -1863,6 +1974,16 @@ error flag
 @property (nonatomic,assign) BOOL supportFahrenheit;
 
 /**
+ V3功能表 | v3 function table
+ */
+@property (nonatomic,assign) BOOL v3FunctionTable;
+
+/**
+ 支持app设置屏幕亮度显示间隔 | set screen bright interval
+ */
+@property (nonatomic,assign) BOOL screenBrightInterval;
+
+/**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
  * @return IDOGetFuncTable7BluetoothModel
@@ -2353,6 +2474,16 @@ error flag
 @property (nonatomic,strong) IDOGetFuncTable34BluetoothModel      * funcTable34Model;
 
 /**
+ 35功能列表 scientific sleep | 35 func table
+ */
+@property (nonatomic,strong) IDOGetFuncTable35BluetoothModel      * funcTable35Model;
+
+/**
+ 36功能列表 alexa control | 36 func table
+ */
+@property (nonatomic,strong) IDOGetFuncTable36BluetoothModel      * funcTable36Model;
+
+/**
  是否支持版本信息 | version information is supported
  */
 @property (nonatomic,assign) BOOL versionInfo;
@@ -2480,6 +2611,12 @@ error flag
  * dial sub version
  */
 @property (nonatomic,assign) NSInteger dialSubVersion;
+
+/**
+ * 固件绑定时候显示勾ui界面 0:不需要 1:需要
+ * show bind choice UI
+ */
+@property (nonatomic,assign) NSInteger showBindChoiceUi;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
