@@ -663,6 +663,12 @@ error flag
  配置了这个，app的UI心率过高告警不显示，固件对应设置心率过高告警的不起作用
  */
 @property (nonatomic,assign) BOOL notSupportHrHighAlarm;
+
+/**
+ BIT1 k6项目不需要对应的壁纸表盘，veryFit默认的都是支持的，新加一个不支持的功能表，不需要的配置这个
+ no support photo wallpaper
+ */
+@property (nonatomic,assign) BOOL notSupportPhotoWallpaper;
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
