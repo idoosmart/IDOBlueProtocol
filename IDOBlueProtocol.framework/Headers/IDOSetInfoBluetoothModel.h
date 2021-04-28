@@ -1183,6 +1183,7 @@
 
 /**
  类型 | Type
+ 0x00：起床， 0x01：睡觉， 0x02：锻炼， 0x03：吃药， 0x04：约会， 0x05：聚会， 0x06:会议， 0x07：其他
  */
 @property (nonatomic,assign) NSInteger type;
 
@@ -1493,6 +1494,16 @@
  * Start of the week Sunday: 0x01, Monday: 0x00, Saturday: 0x03
  */
 @property (nonatomic,assign) NSInteger weekStart;
+
+/**
+ * 卡路里单位设置 0：默认千卡； 1：大卡； 2：千焦
+ */
+@property (nonatomic,assign) NSInteger calorieUnit;
+
+/**
+ * 泳池单位设置 0：默认米； 1：码
+ */
+@property (nonatomic,assign) NSInteger swimPoolUnit;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
@@ -2198,6 +2209,10 @@
  WhatsApp Business 提醒 | WhatsApp Business
  */
 @property (nonatomic,assign) BOOL isOnWhatsAppBusiness;
+/**
+ nioseFit 提醒 | noiseFit
+ */
+@property (nonatomic,assign) BOOL isOnNioseFit;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象

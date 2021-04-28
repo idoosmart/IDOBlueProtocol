@@ -407,16 +407,18 @@
 /**
  * @brief 简单的控制命令 | Voice control jump alarm interface
  * @param uiType  UI类型 1:亮度控制 2:勿扰控制 | UI Type 1: Brightness Control 2: Do Not Disturb Control
- * @param operationType  亮度控制: 0:亮度控制界面 亮度++ 1:亮度控制界面 亮度-- 2:亮度调节最大 3:亮度调节最小
+ * @param operationType  亮度控制: 0:亮度控制界面 亮度++ 1:亮度控制界面 亮度-- 2:亮度调节最大 3:亮度调节最小 4:亮度等级
  * 勿扰控制:0:勿扰控制开启 1:勿扰控制关闭
+ * @param cmdNumber  0:无效设置 亮度等级 1 ~ 5
  * Brightness control: 0: brightness control interface brightness ++ 1: brightness control interface brightness --
- * 2: brightness adjustment maximum 3: brightness adjustment minimum
+ * 2: brightness adjustment maximum 3: brightness adjustment minimum 4:brightness level
  * Do not disturb control : 0: Do not disturb control on 1: Do not disturb control off
  * @param callback 执行回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Execute callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
 */
 + (void)voiceControlUiType:(NSInteger)uiType
              operationType:(NSInteger)operationType
+                 cmdNumber:(NSInteger)cmdNumber
                   callback:(void(^_Nullable)(int errorCode))callback;
 /**
  * @brief 语音控制设置天气 | Voice control set weather data
