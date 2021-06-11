@@ -69,6 +69,12 @@
 @property (nonatomic,assign) BOOL isQueryWriteState;
 
 /**
+ * 是否重试启动传输
+ * is retries
+ */
+@property (nonatomic,assign) BOOL isRetries;
+
+/**
  * 检测文件回调
  * Detect file callback
  */

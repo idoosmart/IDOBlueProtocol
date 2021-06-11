@@ -552,6 +552,72 @@ error flag
 
 @end
 
+#pragma mark ==== 获取第37个功能表model ====
+@interface IDOGetFuncTable37BluetoothModel : IDOBluetoothBaseModel
+/**
+ 设置单位的增加骑行的单位设置
+ */
+@property (nonatomic,assign) BOOL supportCyclingUnit;
+
+/**
+ 设置单位的增加步行跑步的单位设置
+ */
+@property (nonatomic,assign) BOOL supportWalkRunUnit;
+
+/**
+ 设置目标增加中高运动时长
+ */
+@property (nonatomic,assign) BOOL midHighTimeGoal;
+
+/**
+ 设置走动提醒中的目标时间
+ */
+@property (nonatomic,assign) BOOL walkReminderTimeGoal;
+
+/**
+ v3的运动数据数据交换增加实时的配速字段
+ */
+@property (nonatomic,assign) BOOL exchangeDataRealTimePace;
+
+/**
+ 设置支持系统配对，每次连接的时候app不清除配对设备
+ */
+@property (nonatomic,assign) BOOL supportPairEachConnect;
+
+/**
+ 支持app下发压缩的sbc语言文件给ble
+ */
+@property (nonatomic,assign) BOOL supportAppSendVoiceToBle;
+
+/**
+ 设置血氧过低阈值
+ */
+@property (nonatomic,assign) BOOL setSpo2LowValue;
+
+/**
+ 支持app设置全天的血氧开关数据
+ */
+@property (nonatomic,assign) BOOL spo2AllDayOnOff;
+
+/**
+ 支持app设置智能心率
+ */
+@property (nonatomic,assign) BOOL smartHeartRate;
+
+/**
+ alexa语音提醒增加对应的s钟传输字段
+ */
+@property (nonatomic,assign) BOOL alexaReminderAddSecond;
+
+/**
+ * @brief 查询数据库,如果查询不到初始化新的model对象
+ * Query the database, if the query does not initialize a new model object
+ * @return IDOGetFuncTable37BluetoothModel
+ */
++ (IDOGetFuncTable37BluetoothModel *)currentModel;
+
+@end
+
 #pragma mark ==== 获取第36个功能表model ====
 
 @interface IDOGetFuncTable36BluetoothModel : IDOBluetoothBaseModel
@@ -584,6 +650,12 @@ error flag
  alexa get alarm
  */
 @property (nonatomic,assign) BOOL alexaGetAlarm;
+
+/**
+ alexa app设置开关命令
+ alexa set on off
+ */
+@property (nonatomic,assign) BOOL alexaSetOnOff;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
@@ -696,6 +768,22 @@ error flag
  gt01以前app都没有用到最大最少默认字段，适配k6项目需要配置对应的数据字段，添加功能表兼容
  */
 @property (nonatomic,assign) BOOL v3GetSportSortField;
+
+/**
+ 获取alexa的默认语言
+ */
+@property (nonatomic,assign) BOOL getAlexaDefaultLanguage;
+
+/**
+ v3壁纸表盘颜色设置
+ */
+@property (nonatomic,assign) BOOL setWallpaperColor;
+
+/**
+ 获取每个小时的佩戴标志位，在当天的运动数据同步中获取
+ */
+@property (nonatomic,assign) BOOL supportWearFlag;
+
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
@@ -2520,6 +2608,11 @@ error flag
 @property (nonatomic,strong) IDOGetFuncTable36BluetoothModel      * funcTable36Model;
 
 /**
+ 37功能列表 unit goal | 37 func table
+ */
+@property (nonatomic,strong) IDOGetFuncTable37BluetoothModel      * funcTable37Model;
+
+/**
  是否支持版本信息 | version information is supported
  */
 @property (nonatomic,assign) BOOL versionInfo;
@@ -2608,7 +2701,7 @@ error flag
 
 /**
  * 手环的平台 | platform for bracelet
- * 0:nordic, 10:realtek 8762x ,20:cypress psoc6,30:Apollo3
+ * 0:nordic, 10:realtek 8762x ,20:cypress psoc6,30:Apollo3,40:汇顶
  */
 @property (nonatomic,assign) NSInteger platform;
 

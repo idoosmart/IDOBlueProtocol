@@ -99,6 +99,11 @@
 @property (nonatomic,assign) NSInteger minute;
 
 /**
+ 秒 | second
+ */
+@property (nonatomic,assign) NSInteger second;
+
+/**
  * 提醒ID  设置范围1-10
  * remind ID   Set the range to 1-10
  */

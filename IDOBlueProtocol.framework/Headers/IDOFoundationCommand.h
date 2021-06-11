@@ -188,7 +188,7 @@
  * @param callback 执行后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Post-execution callback (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  */
-+ (void)mandatoryUnbindingCommand:(void(^_Nullable)(int errorCode))callback;
++ (void)mandatoryUnbindingCommand:(void(^_Nullable)(int errorCode,NSString * _Nullable undindMacAddr))callback;
 
 /**
  * @brief 设备配置复位 | Device Configuration Reset
@@ -468,6 +468,23 @@
                              titleText:(NSString *_Nullable)titleText
                           flagContinue:(BOOL)flagContinue
                               callback:(void(^_Nullable)(int errorCode))callback;
+/**
+ * @brief 语音控制运动类型开关
+ * @param isOn  是否开启
+ * @param type  UI跳转类型
+ *  0    无效 1    sport/exercise(跳到运动列表) 2    Outdoor Run（户外跑步） 3    Indoor run（室内跑步）4    Outdoor walk（户外步行）5    Indoor walk（室内步行）
+ 6    Hiking（徒步）7    Outdoor cycle（户外骑行）8    Indoor cycle（室内骑行） 9    Cricket（板球）10   Pool Swim（泳池游泳）11   Open water swim（开放式游泳）
+ 12   Yoga（瑜伽） 13   Rower（划船机）14   Elliptical（椭圆机）15   workout（健身 ）16   step/steps/calories/calory(健康数据页) 17   sleep/slept(睡眠页面)
+ 18   stress/pressure(压力检测) 19   help(打开帮助二维码界面) 20   music(音乐控制) 21   (转至消息列表) 22   find phone (查找手机)
+ 23   workout history/exercise  record/athletic records(运动记录) 24   breath training/relax（呼吸页面）25   settings/Options（设置）26   flashlight（手电筒）
+ 27   (查看所有已设置的闹钟)28   display  setting/brightness（亮度设置）29   message/text  notifications(消息详情)
+ * @param callback 执行回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * Execute callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
+ */
++ (void)voiceSetOnOff:(BOOL)isOn
+          commandType:(NSInteger)type
+             callback:(void(^_Nullable)(int errorCode))callback;
+
 /**
  * @brief 语音停止传输
  * voice file tran stop
@@ -765,6 +782,16 @@
  * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
  */
 + (void)setWeatherDataCommand:(IDOSetWeatherDataInfoBluetoothModel *_Nullable)weatherDataModel
+                     callback:(void (^ _Nullable)(int errorCode))callback;
+
+/**
+ * @brief 设置天气城市名称 | Set weather city name
+ * @param weatherDataModel 天气预报数据 model (IDOSetWeatherDataInfoBluetoothModel)
+ * Weather Forecast Data model (IDOSetWeatherDataInfoBluetoothModel)
+ * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
+ */
++ (void)setWeatherCityCommand:(IDOSetWeatherDataInfoBluetoothModel *_Nullable)weatherDataModel
                      callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**

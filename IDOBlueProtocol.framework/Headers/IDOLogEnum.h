@@ -65,6 +65,11 @@ typedef NS_ENUM(NSInteger, IDO_RECORD_LOG_TYPE)  {
      */
     IDO_SYNC_HEALTH_SPORT_LOG,
     /**
+     * 同步健康 佩戴
+     * Synchronous Health wear
+     */
+    IDO_SYNC_HEALTH_WEAR_LOG,
+    /**
      * 同步健康 睡眠
      * Synchronized Health Sleep
      */

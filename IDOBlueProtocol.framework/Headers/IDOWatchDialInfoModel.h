@@ -195,3 +195,53 @@
 + (IDOV3WatchDialInfoModel *)currentModel;
 
 @end
+
+
+#pragma mark ======= v3 wallpaper dial info Command =======
+
+@interface IDOV3WallpaperDialInfoModel : IDOBluetoothBaseModel
+/**
+ *操作 0x00:查询, 0x01:设置, 0x02: 删除壁纸表盘
+ *Operation 0x00: query, 0x01: set, 0x02: delete wallpaper dial
+ */
+@property (nonatomic,assign) NSInteger operate;
+/**
+ *0:无效 1:表盘（上左）参考九宫格 2:表盘（上中）3:表盘（上右) 4:表盘（中左）
+ *5:表盘（中中）6:表盘（中右）7:表盘（下左）8:表盘（下中）9:表盘（下右)
+ *0: Invalid 1: Dial (upper left) refer to Jiugongge 2: Dial (upper center) 3: Dial (upper right) 4: Dial (middle left)
+ *5: Dial (middle left) 6: Dial (middle right) 7: Dial (Bottom left) 8: dial (bottom middle) 9: dial (bottom right)
+ */
+@property (nonatomic,assign) NSInteger location;
+/**
+ *0:全部显示 1:隐藏子控件(图标和数字)
+ *0: Show all 1: Hide sub-controls (icons and numbers)
+ */
+@property (nonatomic,assign) NSInteger hideType;
+/**
+ *0:无效 1:星期/日期 2:步数 3:距离 4:卡路里 5:心率 6:电量
+ *1: Day of the week/date 2: Number of steps 3: Distance 4: Calories 5: Heart rate 6: Battery
+ */
+@property (nonatomic,assign) NSInteger widgetType;
+/**
+ *白色: #FFFFFF 黑色:#000000 红色:#FC1E58 棕色:#FF9501 天蓝色:#0091FF 青绿色:#44D7B6
+ *White: #FFFFFF Black: #000000 Red: #FC1E58 Brown: #FF9501 Sky blue: #0091FF Turquoise: #44D7B6
+ */
+@property (nonatomic,copy) NSString * timeColor;
+/**
+ *白色: #FFFFFF 黑色:#000000 红色:#FC1E58 棕色:#FF9501 天蓝色:#0091FF 青绿色:#44D7B6
+ *White: #FFFFFF Black: #000000 Red: #FC1E58 Brown: #FF9501 Sky blue: #0091FF Turquoise: #44D7B6
+ */
+@property (nonatomic,copy) NSString * widgetIconColor;
+/**
+ *白色: #FFFFFF 黑色:#000000 红色:#FC1E58 棕色:#FF9501 天蓝色:#0091FF 青绿色:#44D7B6
+ *White: #FFFFFF Black: #000000 Red: #FC1E58 Brown: #FF9501 Sky blue: #0091FF Turquoise: #44D7B6
+ */
+@property (nonatomic,copy) NSString * widgetNumColor;
+/**
+ * @brief 查询数据库,如果查询不到初始化新的model对象
+ * Query the database, if the query does not initialize a new model object
+ * @return IDOV3WallpaperDialInfoModel
+ */
++ (IDOV3WallpaperDialInfoModel *)currentModel;
+
+@end

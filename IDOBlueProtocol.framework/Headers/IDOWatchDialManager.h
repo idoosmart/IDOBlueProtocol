@@ -57,9 +57,21 @@ typedef void(^_Nullable setComplete)(int errorCode);
 
 /**
  * 获取当前设备v3表盘列表信息
- * Gets v3 dial list information of the current device
+ * Get current device v3 watch face list information
  */
 @property (nonatomic,copy,nullable) IDOWatchDialManager *_Nonnull(^getV3WatchListInfo)(void(^ _Nullable v3WialListCallback)(IDOV3WatchDialInfoModel * _Nullable model,int errorCode));
+
+/**
+ * 获取当前设备壁纸表盘信息
+ * Get current device wallpaper and dial information
+ */
+@property (nonatomic,copy,nullable) IDOWatchDialManager *_Nonnull(^getWallpaperDialInfo)(void(^ _Nullable wallpaperDialCallback)(IDOV3WallpaperDialInfoModel * _Nullable model,int errorCode));
+
+/**
+ * 设置当前设备壁纸表盘信息
+ * Set the current device wallpaper and watch face information
+ */
+@property (nonatomic,copy,nullable) IDOWatchDialManager *_Nonnull(^setWallpaperDialInfo)(setComplete block,IDOV3WallpaperDialInfoModel * _Nullable model);
 
 
 #pragma mark ====== watch transmission ===========

@@ -360,6 +360,14 @@
  结束时间 （分） | end minute
  */
 @property (nonatomic,assign) NSInteger endMinute;
+/**
+ 血氧过低开关 | low spo2 on off
+ */
+@property (nonatomic,assign) BOOL lowOnOff;
+/**
+ 血氧过低阈值 | low spo2 value
+ */
+@property (nonatomic,assign) NSInteger lowValue;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
@@ -416,6 +424,10 @@
  * Repeat collection [monday,tuesday,wednesday,thursday,friday,saturday,sunday]
  */
 @property (nonatomic,strong)NSArray<NSNumber *> * repeat;
+/**
+ 目标时间 单位(小时)
+ */
+@property (nonatomic,assign) NSInteger goalTime;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
@@ -903,6 +915,12 @@
  * Weather collection for the last three days @{@"type":@(0),@"maxTemp":@(0),@"minTemp":@(0)}
  */
 @property (nonatomic,strong) NSArray<NSDictionary*>* future;
+
+/**
+ 城市名称
+ city name
+ */
+@property (nonatomic,copy) NSString * cityName;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
@@ -1496,14 +1514,24 @@
 @property (nonatomic,assign) NSInteger weekStart;
 
 /**
- * 卡路里单位设置 0：默认千卡； 1：大卡； 2：千焦
+ * 卡路里单位设置 0x00 ：无效； 0x01 ：千卡；0x02 : 大卡； 0x03 : 千焦
  */
 @property (nonatomic,assign) NSInteger calorieUnit;
 
 /**
- * 泳池单位设置 0：默认米； 1：码
+ * 泳池单位设置 0x00 ：无效； 0x01 ：米；0x02 : 码
  */
 @property (nonatomic,assign) NSInteger swimPoolUnit;
+
+/**
+ * 骑行的单位(公里/英里)  0x00 :  无效；0x01 : km 公里   0x02 :  英里
+ */
+@property (nonatomic,assign) NSInteger cyclingUnit;
+
+/**
+ * 步行或者跑步的单位(公里/英里)  0x00 :  无效；0x01 : km 公里   0x02 :  英里
+ */
+@property (nonatomic,assign) NSInteger walkRunUnit;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
@@ -2280,6 +2308,11 @@
  目标距离(米) | Target distance(m)
  */
 @property (nonatomic,assign) NSInteger goalDistanceData;
+
+/**
+ 中高运动时长的目标(秒) | mid high time goal(s)
+ */
+@property (nonatomic,assign) NSInteger goalMidHighTimeData;
 
 /**
  目标体重(千克) | Target weight(kg)
