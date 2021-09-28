@@ -804,6 +804,10 @@ error flag
  */
 @property (nonatomic,assign) BOOL alexaControll100sports;
 /**
+ 207a定制   走动实时提醒
+ */
+@property (nonatomic,assign) BOOL walkTimeReminder DEPRECATED_MSG_ATTRIBUTE("this attribute is discarded");
+/**
  未读信息红点提示开关
  set unread app reminder
  */
@@ -823,6 +827,11 @@ error flag
  set notification status
  */
 @property (nonatomic,assign) BOOL setNotificationStatus;
+/**
+ 同步V3的多运动增加新的参数
+ set notification status
+ */
+@property (nonatomic,assign) BOOL syncV3ActivityAddParam;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象

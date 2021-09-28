@@ -1046,7 +1046,7 @@
 @interface IDOSetV3HeartRateModeBluetoothModel:IDOBluetoothBaseModel
 /**
  * 心率模式 0:关闭心率监测功能(无效) 1:手动模式 2:自动模式(5分钟) 3:持续监测(5秒钟)（默认：自动模式）
- * 4:默认类型(第一次绑定同步配置使用) 5:设置对应测量间隔,选择4和5模式则2和3模式无效
+ * 4:默认类型(第一次绑定同步配置使用) 5:设置对应测量间隔,选择4和5模式则2和3模式无效 6:智能心率模式 （206沃尔定制）
  * Heart Rate Mode 0: turn off heart rate monitoring function 1: manual mode 2: auto mode 3:continuously monitor(Default: Auto mode)
  * 4: default type (used for the first binding synchronization configuration) 5: set the corresponding measurement interval
  */
@@ -1083,7 +1083,7 @@
 @property (nonatomic,assign) NSInteger  measurementInterval;
 /**
  获取手表支持的心率类型集合 | get support  heart rate item type array
- 分别:5s,1分钟,3分钟,5分钟,10分钟,30分钟
+ 分别:5s,1分钟,3分钟,5分钟,10分钟,30分钟,智能心率(255s)
  */
 @property (nonatomic,copy) NSArray * hrModeTypes;
 
