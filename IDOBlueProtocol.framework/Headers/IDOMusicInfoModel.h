@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  歌单中对应歌曲的id，按照添加的先后顺序，依次排列
  */
-@property (nonatomic,copy) NSArray<NSNumber *> * musicIdAarray;
+@property (nonatomic,copy) NSArray<NSNumber *> * musicIdArray;
 
 @end
 

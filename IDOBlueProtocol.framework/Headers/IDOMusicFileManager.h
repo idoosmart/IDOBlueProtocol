@@ -12,6 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol IDOMusicFileManagerDelegate <NSObject>
+@optional
 //操作音乐回调状态
 - (void)operatMusicFileReplyErrorCode:(int)errorCode;
 //获取音乐信息回调数据
@@ -33,13 +34,13 @@ NS_ASSUME_NONNULL_BEGIN
 //单例对象初始化
 + (instancetype)shareInstance;
 //添加音乐文件
-+ (BOOL)addMusicFiles:(NSArray <IDOMusicFileModel *>*)modes;
++ (BOOL)addMusicFile:(IDOMusicFileModel *)model;
 //删除音乐文件
-+ (BOOL)deleteMusicFiles:(NSArray <IDOMusicFileModel *>*)modes;
++ (BOOL)deleteMusicFile:(IDOMusicFileModel *)model;
 //添加音乐关联文件夹
-+ (BOOL)addMusicFolders:(NSArray <IDOMusicDirectoryModel *>*)modes;
++ (BOOL)addMusicFolder:(IDOMusicDirectoryModel *)model;
 //删除音乐关联文件夹
-+ (BOOL)deleteMusicFolders:(NSArray <IDOMusicDirectoryModel *>*)modes;
++ (BOOL)deleteMusicFolder:(IDOMusicDirectoryModel *)model;
 //获取音乐信息
 + (BOOL)getMusicInfo;
 //开始传输
