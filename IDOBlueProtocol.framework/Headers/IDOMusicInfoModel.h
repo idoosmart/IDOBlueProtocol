@@ -10,15 +10,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface IDOMusicFileTransferModel : NSObject
-
-//音乐沙盒地址
-@property (nonatomic,copy) NSString * filePath;
-//音乐名称 xxx.mp3 添加音乐文件和传输文件名称要保持一致
-@property (nonatomic,copy) NSString * fileName;
-
-@end
-
 @interface IDOMusicFileModel : IDOBluetoothBaseModel
 /**
  音乐id
@@ -95,6 +86,14 @@ NS_ASSUME_NONNULL_BEGIN
  * @return IDOMusicInfoModel
  */
 + (IDOMusicInfoModel *)currentModel;
+
+@end
+
+@interface IDOMusicFileTransferModel : IDOMusicFileModel
+//音乐沙盒地址
+@property (nonatomic,copy) NSString * filePath;
+//音乐名称 xxx.mp3 添加音乐文件和传输文件名称要保持一致
+@property (nonatomic,copy) NSString * fileName;
 
 @end
 
