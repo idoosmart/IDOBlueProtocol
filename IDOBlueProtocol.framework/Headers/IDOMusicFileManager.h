@@ -14,7 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol IDOMusicFileManagerDelegate <NSObject>
 @optional
 //操作音乐回调状态
-- (void)operatMusicFileReplyErrorCode:(int)errorCode;
+//type=> 0:无效操作；1:删除音乐；2:增加音乐 3:删除文件夹；4:增加文件夹；5:修改歌单 6:导入歌单 7:歌单删除音乐
+- (void)operatMusicFileReplyErrorCode:(int)errorCode
+                          operateType:(int)type;
 //获取音乐信息回调数据
 - (void)getMusicFileInfoReplyModel:(IDOMusicInfoModel *)model
                          errorCode:(int)errorCode;
@@ -33,22 +35,20 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSArray<IDOMusicFileTransferModel *>* models;
 //单例对象初始化
 + (instancetype)shareInstance;
-//添加音乐文件
-+ (BOOL)addMusicFile:(IDOMusicFileModel *)model;
 //删除音乐文件
-+ (BOOL)deleteMusicFile:(IDOMusicFileModel *)model;
++ (BOOL)deleteMusicFiles:(NSArray <IDOMusicFileModel *>*)models;
 //新建歌单(只创建歌单，不关联歌曲)
-+ (BOOL)addMusicFolder:(IDOMusicDirectoryModel *)model;
++ (BOOL)addMusicFolders:(NSArray <IDOMusicDirectoryModel *>*)models;
 //删除歌单
-+ (BOOL)deleteMusicFolder:(IDOMusicDirectoryModel *)model;
++ (BOOL)deleteMusicFolders:(NSArray <IDOMusicDirectoryModel *>*)models;
 //修改歌单名称(只能修改歌单名称，其他歌单关联的歌曲不能被修改)
-+ (BOOL)reviseMusicFolderName:(IDOMusicDirectoryModel *)model;
++ (BOOL)reviseMusicFolderNames:(NSArray <IDOMusicDirectoryModel *>*)models;
 //导入歌单
 + (BOOL)importMusicFolder:(IDOMusicDirectoryModel *)model
-                musicFile:(IDOMusicFileModel *)music;
+               musicFiles:(NSArray <IDOMusicFileModel *>*)musics;
 //从歌单删除歌曲(歌曲和歌单解除关系，不是实质删除歌曲文件)
 + (BOOL)deletMusicFromFolder:(IDOMusicDirectoryModel *)model
-                   musicFile:(IDOMusicFileModel *)music;
+                  musicFiles:(NSArray <IDOMusicFileModel *>*)musics;
 //获取音乐信息
 + (BOOL)getMusicInfo;
 //开始传输
