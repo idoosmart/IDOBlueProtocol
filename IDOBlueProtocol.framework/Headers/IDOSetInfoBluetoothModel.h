@@ -528,6 +528,10 @@
  */
 @property (nonatomic,assign) NSInteger sunsetMin;
 /**
+ 空气质量描述
+ */
+@property (nonatomic,copy) NSString * airGradeInfo;
+/**
 未来24小时天气集合 ｜  items
 */
 @property (nonatomic,copy) NSArray <IDOFuture24HourWeatherModel *>* future24HoursItems;

@@ -344,6 +344,12 @@ Alarm state  0=>  invalid 1 => alarm has been modified
 
 @end
 
+#pragma mark ==== alexa状态 model ====
+@interface IDOControlAlexaDataUpdateModel : IDOBluetoothBaseModel
+@property (nonatomic,assign) NSInteger notifyType;
+@property (nonatomic,assign) NSInteger value;
+@end
+
 #pragma mark ==== 获取电池信息 model ====
 @interface IDOGetDeviceBattInfoBluetoothModel : IDOBluetoothBaseModel
 /**

@@ -1871,6 +1871,14 @@
 */
 + (void)listenStateChangeCommand:(void(^_Nullable)(int errorCode,IDOControlDataUpdateModel *_Nullable model))callback;
 
+/**
+ * @brief Alexa手环状态改变 | Alexa Bracelet state change
+ * @param callback 监听回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * Listening callback (errorCode : 0 is successful, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
+*/
++ (void)listenAlexaStateChangeCommand:(void(^_Nullable)(int errorCode,IDOControlAlexaDataUpdateModel *_Nullable model))callback;
+
+
 #pragma mark ======= progress Command =======
 
 /**
