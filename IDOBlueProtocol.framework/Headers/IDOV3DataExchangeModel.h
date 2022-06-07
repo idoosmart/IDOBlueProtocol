@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
  5结束课程运动 （还要等待用户是否有自由运动）；6课程结束后自由运动 （此字段当operate为0x05起作用）
  */
 @property (nonatomic,assign) NSInteger actionType;
+
 /**
  目标类型 | target type
  0x00:无目标， 0x01:重复次数，单位：次，
@@ -29,8 +30,6 @@ NS_ASSUME_NONNULL_BEGIN
  0x04:时长,单位：分钟, 0x05:  步数, 单位：步
  */
 @property (nonatomic,assign) NSInteger targetType;
-//0x00:成功 其他失败
-@property (nonatomic,assign) NSInteger errorCode;
 /**
  目标数值 | target value
  */
@@ -44,6 +43,10 @@ NS_ASSUME_NONNULL_BEGIN
  * 0:success 1:into sport mode failed 2:Low power of equipment 3: the bracelet is charging 4:Using Alexa 5:In the call
  */
 @property (nonatomic,assign) NSInteger retCode;
+/**
+ 运动计划操作错误码，0为成功，其他为失败
+ */
+@property (nonatomic,assign) NSInteger errorCode;
 /**
  数据版本
  */

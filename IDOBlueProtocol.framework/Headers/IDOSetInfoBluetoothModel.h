@@ -111,7 +111,7 @@
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
- * @return IDOSetWeatherSunTimeModel
+ * @return IDOSetSmartHeartRateModel
  */
 + (IDOSetSmartHeartRateModel *)currentModel;
 
@@ -1348,7 +1348,7 @@
  */
 @property (nonatomic,assign) NSInteger goalTime;
 /**
- 通知类型
+ 通知类型  0无效 ； 1：允许通知； 2：静默通知； 3：关闭通知
  */
 @property (nonatomic,assign) NSInteger notifyFlag;
 

@@ -962,11 +962,11 @@ error flag
 #pragma mark ==== 获取第37个功能表model ====
 @interface IDOGetFuncTable37BluetoothModel : IDOBluetoothBaseModel
 /**
- 设置单位的增加骑行的单位设置
+ 增加骑行的单位设置
  */
 @property (nonatomic,assign) BOOL supportCyclingUnit;
 /**
- 设置单位的增加步行跑步的单位设置
+ 增加步行跑步的单位设置
  */
 @property (nonatomic,assign) BOOL supportWalkRunUnit;
 /**

@@ -30,8 +30,9 @@ typedef NS_ENUM(NSInteger, IDO_EXCHANGE_DATA_STATUS) {
     //运动获取心率
     IDO_EXCHANGE_DATA_GET_HR,
     //运动活动数据
-    IDO_EXCHANGE_DATA_GET_ACTIVITY
-    
+    IDO_EXCHANGE_DATA_GET_ACTIVITY,
+    //切换计划运动动作
+    IDO_EXCHANGE_DATA_SWITCH_ACTION
 };
 
 NS_ASSUME_NONNULL_BEGIN
@@ -42,9 +43,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)appStartSportReplyWithModel:(IDOAppStartReplyExchangeModel *)model errorCode:(int)errorCode;
 //app运动暂停ble回复
 - (void)appPauseSportReplyWithModel:(IDOAppPauseReplyExchangeModel *)model errorCode:(int)errorCode;
-//app运动回复ble回复
+//app运动恢复ble回复
 - (void)appRestoreSportReplyWithModel:(IDOAppRestoreReplyExchangeModel *)model errorCode:(int)errorCode;
-//v2 app运动结束ble回复
+//app运动结束ble回复
 - (void)v2_appEndSportReplyWithModel:(IDOAppEndReplyExchangeModel *)model errorCode:(int)errorCode;
 //v2 app运动交互中ble回复
 - (void)v2_appIngSportReplyWithModel:(IDOV2AppIngReplyExchangeModel *)model errorCode:(int)errorCode;
@@ -122,6 +123,11 @@ NS_ASSUME_NONNULL_BEGIN
 //ble 运动计划操作回复
 + (BOOL)blePlanSportReplyCommandWithModel:(IDOBleOperatePlanReplyExchangeModel *)model
                                     error:(NSError **)error;
+//获取v3心率数据
++ (BOOL)v3_getActivityHrDataWithError:(NSError **)error;
+
+//v3运动结束后获取活动数据
++ (BOOL)v3_getActivityEndDataWithError:(NSError **)error;
 
 @end
 

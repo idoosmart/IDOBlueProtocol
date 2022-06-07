@@ -86,7 +86,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark ==== app 操作计划运动 ====
 @interface IDOAppOperatePlanExchangeModel : IDONewDataExchangeModel
 
-//0x01:开始运动 ，0x02：暂停运动 , 0x03:恢复运动 ，0x04：结束运动
+//0x01:开始运动 ，0x02：暂停运动 , 0x03:恢复运动 ，0x04：结束运动 0x05: 切换动作
 @property (nonatomic,assign) NSInteger operate;
 
 //训练的课程日期偏移 从0开始
@@ -109,7 +109,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark ==== ble 操作计划运动 ====
 @interface IDOBleOperatePlanExchangeModel : IDONewDataExchangeModel
-//0x01:开始运动 ，0x02：暂停运动 , 0x03:恢复运动 ，0x04：结束运动
+//0x01:开始运动 ，0x02：暂停运动 , 0x03:恢复运动 ，0x04：结束运动 ，0x05: 切换动作
 @property (nonatomic,assign) NSInteger operate;
 /**
  动作类型  1快走；2慢跑；3中速跑；4快跑  ；
@@ -141,7 +141,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark ==== ble 操作计划运动回复 ====
 @interface IDOBleOperatePlanReplyExchangeModel : IDONewDataExchangeModel
 
-//0x01:开始运动 ，0x02：暂停运动 , 0x03:恢复运动 ，0x04：结束运动
+//0x01:开始运动 ，0x02：暂停运动 , 0x03:恢复运动 ，0x04：结束运动，0x05: 切换动作
 @property (nonatomic,assign) NSInteger operate;
 /**
  动作类型  1快走；2慢跑；3中速跑；4快跑  ；
@@ -338,7 +338,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface IDOV3AppIngDataExchangeModel : IDONewDataExchangeModel
 /**
  数据版本
- 运动计划版本号为0x20
+ 运动计划版本号为0x20,不需要传sportType
  */
 @property (nonatomic,assign) NSInteger dataVersion;
 /**
@@ -443,9 +443,9 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark ==== v2数据交换中 ====
 @interface IDOV2AppIngDataExchangeModel : IDONewDataExchangeModel
 /**
- flag:0:全部有效, 1:距离无效， 2: gps 信号弱 | status 0:all effective 1:distance invalid 2:gps signal weak
+ status:0:全部有效, 1:距离无效， 2: gps 信号弱 | status 0:all effective 1:distance invalid 2:gps signal weak
  */
-@property (nonatomic,assign) NSInteger flag;
+@property (nonatomic,assign) NSInteger status;
 /**
  距离 (单位:米) | distance
  */
@@ -517,6 +517,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark ==== v3运动结束数据交换 ====
 @interface IDOV3SportEndDataExchangeModel : IDONewDataExchangeModel
+/**
+ 年份
+ */
+@property (nonatomic,assign) NSInteger year;
+/**
+月份
+ */
+@property (nonatomic,assign) NSInteger month;
 /**
  数据版本
  运动计划版本号为0x20
