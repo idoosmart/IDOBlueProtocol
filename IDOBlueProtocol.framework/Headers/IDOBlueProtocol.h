@@ -64,6 +64,7 @@ FOUNDATION_EXPORT const unsigned char IDOBlueProtocolVersionString[];
 #import <IDOBlueProtocol/IDOMakePhotoManager.h>
 #import <IDOBlueProtocol/IDOMessageIconManager.h>
 #import <IDOBlueProtocol/IDODataExchangeManager.h>
+#import <IDOBlueProtocol/IDOBPManager.h>
 
 #import <IDOBlueProtocol/IDOSportIconModel.h>
 #import <IDOBlueProtocol/IDOSportIconManager.h>

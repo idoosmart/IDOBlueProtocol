@@ -405,6 +405,12 @@ max step stride
 @property (nonatomic,strong) NSArray * treadFrequencyItems;
 
 /**
+ 实时速度集合  单位  千米/小时  5s出一个值
+ __IDO_FUNCTABLE__.funcTable31Model.activitySyncRealTime 功能表支持才有效
+ */
+@property (nonatomic,strong) NSArray * realSpeedItems;
+
+/**
  动作详情集合
  * type: 动作类型（十进制）  1快走；2慢跑；3中速跑；4快跑 ；
  * 71左腿前测拉伸；72右腿前测拉伸；73左腿后侧拉伸；74右腿后侧拉伸；75左腿弓步拉伸；76右腿弓步拉伸；

@@ -142,6 +142,18 @@
 @property (nonatomic,copy,nullable) IDOSyncManager *_Nonnull(^addSyncPressure)(void(^ _Nullable pressureCallback)(NSString * _Nullable jsonStr));
 
 /**
+ * 同步呼吸率数据回调
+ * Synchronize respir rate data callback
+ */
+@property (nonatomic,copy,nullable) IDOSyncManager *_Nonnull(^addSyncRespirRate)(void(^ _Nullable respirRateCallback)(NSString * _Nullable jsonStr));
+
+/**
+ * 同步身体电量数据回调
+ * Synchronize body power data callback
+ */
+@property (nonatomic,copy,nullable) IDOSyncManager *_Nonnull(^addSyncBodyPower)(void(^ _Nullable bodyPowerCallback)(NSString * _Nullable jsonStr));
+
+/**
  * 同步统一进度回调
  * Synchronize unified progress callback
  */

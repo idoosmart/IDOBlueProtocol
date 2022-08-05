@@ -129,13 +129,13 @@
 @property (nonatomic,copy,nullable) IDOTransferFileManager *_Nonnull(^addTransfer)(void(^ _Nullable transferComplete)(int errorCode));
 
 /**
- 表盘文件传输完成回调
+ 表盘文件、AGPS文件传输完成回调
  以上面错误码一致并增加以下错误码
- (errorCode + 24) ///< 表盘空间够但需要整理
- (errorCode + 25) ///< 表盘空间整理中
+ (errorCode + 24) ///< 空间够但需要整理
+ (errorCode + 25) ///< 空间整理中
  finishingTime :只有错误码在24和25才有效，固件预计整理时长
  */
-@property (nonatomic,copy,nullable) IDOTransferFileManager *_Nonnull(^addDialTransfer)(void(^ _Nullable transferDialComplete)(int errorCode,int finishingTime));
+@property (nonatomic,copy,nullable) IDOTransferFileManager *_Nonnull(^addFinishingTimeTransfer)(void(^ _Nullable transferDialComplete)(int errorCode,int finishingTime));
 
 /**
  * 文件写入完成回调 agps文件传输完成后需要查询写入状态

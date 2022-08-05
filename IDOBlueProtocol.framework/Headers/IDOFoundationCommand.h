@@ -1316,6 +1316,16 @@
 + (void)setPermissionsStateCommand:(IDOSetPermissionsModel *_Nullable)stateModel
                           callback:(void (^ _Nullable)(int errorCode))callback;
 
+/**
+ * @brief //设置身体电量开关
+ * @param switchModel 设置身体电量开关模型
+ * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
+ */
++ (void)setBodyPowerSwitchCommand:(IDOSetBodyPowerSwitchModel *_Nullable)switchModel
+                         callback:(void (^ _Nullable)(int errorCode))callback;
+
+
 #pragma mark ======= get Command =======
 
 /**
@@ -2051,6 +2061,17 @@
  */
 + (void)bleStartSportCommand:(IDODataExchangeModel *_Nullable)model
             bleStartCallback:(void (^_Nullable)(IDODataExchangeModel * _Nullable model,int errorCode))bleStartCallback DEPRECATED_MSG_ATTRIBUTE("Method deprecated, use \"IDOdataExchangeManager\"");
+
+/**
+ * @brief 手环发起运动开始 | The bracelet starts the campaign
+ */
++ (void)bleStartSportCommand:(void (^)(IDODataExchangeModel * _Nullable model, int errorCode))bleStartCallback;
+
+/**
+ * @brief 手环发起运动后，需要app告诉手环相关数据，比如gps状态等 | The bracelet starts the campaign
+ * @param model IDODataExchangeModel 只需要给 retCode  operate 属性需要赋值
+ */
++ (void)bleStartAppReplySportStateCommand:(IDODataExchangeModel *_Nullable)model;
 
 /**
  * @brief 手环发起运动暂停 | The bracelet initiates a motion pause
