@@ -1822,6 +1822,26 @@ error flag
 @property (nonatomic,assign) BOOL menuListTypeMeasure;
 
 /**
+ 支持v3血压校准
+ */
+@property (nonatomic,assign) BOOL bpCalibrationV3;
+
+/**
+ 支持app下发获取所有健康开关上添加身体电量开关和呼吸率开关
+ */
+@property (nonatomic,assign) BOOL switchStatusAppend;
+
+/**
+ 支持app下发v2获取心率监测模式
+ */
+@property (nonatomic,assign) BOOL heartRateModeV2;
+
+/**
+ 支持阿里巴巴邮箱
+ */
+@property (nonatomic,assign) BOOL alibabaEmail;
+
+/**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
  * @return IDOGetFuncTable29BluetoothModel

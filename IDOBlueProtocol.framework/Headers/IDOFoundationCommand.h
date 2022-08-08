@@ -1690,6 +1690,14 @@
 */
 + (void)getContactReviceTimeStateCommand:(void (^ _Nullable)(int errorCode,NSInteger state))callback;
 
+
+/**
+ * @brief 获取V2心率监测模式
+ * @param callback 执行后回调 data (IDOSetHrModeInfoBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * callback data (IDOSetHrModeInfoBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ */
++ (void)getV2HrModeInfoCommand:(void (^_Nullable)(int errorCode, IDOSetHrModeInfoBluetoothModel * _Nullable))callback;
+
 #pragma mark ======= listen Command =======
 
 /**
