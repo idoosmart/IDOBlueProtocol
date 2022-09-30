@@ -155,6 +155,11 @@
 @property (nonatomic,assign) NSInteger hrCompletionRate;
 
 /**
+ 热身表现 0-100 需要功能表支持,bool supportWarmUpBeforeRun; //支持跑前热身
+ */
+@property (nonatomic,assign) NSInteger warmUpPerformance;
+
+/**
  平均心率 | Average heart rate
  */
 @property (nonatomic,assign) NSInteger  avgHrValue;

@@ -1140,6 +1140,7 @@
 
 /**
  * 更新时间unix 时间戳,秒级  (eg 14442361933)
+ * //更新时间unix 时间戳,秒级 等于0是获取，当前的utc时间挫是设置
  * Update time Unix timestamp, in seconds
  */
 @property (nonatomic,copy) NSString * updateTime;
@@ -3300,10 +3301,46 @@
  Yahoo 提醒
  */
 @property (nonatomic,assign) BOOL isOnYahoo;
+
 /**
- Veryfit 提醒
+ Instantemail 提醒 | 支持Instantemail的功能表
+ */
+@property (nonatomic,assign) BOOL isOnInstantemail;
+
+/**
+ nhnemail 提醒 | 支持NAVER邮件的功能表
+ */
+@property (nonatomic,assign) BOOL isOnNhnemail;
+/**
+ zohoemail 提醒 | 支持ZoHo邮箱的功能表
+ */
+@property (nonatomic,assign) BOOL isOnZohoemail;
+/**
+ Exchangeemail 提醒 | 支持Exchange+ Mail Client 交换邮件的功能表
+ */
+@property (nonatomic,assign) BOOL isOnExchangeemail;
+/**
+ 189email 提醒 | 支持189邮件的功能表
+ */
+@property (nonatomic,assign) BOOL isOn189email;
+/**
+ googleGmail 提醒 | 支持谷歌邮箱的功能表
+ */
+@property (nonatomic,assign) BOOL isOnGoogleGmail;
+/**
+ Veryfit 提醒 的功能表 0x4F
  */
 @property (nonatomic,assign) BOOL isOnVeryfit;
+
+/**
+ general 提醒 | 通知支持通用的功能表 0x50
+ */
+@property (nonatomic,assign) BOOL isOnGeneral;
+/**
+ 189email 提醒 |  通知支持阿里巴巴邮箱的功能表 type:0x51
+ */
+@property (nonatomic,assign) BOOL isOnAlibabaemail;
+
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
@@ -3391,6 +3428,14 @@
 @property (nonatomic,assign) NSInteger goalType;
 
 /**
+ * 支持app设置获取运动三环周目标 | Support app settings to get the goal of the three rings of sports
+ 0：无效 | invalid
+ 1：日目标 | Daily target
+ 2：周目标 | Weekly target
+ */
+@property (nonatomic,assign) NSInteger timeGoalType;
+
+/**
  是否登陆 | Login
  */
 @property (nonatomic,assign) BOOL isLogin;
@@ -3415,3 +3460,20 @@
 
 @end
 
+#pragma mark ====  获取设置的卡路里/距离/中高运动时长的目标设置 model ====
+@interface IDOSetCalorieDistanceDateGoalModel : IDOBluetoothBaseModel
+/**
+  0：无效 | invalid
+  1：日目标 | Daily target
+  2：周目标 | Weekly target
+  默认值：1  |  default：1
+ */
+@property (nonatomic,assign) NSInteger timeGoaltype;
+/**
+ * @brief 查询数据库,如果查询不到初始化新的model对象
+ * Query the database, if the query does not initialize a new model object
+ * @return IDOSetBreathRateSwitchModel
+ */
++ (IDOSetCalorieDistanceDateGoalModel *)currentModel;
+
+@end

@@ -1375,6 +1375,22 @@ error flag
 @property (nonatomic,assign) BOOL supportSportPlan;
 
 /**
+ app设置来电快速短信的命令
+ */
+@property (nonatomic,assign) BOOL supportMsgCallingQuick;
+
+/**
+ 支持设置获取消息应用总开关字段
+ */
+@property (nonatomic,assign) BOOL supportMsgAllSwitch;
+
+/**
+ 支持airoha芯片采gps数据功能表
+ */
+@property (nonatomic,assign) BOOL supportAirohaGpsChip;
+
+
+/**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
  * @return IDOGetFuncTable34BluetoothModel
@@ -1585,13 +1601,37 @@ error flag
  */
 @property (nonatomic,assign) BOOL onlyOutlookEmail;
 /**
- * 单独提醒gmail邮箱
+ 通知支持instantemail的功能表 (邮箱独立出来通知)
+ */
+@property (nonatomic,assign) BOOL onlyInstantemail;
+/**
+ 通知支持nhnemail的功能表 (邮箱独立出来通知)
+ */
+@property (nonatomic,assign) BOOL onlyNhnemail;
+/**
+ 通知支持zohoemail的功能表 (邮箱独立出来通知)
+ */
+@property (nonatomic,assign) BOOL onlyZohoemail;
+/**
+ 通知支持exchangeemail的功能表 (邮箱独立出来通知)
+ */
+@property (nonatomic,assign) BOOL onlyExchangeemail;
+/**
+ 通知支持189email的功能表 (邮箱独立出来通知)
+ */
+@property (nonatomic,assign) BOOL only189email;
+/**
+ * 单独提醒gmail邮箱 (邮箱独立出来通知)
  */
 @property (nonatomic,assign) BOOL onlyGoogleGmail;
 /**
  通知支持veryfit的功能表
  */
 @property (nonatomic,assign) BOOL veryFitNotice;
+/**
+ 通知支持general的功能表 | 通知支持通用的功能表
+ */
+@property (nonatomic,assign) BOOL general;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
@@ -1842,6 +1882,76 @@ error flag
 @property (nonatomic,assign) BOOL alibabaEmail;
 
 /**
+ 通知支持Calendario(谷歌日历)
+ */
+@property (nonatomic,assign) BOOL calendario;
+/**
+ 支持app设置获取运动三环周目标
+ */
+@property (nonatomic,assign) BOOL timeGoalType;
+
+/**
+ 支持同步hrv(心率变异性水平)数据
+ */
+@property (nonatomic,assign) BOOL supportHrv;
+
+/**
+ 支持gps文件升级
+ */
+@property (nonatomic,assign) BOOL supportUpdateGps;
+
+/**
+ 支持支持跑前热身
+ */
+@property (nonatomic,assign) BOOL supportWarmUpBeforeRun;
+
+/**
+ 支持设置紧急联系人
+ */
+@property (nonatomic,assign) BOOL supportV3SetEmergencyConnact;
+/**
+ 支持喝水提醒设置免提醒时间段
+ */
+@property (nonatomic,assign) BOOL supportSetDrinkNoReminder;
+/**
+ 支持走动提醒设置免提醒时间段
+ */
+@property (nonatomic,assign) BOOL supportSetWalkNoReminder;
+/**
+ 支持v3日程提醒中重复提醒类型设置(0:无效 1:仅一次 2:每天 3:每周 4:每月 5:每年）
+ */
+@property (nonatomic,assign) BOOL supportV3RepScheduleReminder;
+/**
+ 支持v3天气协议未来48小时温度详情内发送单个小时的降水概率
+ */
+@property (nonatomic,assign) BOOL supportV3HourPrecipitation;
+/**
+ 支持app设置目标步数类型为周目标
+ */
+@property (nonatomic,assign) BOOL supportStepWeekTarget;
+
+/**
+ 支持操作小程序
+ */
+@property (nonatomic,assign) BOOL supportMiniProgram;
+/**
+ 润丰 支持获取固件外设信息
+ */
+@property (nonatomic,assign) BOOL supportRFGetPeripheralsInfo;
+/**
+ 润丰 支持app下发外设信息
+ */
+@property (nonatomic,assign) BOOL supportRFSetPeripheralsInfo;
+/**
+ 润丰 支持app下发体脂秤model映射表
+ */
+@property (nonatomic,assign) BOOL supportRFScalesModelMapTable;
+/**
+ 润丰 支持app下发绑定设备列表
+ */
+@property (nonatomic,assign) BOOL supportRFBindDeviceTable;
+
+/**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
  * @return IDOGetFuncTable29BluetoothModel
@@ -2070,6 +2180,11 @@ error flag
 @property (nonatomic,assign) BOOL standWaterSkling;
 
 /**
+ 站绳 运动类型198  ID205G-H(7613)定制
+ */
+@property (nonatomic,assign) BOOL battlingRope;
+
+/**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
  * @return IDOGetFuncTable25BluetoothModel
@@ -2243,6 +2358,12 @@ error flag
  keep
  */
 @property (nonatomic,assign) BOOL keep;
+
+/**
+ 踏步机 | stepper
+ */
+@property (nonatomic,assign) BOOL stepper;
+
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
@@ -3528,11 +3649,11 @@ error flag
 /**
  事项提醒支持数量为0 则默认是30
  */
-@property (nonatomic,assign) NSInteger scheduleReminderCount;
+@property (nonatomic,assign) NSInteger scheduleReminderCount DEPRECATED_MSG_ATTRIBUTE("this attribute is discarded");
 /**
  常用联系人支持同步的最大数量  0的话最大个数默认是10
  */
-@property (nonatomic,assign) NSInteger contactPhoneCount;
+@property (nonatomic,assign) NSInteger contactPhoneCount DEPRECATED_MSG_ATTRIBUTE("this attribute is discarded");
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
@@ -3698,6 +3819,34 @@ error flag
 
 
 @interface IDOGetInfoBluetoothModel : IDOBluetoothBaseModel
+
+@end
+
+#pragma mark ==== 获取固件本地提示音 model ====
+@interface IDOGetBeepFileListBluetoothModel : IDOBluetoothBaseModel
+/**
+ 从1开始
+ */
+@property (nonatomic,assign) NSInteger beepVersion;
+/**
+ 00 成功  非0失败
+*/
+@property (nonatomic,assign) NSInteger errCode;
+/**
+ item(提示音)个数
+ */
+@property (nonatomic,assign) NSInteger itemCount;
+/**
+ 提示音文件名列表
+ */
+@property (nonatomic,strong) NSArray<NSString *> * item;
+
+/**
+ * @brief 查询数据库,如果查询不到初始化新的model对象
+ * Query the database, if the query does not initialize a new model object
+ * @return IDOGetBeepFileListBluetoothModel
+ */
++ (IDOGetBeepFileListBluetoothModel *)currentModel;
 
 @end
 
