@@ -306,8 +306,7 @@
  */
 @property (nonatomic,assign) NSInteger conVersion;
 /**
- 操作 0：无效； 1： 设置常用联系人， 2：查询常用联系人    3:设置紧急联系人 4:查询紧急联系人
- （3、4操作需要功能表支持:IDOGetFuncTable29BluetoothModel：supportV3SetEmergencyConnact;//支持设置查询紧急联系人）
+ 操作 0：无效； 1： 设置常用联系人， 2：查询常用联系人
  */
 @property (nonatomic,assign) NSInteger operat;
 /**
@@ -326,6 +325,35 @@
 + (IDOSetSyncContactModel *)currentModel;
 
 @end
+
+#pragma mark ==== 同步协议蓝牙通话常用联系人 ====
+@interface IDOSetSyncEmergencyContactModel:IDOBluetoothBaseModel
+/**
+ 版本号    version
+ */
+@property (nonatomic,assign) NSInteger conVersion;
+/**
+ 操作 0：无效；  3:设置紧急联系人 4:查询紧急联系人
+ （3、4操作需要功能表支持:IDOGetFuncTable29BluetoothModel：supportV3SetEmergencyConnact;//支持设置查询紧急联系人）
+ */
+@property (nonatomic,assign) NSInteger operat;
+/**
+ items的个数
+ */
+@property (nonatomic,assign) NSInteger itemsNum;
+/**
+联系人集合 ｜ alarm items
+*/
+@property (nonatomic,copy) NSArray <IDOSetContactItemModel *>* items;
+/**
+ * @brief 查询数据库,如果查询不到初始化新的model对象
+ * Query the database, if the query does not initialize a new model object
+ * @return IDOSetSyncContactModel
+ */
++ (IDOSetSyncEmergencyContactModel *)currentModel;
+
+@end
+
 
 #pragma mark ==== 设置世界时间 ====
 @interface IDOSetV3WorldTimeItemModel:IDOBluetoothBaseModel
@@ -576,10 +604,23 @@
 */
 @property (nonatomic,copy) NSArray <IDOFutureSunriseWeatherDataItems *>* futureSunriseItems;
 /**
- 积雪厚度 0~100 单位：cm
+ 积雪厚度 0~100 单位：cm （snowDepth废弃：使用snowDepthMin和snowDepthMax代替）
  需要功能表支持：IDOGetFuncTable31BluetoothModel->v3WeatcherAddSnowDepth
  */
-@property (nonatomic,assign) NSInteger snowDepth;
+@property (nonatomic,assign) NSInteger snowDepth DEPRECATED_MSG_ATTRIBUTE("this attribute is discarded");
+
+/**
+ 最小积雪厚度 0~100 单位：cm
+ 需要功能表支持：IDOGetFuncTable31BluetoothModel->v3WeatcherAddSnowDepth
+ */
+@property (nonatomic,assign) NSInteger snowDepthMin;
+
+/**
+ 最大积雪厚度 0~100 单位：cm
+ 需要功能表支持：IDOGetFuncTable31BluetoothModel->v3WeatcherAddSnowDepth
+ */
+@property (nonatomic,assign) NSInteger snowDepthMax;
+
 /**
  降雪量 0~100 单位：mm
  需要功能表支持：IDOGetFuncTable31BluetoothModel->v3WeatcherAddSnowfall
@@ -590,6 +631,33 @@
  需要功能表支持：IDOGetFuncTable31BluetoothModel->v3WeatcherAddAtmosphericpressure
  */
 @property (nonatomic,assign) NSInteger atmosphericPressure;
+
+
+// 需要功能表支持：__IDO_FUNCTABLE__.funcTable31Model.v3WeatcherSendStructVersion04
+
+/**
+ 月相
+ 0x0：无效 0x1：新月(N)  0x2：蛾眉月(WXC)  0x3：上弦月(FQ)
+ 0x4：盈凸月（WXG） 0x5：满月(F)  0x6：亏凸月(WNG)   0x7：下弦月(LQ)
+ 0x8：残月(WNC)）
+ */
+@property (nonatomic,assign) NSInteger moonPhase;
+/**
+ 月出：时
+ */
+@property (nonatomic,assign) NSInteger moonriseHour;
+/**
+ 月出：分
+ */
+@property (nonatomic,assign) NSInteger moonriseMin;
+/**
+ 月落：时
+ */
+@property (nonatomic,assign) NSInteger moonsetHour;
+/**
+ 月落：分
+ */
+@property (nonatomic,assign) NSInteger moonsetMin;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
@@ -1129,6 +1197,7 @@
 /**
  * 重复集合 [星期一、星期二、星期三、星期四、星期五、星期六、星期日]
  * Repeat collection [monday,tuesday,wednesday,thursday,friday,saturday,sunday]
+ * Repeat collection [@(0),@(0),,@(0),@(0),,@(0),,@(0),,@(0),]
  */
 @property (nonatomic,copy)NSArray<NSNumber *> * repeat;
 /**

@@ -398,6 +398,65 @@ max step stride
  */
 @property (nonatomic,assign) NSInteger trainingOffset;
 
+/**
+ 3d距离 单位km
+ */
+@property (nonatomic,assign) NSInteger distance3d;
+/**
+ 平均3d速度 单位km/h
+ */
+@property (nonatomic,assign) NSInteger avg3dSpeed;
+/**
+ 平均垂直速度 单位m/h
+ */
+@property (nonatomic,assign) NSInteger avgVerticalSpeed;
+
+/**
+ 平均坡度        单位度 0 ~ 90
+ */
+@property (nonatomic,assign) NSInteger avgSlope;
+/**
+ 最高海拔高度 单位米 -500 ~ 9000
+ */
+@property (nonatomic,assign) NSInteger maxAltitude;
+/**
+ 最低海拔高度 单位米 -500 ~ 9000
+ */
+@property (nonatomic,assign) NSInteger minAltitude;
+/**
+ 累计海拔上升 单位米
+ */
+@property (nonatomic,assign) NSInteger cumulativeAltitudeRise;
+/**
+ 累计海拔下降 单位米
+ */
+@property (nonatomic,assign) NSInteger cumulativeAltitudeLoss;
+/**
+ 海拔高度详情个数
+ */
+@property (nonatomic,assign) NSInteger altitudeCount;
+/**
+ 海拔高度数据 30s一组值 单位米 范围-500~9000 最大保存12小时
+ */
+@property (nonatomic,strong) NSArray* altitudeItems;
+
+/**
+ 平均海拔高度 单位米 -500 ~ 9000
+ */
+@property (nonatomic,assign) NSInteger avgAltitude;
+
+
+/** 结束时间：年
+ //功能表：__IDO_FUNCTABLE__.funcTable29Model.v3ActivityEndTimeUseUtc
+ //同步v3多运动活动数据结束时间原字段(end_month&end_day&end_hour&end_minute)收回,使用时间戳点形式上报app
+ */
+@property (nonatomic,assign) NSInteger endYear;
+/** 结束时间：秒
+ //功能表：__IDO_FUNCTABLE__.funcTable29Model.v3ActivityEndTimeUseUtc
+ //同步v3多运动活动数据结束时间原字段(end_month&end_day&end_hour&end_minute)收回,使用时间戳点形式上报app
+ */
+@property (nonatomic,assign) NSInteger endSec;
+
 @end
 
 @interface IDOSyncV3ActivityDataModel : NSObject
@@ -475,5 +534,11 @@ max step stride
  * @return 活动集合 | Activity collection
  */
 + (NSArray <IDOSyncV3ActivityDataInfoBluetoothModel *>*)queryAllLightSportV3ActivitysWithMac:(NSString *)macAddr;
+
+/**
+ * 将json数据转模型数据 | Convert json data to model data
+ * @param jsonString  数据
+ */
++(IDOSyncV3ActivityDataInfoBluetoothModel*)v3ActivityDataJsonStringToObjectModel:(NSString*)jsonString;
 
 @end

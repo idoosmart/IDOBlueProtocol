@@ -225,5 +225,11 @@
  */
 + (NSArray <IDOSyncSwimmingDataInfoBluetoothModel *>*)queryAllSwimDataWithMacAddr:(NSString *)macAddr;
 
+/**
+ * 将json数据转模型数据 | Convert json data to model data
+ * @param jsonString  数据
+ */
++(IDOSyncSwimmingDataInfoBluetoothModel*)swimmingDataJsonStringToObjectModel:(NSString*)jsonString;
+
 @end
 

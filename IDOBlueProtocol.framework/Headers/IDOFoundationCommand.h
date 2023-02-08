@@ -1205,6 +1205,16 @@
                      callback:(void (^ _Nullable)(int errorCode))callback;
 
 /**
+ * @brief //设置通话紧急联系人
+ * @param contactModel //设置通话紧急联系人
+ * Function table(功能表)：__IDO_FUNCTABLE__.funcTable29Model.supportV3SetEmergencyConnact
+ * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
+ */
++ (void)setSyncEmergencyContactCommand:(IDOSetSyncEmergencyContactModel *_Nullable)contactModel
+                     callback:(void (^ _Nullable)(int errorCode))callback;
+
+/**
  * @brief //设置通话常用联系人（数据量比较大）
  * @param contactModel //设置通话常用联系人
  * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
@@ -1644,6 +1654,14 @@
  * callback data (IDOSetSyncContactModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
  */
 + (void)getContactDataCommand:(void (^_Nullable)(int errorCode, IDOSetSyncContactModel * _Nullable data))callback;
+
+/**
+ * @brief 获取紧急联系人
+ * Function table(功能表)：__IDO_FUNCTABLE__.funcTable29Model.supportV3SetEmergencyConnact
+ * @param callback 执行后回调 data (IDOSetSyncContactModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * callback data (IDOSetSyncContactModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ */
++ (void)getEmergencyContactDataCommand:(void (^_Nullable)(int errorCode, IDOSetSyncEmergencyContactModel * _Nullable data))callback;
 
 /**
  * @brief 获取第三方应用的通知状态
