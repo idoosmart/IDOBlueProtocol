@@ -1565,6 +1565,20 @@ error flag
  通知支持 Yahoo 功能
  */
 @property (nonatomic,assign) BOOL yahoo;
+
+/**
+ 定向越野
+ */
+@property (nonatomic,assign) BOOL orienteering;
+/**
+ 山地骑行
+ */
+@property (nonatomic,assign) BOOL mountainBiking;
+/**
+ 沙滩网球
+ */
+@property (nonatomic,assign) BOOL beachTennis;
+
 /**
  gto1pro 固件支持app获取联系人本地文件修改时间或者上传全部通讯录联系人
  */
@@ -2053,6 +2067,34 @@ error flag
  同步v3多运动活动数据结束时间原字段(end_month&end_day&end_hour&end_minute)收回,使用时间戳点形式上报app
  */
 @property (nonatomic,assign) BOOL v3ActivityEndTimeUseUtc;
+
+/**
+ 支持控制设备重启蓝牙
+ */
+@property (nonatomic,assign) BOOL reseDeviceBluetooth;
+
+/**
+ 支持文件传输(d108&d101)中文件类型字段使用新的code对应不同的传输文件
+ */
+@property (nonatomic,assign) BOOL dataTypeUseNewCode;
+/**
+ 功能表开启后,科学睡眠开关默认下发关闭 IDW13-PLUS新增需求
+ */
+@property (nonatomic,assign) BOOL scientificSleepSwitchOffByDefault;
+/**
+ 功能表开启后,心率开关默认下发关闭 IDW13-PLUS新增需求
+ */
+@property (nonatomic,assign) BOOL heartRateOffByDefault;
+
+/**
+ 功能表开启后,女性经期不支持设置排卵日提醒
+ */
+@property (nonatomic,assign) BOOL notSupportSetOvulation;
+
+/**
+ 功能表开启后,室内跑步不支持获取最大摄氧量,app室内跑步不展示此数据
+ */
+@property (nonatomic,assign) BOOL notSupportIndoorRunGetVo2max;
 
 
 /**

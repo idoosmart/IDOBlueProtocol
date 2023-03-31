@@ -182,15 +182,20 @@
  */
 @property (nonatomic,assign) NSInteger startFrom;
 
+
 /*
- 平均速度
- avg speed
+ * 平均速度  km/h  固件是 扩大100倍传输
+ * app收到数据需要除于100，即保留2位小数
+ * avg speed Km/h firmware is 100 times larger
+ * The data received by app should be divided by 100, that is, 2 decimal places should be reserved
  */
 @property (nonatomic,assign) NSInteger avgSpeed;
 
 /*
-最大速度
-max speed
+* 最大速度  km/h  固件是 扩大100倍传输
+* app收到数据需要除于100，即保留2位小数
+* max speed Km/h firmware is 100 times larger
+* The data received by app should be divided by 100, that is, 2 decimal places should be reserved
 */
 @property (nonatomic,assign) NSInteger maxSpeed;
 

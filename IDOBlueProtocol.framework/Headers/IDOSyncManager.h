@@ -181,8 +181,9 @@
 
 /**
  * 同步hrv数据回调
- * Synchronize hrv data callback
  * 功能表 | function Table : __IDO_FUNCTABLE__.funcTable29Model.supportHrv
+ * 回调的json数据转化成model | Convert the callback json data into model
+ * IDOSyncHRVDataModel*hrvDataModel = [IDOSyncHRVDataModel hrvDataJsonStringToObjectModel:jsonStr];
  */
 @property (nonatomic,copy,nullable) IDOSyncManager *_Nonnull(^addSyncHrv)(void(^ _Nullable hrvCallback)(NSString * _Nullable jsonStr));
 

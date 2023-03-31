@@ -69,6 +69,18 @@
                        callback:(void(^_Nullable)(int errorCode,int state))callback;
 
 /**
+ * 发送自定义数据
+ */
++ (void)sendCustomDataInformation:(NSData*_Nullable)data;
+
+/**
+ * @brief 发送自定义数据
+ * @param dataType 类型
+ * @param value 数值
+ */
++ (void)sendCustomDataInfoType:(IDO_CUSTOMDATA_TYPE)dataType dataValue:(int)value;
+
+/**
  * 发送提示消息 （只用于DH项目中） | Send prompt message （used only for DH）
  */
 + (void)sendPromptInformation:(NSString*_Nullable)info;
@@ -233,10 +245,13 @@
 
 /**
  * @brief 控制设备重启(重启设备后手环会马上断线) | Control device restart （The bracelet disconnects immediately after restarting the device）
+ * @param model | reboot model
  * @param callback 执行后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Post-execution callback (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ * state 0x00:重启成功 0x02: 失败：设备不支持  | 0x00: success; 0x02: Failed: device does not support
  */
-+ (void)setAppRebootCommand:(void(^_Nullable)(int errorCode))callback;
++ (void)setAppRebootCommand:(IDOSetRebootModel*_Nullable)model
+                   callback:(void(^_Nullable)(int state, int errorCode))callback;
 
 /**
  * @brief 控制设备恢复出厂设置  | Control device restore factory

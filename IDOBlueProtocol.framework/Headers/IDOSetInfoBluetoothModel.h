@@ -2252,7 +2252,7 @@
 @property (nonatomic,assign) BOOL isSync;
 
 /**
- 是否删除 | Delete
+ 是否删除 （删除或者显示） | Delete （Delete or display）
  */
 @property (nonatomic,assign) BOOL isDelete;
 
@@ -2260,6 +2260,8 @@
  类型 | Type
  0：起床， 1：睡觉， 2：锻炼， 3：吃药， 4：约会， 5：聚会， 6:会议，7：其他
  8：吃饭， 9：刷牙，10 :休息  11 : 课程  12: 洗澡  13:学习 14: 玩耍  42：自定义名称
+ 0: Get up, 1: Sleep, 2: Exercise, 3: Take medicine, 4: Date, 5: Party, 6: Meeting, 7: Other
+ 8: Eat, 9: Brush your teeth, 10: Rest 11: Lesson 12: Shower 13: Learning 14: Play 42: Custom Name
  */
 @property (nonatomic,assign) NSInteger type;
 /**
@@ -2276,7 +2278,7 @@
  */
 @property (nonatomic,copy)NSArray<NSNumber *> * repeat;
 /**
- 贪睡时长 | Sleepy time
+ 贪睡时长 （使用延时分钟代替） | Sleepy time （Use delay minutes instead）
  */
 @property (nonatomic,assign) NSInteger tsnoozeDuration;
 /**
@@ -2289,7 +2291,8 @@
 @property (nonatomic,copy) NSString * setTimeStamp DEPRECATED_MSG_ATTRIBUTE("this attribute is discarded");
 
 /**
- 重复闹铃次数 重复闹几次
+ 重复闹铃次数 重复闹几次，延时开关,设置成0就是关，设置成数字就是重复几次
+ Repeat the alarm for several times. Set the delay switch to 0 to turn off, and set it to a number to repeat several times
  */
 @property (nonatomic,assign) NSInteger repeatTime;
 
@@ -2299,8 +2302,8 @@
  */
 @property (nonatomic,assign) BOOL shockOnOff;
 /**
- 延时分钟
- delay minute
+ 延时分钟 （贪睡时长也使用这个字段）, 若要关闭，则 repeatTime = 0.
+ delay minutes (this field is also used for snooze duration)，To close, repeatTime=0
  */
 @property (nonatomic,assign) NSInteger delayMinute;
 /**
