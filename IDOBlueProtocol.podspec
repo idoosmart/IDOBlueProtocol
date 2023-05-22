@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IDOBlueProtocol'
-  #3.40.20.09 (2023.04.17)
-  s.version          = '3.40.21'
+  #3.40.21.07 (2023.05.22)
+  s.version          = '3.40.22'
   s.summary          = 'It is suitable for iOS devices and supports IDO bracelet, realizing bluetooth connection control framework library. Based on the Bluetooth framework of iOS system, bluetooth scanning, connection, binding, control, setting, acquisition, monitoring, transmission and other functions are expanded.'
 
 # This description is used to generate tags and improve search results.
