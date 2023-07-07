@@ -1767,6 +1767,15 @@
  */
 + (void)getSettingMaxItemsNumCommand:(void (^_Nullable)(int errorCode, IDOGetSettingMaxItemsNumBluetoothModel * _Nullable data))callback;
 
+
+/**
+ * @brief 获取到固件的算法版本号详情 | Obtain the algorithm version number details of the firmware
+ *  * 功能表 | Function Table :   __IDO_FUNCTABLE__.funcTable29Model.getV3DeviceAlgorithmVersion
+ * @param callback 执行后回调 data (IDOGetAlgVersionBluetoothModel) (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * callback data (IDOGetAlgVersionBluetoothModel) (errorCode : 0 The transfer was successful, the other values are errors, and the error code str can be obtained according to IDOErrorCodeToStr)
+ */
++ (void)getAlgVersionCommand:(void (^_Nullable)(int errorCode, IDOGetAlgVersionBluetoothModel * _Nullable data))callback;
+
 #pragma mark ======= listen Command =======
 
 /**
