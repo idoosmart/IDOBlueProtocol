@@ -1350,6 +1350,15 @@
 + (void)setBodyPowerSwitchCommand:(IDOSetBodyPowerSwitchModel *_Nullable)switchModel
                          callback:(void (^ _Nullable)(int errorCode))callback;
 
+/**
+ * @brief //设置语音助手开关
+ * @param switchModel 设置语音助手开关模型
+ * 功能表： __IDO_FUNCTABLE__.funcTable35Model.supportSetVoiceAssistantStatus
+ * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
+ */
++ (void)setVoiceAssistantStatusCommand:(IDOSetVoiceAssistantStatusModel *_Nullable)switchModel
+                         callback:(void (^ _Nullable)(int errorCode))callback;
 
 #pragma mark ======= get Command =======
 

@@ -1297,6 +1297,10 @@ error flag
  GTX0305&MP02定制 支持设置经期开关
  */
 @property (nonatomic,assign) BOOL supportSetMenstrualOnOff;
+/**
+ 泰坦10定制 支持下发语音助手开关状态
+ */
+@property (nonatomic,assign) BOOL supportSetVoiceAssistantStatus;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
