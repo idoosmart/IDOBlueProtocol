@@ -1360,6 +1360,16 @@
 + (void)setVoiceAssistantStatusCommand:(IDOSetVoiceAssistantStatusModel *_Nullable)switchModel
                          callback:(void (^ _Nullable)(int errorCode))callback;
 
+/**
+ * @brief //APP下发alexa功能开关
+ * @param alexaAoiceFunctionStatusModel alexa功能开关
+ * 功能表： __IDO_FUNCTABLE__.funcTable39Model.supportSetAlexaFunctionOnOff
+ * @param callback 设置后回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
+ * Set post callback (errorCode : 0 transfer succeeds, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
+ */
++ (void)setAlexaVoiceFunctionCommand:(IDOSetAlexaAoiceFunctionStatusModel *_Nullable)alexaAoiceFunctionStatusModel
+                            callback:(void (^_Nullable)(int errorCode))callback;
+
 #pragma mark ======= get Command =======
 
 /**
@@ -1995,7 +2005,7 @@
 + (void)listenStateChangeCommand:(void(^_Nullable)(int errorCode,IDOControlDataUpdateModel *_Nullable model))callback;
 
 /**
- * @brief Alexa手环状态改变 | Alexa Bracelet state change
+ * @brief Alexa手环音量变化 | Alexa Bracelet state change
  * @param callback 监听回调 (errorCode : 0 传输成功,其他值为错误,可以根据 IDOErrorCodeToStr 获取错误码str)
  * Listening callback (errorCode : 0 is successful, other values are wrong, you can get error code str according to IDOErrorCodeToStr)
 */

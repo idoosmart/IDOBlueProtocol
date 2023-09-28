@@ -1,4 +1,13 @@
 
+# IDOBlueProtocol.framework 3.40.26
+SDK版本更新时间： 2023-09-27
+
+## 优化SD 
+###1.1 更新SDK，适配iOS17系统
+###1.2 优化SDK
+
+
+
 # IDOBlueProtocol.framework 3.40.20
 SDK版本更新时间： 2023-03-31
 

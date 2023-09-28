@@ -64,6 +64,12 @@ typedef NS_ENUM(NSInteger, IDO_GETTING_APPPACKNAME_TYPE) {
 //主动获取图标和名字
 - (BOOL)getAppIconAndName;
 
+//是否需要获取包名
+- (BOOL)isNeetGetAppIconAndName;
+
+//解绑后，sdk会主动清除获取的包名数据
+-(void)unbindAfterCleanCacheAppName;
+
 @end
 
 NS_ASSUME_NONNULL_END
