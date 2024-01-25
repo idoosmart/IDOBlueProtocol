@@ -1,4 +1,12 @@
 
+# IDOBlueProtocol.framework 3.40.27
+SDK版本更新时间： 2024-01-25
+
+## 优化SD 
+###1.1 优化SDK
+
+
+
 # IDOBlueProtocol.framework 3.40.26
 SDK版本更新时间： 2023-09-27
 
