@@ -4305,6 +4305,15 @@ error flag
 @property (nonatomic,copy) NSString * deviceBtName;
 
 /**
+ GPS芯片平台
+   0：无效
+   1：索尼 sony
+   2：洛达 Airoh
+   3：芯与物 icoe
+ */
+@property (nonatomic,assign) NSInteger gpsPlatform;
+
+/**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
  * @return IDOGetDeviceInfoBluetoothModel

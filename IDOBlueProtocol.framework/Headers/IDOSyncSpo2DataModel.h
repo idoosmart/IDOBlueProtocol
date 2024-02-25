@@ -34,6 +34,11 @@
  */
 @property (nonatomic,assign) NSInteger  serialNumber;
 
+/**
+ 本地设置数据，区分手环同步的数据 | Locally set data to distinguish the data of the bracelet synchronization
+ */
+@property (nonatomic,assign) BOOL isLocal;
+
 @end
 
 @interface IDOSyncBloodOxygenDataInfoBluetoothModel : IDOBluetoothBaseModel
@@ -92,6 +97,11 @@
  血氧等级  1:低等   2:业余   3:一般  4:平均    5:良好  6:优秀   7:专业
  */
 @property (nonatomic,assign) NSInteger grade DEPRECATED_MSG_ATTRIBUTE("this attribute is discarded");
+
+/**
+ 本地设置数据，区分手环同步的数据 | Locally set data to distinguish the data of the bracelet synchronization
+ */
+@property (nonatomic,assign) BOOL isLocal;
 
 @end
 

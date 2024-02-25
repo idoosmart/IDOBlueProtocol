@@ -1746,6 +1746,62 @@
 + (IDOSetBpMeasureInfoBluetoothModel *)currentModel;
 @end
 
+#pragma mark ==== 设置心率测量指令model ====
+@interface IDOSetHrMeasureInfoBluetoothModel:IDOBluetoothBaseModel
+
+/**
+ * 参数标志 0x01:开始测量，0x02:结束测量，0x03:获得数据
+ * Parameter flag 0x01: Start measurement, 0x02: End measurement, 0x03: Obtain data
+ */
+@property (nonatomic,assign) NSInteger flag;
+
+/**
+ * 返回状态 0x00:不支持，0x01:正在测量，0x02:测量成功 0x03:测量失败 0x04:设备正在运动模式
+ * Return status 0x00: Not supported, 0x01: Positive measurement, 0x02: Measurement success 0x03: Measurement failure 0x04: Device is in motion mode
+ */
+@property (nonatomic,assign) NSInteger status;
+
+/**
+ 测量数据值  | Heart rate value
+ */
+@property (nonatomic,assign) NSInteger value;
+
+/**
+ * @brief 查询数据库,如果查询不到初始化新的model对象
+ * Query the database, if the query does not initialize a new model object
+ * @return IDOSetHrMeasureInfoBluetoothModel
+ */
++ (IDOSetHrMeasureInfoBluetoothModel *)currentModel;
+@end
+
+#pragma mark ==== 设置血氧测量指令model ====
+@interface IDOSetSpo2MeasureInfoBluetoothModel:IDOBluetoothBaseModel
+
+/**
+ * 参数标志 0x01:开始测量，0x02:结束测量，0x03:获得数据
+ * Parameter flag 0x01: Start measurement, 0x02: End measurement, 0x03: Obtain data
+ */
+@property (nonatomic,assign) NSInteger flag;
+
+/**
+ * 返回状态 0x00:不支持，0x01:正在测量，0x02:测量成功 0x03:测量失败 0x04:设备正在运动模式
+ * Return status 0x00: Not supported, 0x01: Positive measurement, 0x02: Measurement success 0x03: Measurement failure 0x04: Device is in motion mode
+ */
+@property (nonatomic,assign) NSInteger status;
+
+/**
+ 测量数据值  | spo2 value
+ */
+@property (nonatomic,assign) NSInteger value;
+
+/**
+ * @brief 查询数据库,如果查询不到初始化新的model对象
+ * Query the database, if the query does not initialize a new model object
+ * @return IDOSetSpo2MeasureInfoBluetoothModel
+ */
++ (IDOSetSpo2MeasureInfoBluetoothModel *)currentModel;
+@end
+
 #pragma mark ==== 设置表盘参数model ====
 @interface IDOSetWatchDiaInfoBluetoothModel:IDOBluetoothBaseModel
 
@@ -3470,28 +3526,28 @@
 /**
  Instantemail 提醒 | 支持Instantemail的功能表
  */
-@property (nonatomic,assign) BOOL isOnInstantemail;
+@property (nonatomic,assign) BOOL isOnInstantemail DEPRECATED_MSG_ATTRIBUTE("this attribute is discarded");
 
 /**
  nhnemail 提醒 | 支持NAVER邮件的功能表
  */
-@property (nonatomic,assign) BOOL isOnNhnemail;
+@property (nonatomic,assign) BOOL isOnNhnemail DEPRECATED_MSG_ATTRIBUTE("this attribute is discarded");
 /**
  zohoemail 提醒 | 支持ZoHo邮箱的功能表
  */
-@property (nonatomic,assign) BOOL isOnZohoemail;
+@property (nonatomic,assign) BOOL isOnZohoemail DEPRECATED_MSG_ATTRIBUTE("this attribute is discarded");
 /**
  Exchangeemail 提醒 | 支持Exchange+ Mail Client 交换邮件的功能表
  */
-@property (nonatomic,assign) BOOL isOnExchangeemail;
+@property (nonatomic,assign) BOOL isOnExchangeemail DEPRECATED_MSG_ATTRIBUTE("this attribute is discarded");
 /**
  189email 提醒 | 支持189邮件的功能表
  */
-@property (nonatomic,assign) BOOL isOn189email;
+@property (nonatomic,assign) BOOL isOn189email DEPRECATED_MSG_ATTRIBUTE("this attribute is discarded");
 /**
  googleGmail 提醒 | 支持谷歌邮箱的功能表
  */
-@property (nonatomic,assign) BOOL isOnGoogleGmail;
+@property (nonatomic,assign) BOOL isOnGoogleGmail DEPRECATED_MSG_ATTRIBUTE("this attribute is discarded");
 /**
  Veryfit 提醒 的功能表 0x4F
  */
@@ -3584,6 +3640,72 @@
  TasSmart定制
  */
 @property (nonatomic,assign) BOOL isOnTasSmart;
+
+
+/**
+ IDW20-T定制  Facebook messenger
+ */
+@property (nonatomic,assign) BOOL isOnFacebookMessenger;
+/**
+ Nubank
+ */
+@property (nonatomic,assign) BOOL isOnNubank;
+/**
+ Bradesco
+ */
+@property (nonatomic,assign) BOOL isOnBradesco;
+/**
+ Itaú
+ */
+@property (nonatomic,assign) BOOL isOnItaú;
+/**
+ Banco do brasil
+ */
+@property (nonatomic,assign) BOOL isOnBancoDoBrasil;
+/**
+ Correios
+ */
+@property (nonatomic,assign) BOOL isOnCorreios;
+/**
+ Banco inter
+ */
+@property (nonatomic,assign) BOOL isOnBancoInter;
+/**
+ Caixa economica
+ */
+@property (nonatomic,assign) BOOL isOnCaixaEconomica;
+/**
+ Neon
+ */
+@property (nonatomic,assign) BOOL isOnNeon;
+/**
+ Santander
+ */
+@property (nonatomic,assign) BOOL isOnSantander;
+/**
+ Next
+ */
+@property (nonatomic,assign) BOOL isOnNext;
+/**
+ Shein
+ */
+@property (nonatomic,assign) BOOL isOnShein;
+/**
+ GoogleTask
+ */
+@property (nonatomic,assign) BOOL isOnGoogleTask;
+/**
+ Microsoft to do
+ */
+@property (nonatomic,assign) BOOL isOnMicrosoftToDo;
+/**
+ TickTick
+ */
+@property (nonatomic,assign) BOOL isOnTickTick;
+/**
+ Todoist
+ */
+@property (nonatomic,assign) BOOL isOnTodoist;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
