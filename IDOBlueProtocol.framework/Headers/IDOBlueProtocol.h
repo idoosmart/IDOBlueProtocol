@@ -84,3 +84,4 @@ FOUNDATION_EXPORT const unsigned char IDOBlueProtocolVersionString[];
 #import <IDOBlueProtocol/IDOWallpaperCloudLibModel.h>
 #import <IDOBlueProtocol/SmartCompetitorManager.h>
 #import <IDOBlueProtocol/IDOSyncHRVDataModel.h>
+#import <IDOBlueProtocol/IDOScManager.h>
