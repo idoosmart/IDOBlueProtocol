@@ -1175,6 +1175,14 @@ typedef NS_ENUM(NSInteger,IDO_LANGUAGE_TYPE) {
     *巴西葡语 | brazilian_portuguese
     */
     IDO_LANGUAGE_TYPE_BRAZILIAN_PORTUGUESE = 37,
+    /**
+    *孟加拉语 | bengali
+    */
+    IDO_LANGUAGE_TYPE_BENGALI = 38,
+    /**
+    *高棉语 | khmer
+    */
+    IDO_LANGUAGE_TYPE_KHMER = 39,
 
 };
 

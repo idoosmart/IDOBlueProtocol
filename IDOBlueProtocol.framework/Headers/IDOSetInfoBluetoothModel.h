@@ -11,6 +11,49 @@
 #import "IDOBluetoothBaseModel.h"
 #endif
 
+#pragma mark ====  设置游戏时间 model ====
+@interface IDOSetGameTimeReminder : IDOBluetoothBaseModel
+//游戏显示开关
+@property (nonatomic,assign) BOOL gameShow;
+//定时禁止开关
+@property (nonatomic,assign) BOOL timeBan;
+//开始 时
+@property (nonatomic,assign) NSInteger startHour;
+//开始 分
+@property (nonatomic,assign) NSInteger startMinute;
+//结束 时
+@property (nonatomic,assign) NSInteger endHour;
+//结束 分
+@property (nonatomic,assign) NSInteger endMinute;
+/**
+ * 重复集合 [星期一、星期二、星期三、星期四、星期五、星期六、星期日]
+ * Repeat collection [monday,tuesday,wednesday,thursday,friday,saturday,sunday]
+ */
+@property (nonatomic,copy)NSArray<NSNumber *> * repeat;
+/**
+ * @brief 查询数据库,如果查询不到初始化新的model对象
+ * Query the database, if the query does not initialize a new model object
+ * @return IDOSetGameTimeReminder
+ */
++ (IDOSetGameTimeReminder *)currentModel;
+@end
+
+#pragma mark ====  设置喝水计划 model ====
+@interface IDOSetDrinkPlanDataModel : IDOBluetoothBaseModel
+//杯子容量1
+@property (nonatomic,assign) NSInteger cupCapacity1;
+//杯子容量2
+@property (nonatomic,assign) NSInteger cupCapacity2;
+//喝水目标 单位ml/天
+@property (nonatomic,assign) NSInteger drinkTarget;
+/**
+ * @brief 查询数据库,如果查询不到初始化新的model对象
+ * Query the database, if the query does not initialize a new model object
+ * @return IDOSetDrinkPlanDataModel
+ */
++ (IDOSetDrinkPlanDataModel *)currentModel;
+@end
+
 #pragma mark ====  设置呼吸率开关 model ====
 @interface IDOSetBreathRateSwitchModel : IDOBluetoothBaseModel
 /**
@@ -228,6 +271,11 @@
 @property (nonatomic,assign) NSInteger highNoiseValue;
 
 /**
+ 通知类型 0无效 1:允许通知 2:静默通知 3:关闭通知
+ */
+@property (nonatomic,assign) NSInteger notify;
+
+/**
  * @brief 查询数据库,如果查询不到初始化新的model对象
  * Query the database, if the query does not initialize a new model object
  * @return IDOSetV3NoiseSwitchModel
@@ -420,7 +468,7 @@
  */
 @property (nonatomic,assign) NSInteger itemsNum;
 /**
-闹钟集合 ｜ alarm items
+时钟集合 ｜ time items
 */
 @property (nonatomic,copy) NSArray <IDOSetV3WorldTimeItemModel *>* items;
 
@@ -1772,6 +1820,7 @@
  * @return IDOSetHrMeasureInfoBluetoothModel
  */
 + (IDOSetHrMeasureInfoBluetoothModel *)currentModel;
+
 @end
 
 #pragma mark ==== 设置血氧测量指令model ====
@@ -3189,8 +3238,8 @@
 @property (nonatomic,assign) NSInteger  callDelay;
 
 /**
- * 是否开启子开关 (只对智能提醒有效,对来电提醒无效)
- * Whether to enable the sub-switch (only valid for smart reminders, invalid for incoming call reminders)
+ * 智能提醒总开关 (只对智能提醒有效,对来电提醒无效)
+ * smart reminder switch (only valid for smart reminder, not for incoming call reminder)
  */
 @property (nonatomic,assign) BOOL isOnChild;
 
@@ -3635,13 +3684,10 @@
  LoopsFit定制
  */
 @property (nonatomic,assign) BOOL isOnLoopsFit;
-
 /**
  TasSmart定制
  */
 @property (nonatomic,assign) BOOL isOnTasSmart;
-
-
 /**
  IDW20-T定制  Facebook messenger
  */
@@ -3810,6 +3856,11 @@
  绑定状态 | Binding status
  */
 @property (nonatomic,assign) NSInteger bindState;
+
+/**
+ 全天步数目标达成提醒开关
+ */
+@property (nonatomic,assign) BOOL achievedRemindOnOff;
 
 /**
  * @brief 查询数据库,如果查询不到初始化新的model对象
