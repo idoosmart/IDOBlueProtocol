@@ -1,4 +1,8 @@
+# IDOBlueProtocol.framework 3.40.48
+SDK版本更新时间： 2024-12-03
 
+## 优化SDK 
+###1.1 增加思澈表盘制作和安装
 
 # IDOBlueProtocol.framework 3.40.29
 SDK版本更新时间： 2024-02-25
