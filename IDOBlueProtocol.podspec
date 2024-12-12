@@ -30,10 +30,10 @@ Pod::Spec.new do |s|
   # s.swift_version = '5.0'
   
   # 上传framewrok
-  s.vendored_frameworks   = 'IDOBlueProtocol.framework'
+  s.vendored_frameworks   = 'IDOBlueProtocol/IDOBlueProtocol.framework'
 
   # 上传源文件
-  # s.source_files = 'IDOBlueProtocol/Classes/**/*'
+  # s.source_files = 'IDOBlueProtocol/IDOBlueProtocol/Classes/**/*'
   
   # s.resource_bundles = {
   #   'IDOBlueProtocol' => ['IDOBlueProtocol/Assets/*.png']
