@@ -20,7 +20,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "IDOBlueProtocol",
-            path: "IDOBlueProtocol/IDOBlueProtocol",
+            path: "IDOBlueProtocol",
 //            resources: [.process("IDOBlueProtocol.bundle")],
             publicHeadersPath: "."
         )
