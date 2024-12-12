@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IDOBlueProtocol'
-  s.version          = '3.40.50'
+  s.version          = '3.40.52'
   s.summary          = 'It is suitable for iOS devices and supports IDO bracelet, realizing bluetooth connection control framework library. Based on the Bluetooth framework of iOS system, bluetooth scanning, connection, binding, control, setting, acquisition, monitoring, transmission and other functions are expanded.'
 
 # This description is used to generate tags and improve search results.
@@ -30,10 +30,10 @@ Pod::Spec.new do |s|
   # s.swift_version = '5.0'
   
   # 上传framewrok
-  s.vendored_frameworks   = 'IDOBlueProtocol/IDOBlueProtocol.framework'
+  s.vendored_frameworks   = 'IDOBlueProtocol.xcframework'
 
   # 上传源文件
-  # s.source_files = 'IDOBlueProtocol/IDOBlueProtocol/Classes/**/*'
+  # s.source_files = 'IDOBlueProtocol/Classes/**/*'
   
   # s.resource_bundles = {
   #   'IDOBlueProtocol' => ['IDOBlueProtocol/Assets/*.png']
